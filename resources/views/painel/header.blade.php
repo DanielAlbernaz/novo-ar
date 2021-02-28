@@ -20,11 +20,13 @@
 
     <link href="{{asset('assests/painel/css/animate.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assests/painel/css/style.css')}}" rel="stylesheet" type="text/css">
+    {{-- Crop Indiano --}}
+    <link href="{{asset('assests/painel/crop/cropper.min.css')}}" rel="stylesheet" type="text/css">
 
-    {{-- <script src="http://deepliquid.com/Jcrop/js/jquery.Jcrop.min.js"></script> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{asset('assests/painel/jcrop/js/jquery.Jcrop.js')}}"></script>
-    <link href="{{asset('assests/painel/jcrop/css/jquery.Jcrop.css')}}" rel="stylesheet" type="text/css">
+
+    {{-- Table list Indiano --}}
+    <link href="{{asset('assests/painel/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -57,7 +59,7 @@
                         <a href="index.html"><i class="fa fa-users"></i> <span class="nav-label">Usuários</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li class=""><a href="/cadastrar-usuario">Cadastrar</a></li>
-                            <li class=""><a href="index.html">Alterar</a></li>
+                            <li class=""><a href="/listar-usuario">Listar</a></li>
                         </ul>
                     </li>
 

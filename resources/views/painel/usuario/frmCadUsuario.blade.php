@@ -1,14 +1,25 @@
  @include('painel/header')
 
+ <style>
+    img {
+        display: block;
+        max-width: 100%;
+    }
+    .preview {
+        overflow: hidden;
+        width: 160px;
+        height: 160px;
+        margin: 10px;
+        border:  1px solid red;
+    }
+</style>
+
 <?php
 use App\Models\Form;
 $objForm = new Form();
 
-$objForm->sb_FormBegin('Cadastro de usuários', 'frmCadCliente', 'salvar-usuario');
-?>
-@csrf
+$objForm->sb_FormBegin('Cadastro de usuários', 'validation');
 
-<?php
 $objForm->sb_FormText('Nome', 'name', 'Defina um nome para ser reconhecido no sistema', '800px', '', true);
 
 $objForm->sb_FormTextEmail('Usuário / email', 'email', 'Defina um nome ou use seu email para logar no sistema', '800px', '', true);
@@ -18,10 +29,9 @@ $objForm->sb_FormPassword('Escolha uma senha', 'password','Escolha uma senha par
 $form = '';
 $opcaoNivel[] = "<option value='1' >Administrador</option>";
 $opcaoNivel[] .= "<option value='2' >Usuário</option>";
-
 $objForm->sb_FormSelect('Nível acesso', 'nivel_acesso', $opcaoNivel, '250px', true);
 
-$objForm->sb_FormImagemCrop('Imagem', 'imagem');
+$objForm->sb_FormCropImage('Imagem', 'imagem');
 
 $objForm->sb_FormSubmit('Salvar');
 
@@ -33,45 +43,64 @@ $objForm->sb_FormEnd();
 
 ?>
 
-<script>
 
-    $(document).ready(function(){
-        reader.readAsDataURL(input.files[0]);
-        $(".imgPreview").show();
+<script>
+    var bs_modal = $('#modal');
+    var image = document.getElementById('image');
+    var cropper,reader,file;
+
+    $("body").on("change", ".image", function(e) {
+        var files = e.target.files;
+        var done = function(url) {
+            image.src = url;
+            bs_modal.modal('show');
+        };
+
+        if (files && files.length > 0) {
+            file = files[0];
+
+            if (URL) {
+                done(URL.createObjectURL(file));
+            } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function(e) {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
     });
 
-    function preview(input){
-        if (input.files && input.files[0]){
+    bs_modal.on('shown.bs.modal', function() {
+        cropper = new Cropper(image, {
+            aspectRatio: 48 / 48,
+            viewMode: 1,
+            preview: '.preview'
+        });
+    }).on('hidden.bs.modal', function() {
+        cropper.destroy();
+        cropper = null;
+    });
+
+    $("#crop").click(function() {
+        canvas = cropper.getCroppedCanvas({
+            width: 48,
+            height: 48,
+        });
+
+        canvas.toBlob(function(blob) {
+            url = URL.createObjectURL(blob);
             var reader = new FileReader();
-            reader.onload = function(e){
-                $('#jcrop').attr('src', e.target.result).width(100),
-                cropImg()
+            reader.readAsDataURL(blob);
+            reader.onloadend = function() {
+            var base64data = reader.result;
+
+            $('#image_file').val(base64data);
+            bs_modal.modal('hide');
             };
-            reader.readAsDataURL(input.files[0]);
-            $(".imgPreview").show();
-        }
-    };
-    function cropImg(){
-        $('#jcrop').Jcrop({
-            onChange: updateCoords,
-             onSelect: updateCoords,
-                    bgColor         : 'white',
-            minSize         : [ 100, 100 ],
-            maxSize         : [ 100, 100 ],
-            setSelect       : [ 0, 0, 100, 100 ],
-            bgOpacity       : .3,
-            borderOpacity   : .9,
-            allowResize	: true,
-            aspectRatio: 100/100
-         });
-    };
-    function updateCoords(c)
-            {
-                $('#x').val(c.x);
-                $('#y').val(c.y);
-                $('#w').val(c.w);
-                $('#h').val(c.h);
-            };
+        });
+    });
+
 </script>
 
 

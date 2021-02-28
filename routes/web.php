@@ -20,10 +20,18 @@ Route::get('/sistema', function () {
     return view('painel/principal');
 });
 
+
+
+
+
+
+
+
 /**Usuários painel */
 //Route::get('/cadastrar-usuario', 'ControllerUsuario@create');
 Route::get('/cadastrar-usuario', [ControllerUser::class, 'create']);
 Route::post('/salvar-usuario', [ControllerUser::class, 'store']);
+Route::get('/listar-usuario', [ControllerUser::class, 'list']);
 
 
 

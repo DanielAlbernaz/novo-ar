@@ -387,7 +387,7 @@
 <script src="{{asset('assests/painel/js/popper.min.js')}}"></script>
 <script src="{{asset('assests/painel/js/bootstrap.js')}}"></script>
 <script src="{{asset('assests/painel/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
-<script src="{{asset('assests/painel/s/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{asset('assests/painel/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
 
 <!-- Flot -->
 <script src="{{asset('assests/painel/js/plugins/flot/jquery.flot.js')}}"></script>
@@ -425,6 +425,13 @@
 <script src="{{asset('assests/painel/js/requisicoes_painel.js')}}"></script>
 <script src="{{'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.15/js/jquery.Jcrop.min.js'}}"></script>
 <script src="{{asset('assests/painel/js/plugin-validate-campos.js')}}"></script>
+
+{{-- Crop imagem --}}
+<script src="{{asset('assests/painel/crop/cropper.min.js')}}"></script>
+
+{{-- Lista dados table --}}
+<script src="{{asset('assests/painel/js/plugins/dataTables/datatables.min.js')}}"></script>
+<script src="{{asset('assests/painel/js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 
 <script>
 $(document).ready(function() {

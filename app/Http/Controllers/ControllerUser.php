@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Form;
 use App\Models\User;
 use Exception;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Intervention\Image\ImageManagerStatic;
 
@@ -13,7 +14,7 @@ class ControllerUser extends Controller
 {
     public function create(Request $request)
     {
-        return view('painel/frmCadUsuario');
+        return view('painel.usuario.frmCadUsuario');
     }
 
     /**
@@ -24,40 +25,49 @@ class ControllerUser extends Controller
         $objForm = new Form();
         $objUser = new User();
 
-        //Trata imagem
-        if($request->imagem){
-            $extensaoPhoto = $request->file('imagem')->extension();
-            $img = ImageManagerStatic::make($request->imagem);
+        try {
+            if($request->image_file){
+                $image_parts = explode(";base64,", $request->image_file);
+                $image_type_aux = explode("image/", $image_parts[0]);
+                $image_type = $image_type_aux[1];
+                $image_base64 = base64_decode($image_parts[1]);
 
-            $img->crop((int)$request->w, (int)$request->h, (int)$request->x, (int)$request->y);
+                //Se não existir cria o diretorio
+                $localStorage = 'usuarios';
+                $namePhoto = 'photo_' . time() . '.' . $image_type;
+                try {
+                    mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
+                } catch (Exception $e) {
 
-            //Se não existir cria o diretorio
-            $localStorage = 'usuarios';
-            $namePhoto = 'photo_' . time() . '.' . $extensaoPhoto;
-            try {
-                mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
-            } catch (Exception $e) {
+                }
+                $img = ImageManagerStatic::make($image_base64);
+                $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
 
+                $imagem = $localStorage . "/" . $namePhoto;
+                //$objForm->print_rpre($namePhoto);
             }
-            $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
 
-            $imagem = $localStorage . "/" . $namePhoto;
-            //$objForm->print_rpre($namePhoto);
+            $objUser->name = $request->name;
+            $objUser->email = $request->email;
+            $objUser->password = Hash::make($request->password);
+            $objUser->nivel_acesso = $request->nivel_acesso;
+            $objUser->imagem = $imagem;
+            $objUser->save();
+
+            $retorno = [
+                'situacao' => 'success',
+            ];
+            return $retorno;
+        } catch (Exception $e) {
+            $retorno = [
+                'situacao' => 'error',
+            ];
+            return $retorno;
         }
+ }
 
-        $objUser->name = $request->name;
-        $objUser->email = $request->email;
-        $objUser->password = $request->password;
-        $objUser->nivel_acesso = $request->nivel_acesso;
-        $objUser->imagem = $imagem;
-        $objUser->save();
+ function list(Request $request){
 
-        // redirect()
-
-        // $objForm->sb_Menssagem();
-
-
-
-
-    }
+    return view('painel.usuario.frmListaUsuario');
+ }
 }
