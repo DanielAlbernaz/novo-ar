@@ -32,6 +32,7 @@ Route::get('/sistema', function () {
 Route::get('/cadastrar-usuario', [ControllerUser::class, 'create']);
 Route::post('/salvar-usuario', [ControllerUser::class, 'store']);
 Route::get('/listar-usuario', [ControllerUser::class, 'list']);
+Route::post('/status-usuario', [ControllerUser::class, 'status']);
 
 
 

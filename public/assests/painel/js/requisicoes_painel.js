@@ -1,4 +1,4 @@
-function mesages(status){
+function mesages(status, msg){
 
     if(status == 'success'){
         toastr.options = {
@@ -7,7 +7,7 @@ function mesages(status){
             showMethod: 'slideDown',
             timeOut: 4000
         };
-        toastr.success('Cadastro salvo com sucesso!');
+        toastr.success(msg);
     }
 
     if(status == 'error'){
@@ -17,7 +17,7 @@ function mesages(status){
             showMethod: 'slideDown',
             timeOut: 4000
         };
-        toastr.error('Erro ao salvar o cadastro!');
+        toastr.error(msg);
     }
 }
 
@@ -33,10 +33,33 @@ function formularios(){
         success: function( data )
         {
             if(data.situacao == 'success'){
-                mesages('success');
+                mesages('success', 'Cadastro salvo com sucesso!');
+                window.location.href = 'listar-usuario'
             }
             if(data.situacao == 'error'){
-                mesages('error');
+                mesages('error', 'Erro ao salvar o cadastro!');
+            }
+        }
+    });
+}
+
+function status(route, id){
+    jQuery.ajax({
+        url:  route,
+        type: "POST",
+        dataType: "JSON",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {id:id},
+        success: function( data )
+        {
+            if(data.situacao == 'success'){
+                mesages('success', 'Status alterado!');
+                window.location.reload();
+            }
+            if(data.situacao == 'error'){
+                mesages('error', 'Erro ao alterar o status!');
             }
         }
     });

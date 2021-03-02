@@ -16,29 +16,28 @@
 
 <?php
 use App\Models\Form;
-$objForm = new Form();
 
-$objForm->sb_FormBegin('Cadastro de usuários', 'validation');
+Form::sb_FormBegin('Cadastro de usuários', 'validation');
 
-$objForm->sb_FormText('Nome', 'name', 'Defina um nome para ser reconhecido no sistema', '800px', '', true);
+Form::sb_FormText('Nome', 'name', 'Defina um nome para ser reconhecido no sistema', '800px', '', true);
 
-$objForm->sb_FormTextEmail('Usuário / email', 'email', 'Defina um nome ou use seu email para logar no sistema', '800px', '', true);
+Form::sb_FormTextEmail('Usuário / email', 'email', 'Defina um nome ou use seu email para logar no sistema', '800px', '', true);
 
-$objForm->sb_FormPassword('Escolha uma senha', 'password','Escolha uma senha para logar no painel', '500px', '', true);
+Form::sb_FormPassword('Escolha uma senha', 'password','Escolha uma senha para logar no painel', '500px', '', true);
 
 $form = '';
 $opcaoNivel[] = "<option value='1' >Administrador</option>";
 $opcaoNivel[] .= "<option value='2' >Usuário</option>";
-$objForm->sb_FormSelect('Nível acesso', 'nivel_acesso', $opcaoNivel, '250px', true);
+Form::sb_FormSelect('Nível acesso', 'nivel_acesso', $opcaoNivel, '250px', true);
 
-$objForm->sb_FormCropImage('Imagem', 'imagem');
+Form::sb_FormCropImage('Imagem', 'imagem');
 
-$objForm->sb_FormSubmit('Salvar');
-
-
+Form::sb_FormSubmit('Salvar');
 
 
-$objForm->sb_FormEnd();
+
+
+Form::sb_FormEnd();
 
 
 ?>

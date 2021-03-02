@@ -3,9 +3,10 @@
 
 <?php
 use App\Models\Form;
-$objForm = new Form();
 
-$objForm->sb_Table('Usuários cadastrado');
+
+
+Form::sb_Table('Usuários cadastrado', $usersList, 'status-usuario');
 
 ?>
 

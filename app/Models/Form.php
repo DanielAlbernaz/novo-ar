@@ -10,7 +10,7 @@ class Form extends Model
 {
     use HasFactory;
 
-    public function sb_FormBegin($nome = '', $id = '')
+    static function sb_FormBegin($nome = '', $id = '')
     {
         $form = '';
 
@@ -26,7 +26,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    public function sb_FormText($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
+    static function sb_FormText($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
     {
         $form = '';
 
@@ -43,7 +43,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    public function sb_FormTextEmail($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
+    static function sb_FormTextEmail($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
     {
         $form = '';
 
@@ -60,7 +60,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    public function sb_FormPassword($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
+    static function sb_FormPassword($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
     {
         $form = '';
 
@@ -77,7 +77,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    public function sb_FormSelect($name = '', $id = '', $arrayOption = array(), $width = '', $required = false)
+    static function sb_FormSelect($name = '', $id = '', $arrayOption = array(), $width = '', $required = false)
     {
         $form = '';
         $form .='<div class="form-group row">';
@@ -96,7 +96,7 @@ class Form extends Model
 
         return print_r($form);
     }
-    public function sb_FormCropImage()
+    static function sb_FormCropImage()
     {
         $form = '';
 
@@ -139,7 +139,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    public function sb_FormSubmit($name = '')
+    static function sb_FormSubmit($name = '')
     {
         $form = '';
 
@@ -152,7 +152,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    public function sb_Table($title = '')
+    static  function sb_Table($title, $dados = array(), $routeStatus)
     {
         $form = '';
 
@@ -191,41 +191,55 @@ class Form extends Model
                             $form .='<div class="table-responsive">';
                                 $form .='<table class="table table-striped table-bordered table-hover dataTables-example" >';
                                     $form .='<thead>';
-                                        $form .='<tr>';
-                                            $form .='<th>Rendering engine</th>';
-                                            $form .='<th>Browser</th>';
-                                            $form .='<th>Platform(s)</th>';
-                                            $form .='<th>Engine version</th>';
-                                            $form .='<th >Ação</th>';
+                                    $form .='<tr>';
+                                            for($i = 0; $i < 1; $i++){
+
+                                                $keys = array_keys($dados[$i]);
+                                                foreach($keys as $key){
+                                                    $form .='<th>'. $key .'</th>';
+                                                }
+                                            }
+                                            $form .='<th >STATUS</th>';
+                                            $form .='<th >AÇÃO</th>';
                                         $form .='</tr>';
                                     $form .='</thead>';
 
                                     $form .='<tbody>';
                                         $form .='<tr class="gradeC">';
-                                            $form .='<td>Trident</td>';
-                                            $form .='<td>Internet';
-                                            $form .='Explorer 4.0';
-                                            $form .='</td>';
-                                            $form .='<td>Win 95+</td>';
-                                            $form .='<td class="center">4</td>';
-                                            $form .='<td class="center">';
-                                                $form .='<a class="btn btn-success  dim" title="Editar" style="padding: 7px; box-shadow: inset 0 0 0 #1872ab, 0 5px 0 0 #1872ab, 0 10px 5px #999999 !important">';
-                                                    $form .='<i class="fa fa-edit" style="color: white; font-size: 17px; "></i></a>';
 
-                                                    $form .='<a class="btn btn-danger  dim " title="Excluir" style="padding: 7px; box-shadow: inset 0 0 0 #ea394c, 0 5px 0 0 #ea394c, 0 10px 5px #999999 !important; margin-left: 10px;">';
-                                                    $form .='<i class="fa fa-trash" style="color: white; font-size: 17px; "></i></a>';
-                                                $form .='</td>';
-                                        $form .='</tr>';
+                                                for($i = 0; $i < count($dados); $i++){
+                                                    $keys = array_keys($dados[$i]);
+                                                    foreach($keys as $key){
+                                                        $form .='<th>'. $dados[$i][$key] .'</th>';
+
+                                                    }
+                                                    if($dados[$i]['STATUS'] == 1){
+                                                        $form .='<td class="center">';
+                                                        $form .='<a class="btn btn-primary dim" style="height: 23px; border-radius: 9px;" id="'. $routeStatus .'" onclick="status(this.id , '. $dados[$i]['ID'] .');"></a>';
+                                                        $form .='</td>';
+                                                    }else{
+                                                        $form .='<td class="center">';
+                                                        $form .='<a class="btn btn-danger dim" style="height: 23px; border-radius: 9px;" id="'. $routeStatus .'" onclick="status(this.id , '. $dados[$i]['ID'] .');"></a>';
+                                                        $form .='</td>';
+                                                    }
+
+                                                    $form .='<td class="center">';
+                                                    $form .='<a href="'. $dados[$i]['ID'] .'" class="btn btn-success  dim" title="Editar" style="padding: 7px; ">';
+                                                        $form .='<i class="fa fa-edit" style="color: white; font-size: 17px; "></i></a>';
+
+                                                        $form .='<a href="'. $dados[$i]['ID'] .'" class="btn btn-danger  dim " title="Excluir" style="padding: 7px; margin-left: 10px;">';
+                                                        $form .='<i class="fa fa-trash" style="color: white; font-size: 17px; "></i></a>';
+                                                    $form .='</td>';
+
+                                            $form .='</tr>';
+                                                }
+
+
+
+
                                     $form .='</tbody>';
 
                             $form .='<tfoot>';
-                                $form .='<tr>';
-                                    $form .='<th>Rendering engine</th>';
-                                    $form .='<th>Browser</th>';
-                                    $form .='<th>Platform(s)</th>';
-                                    $form .='<th>Engine version</th>';
-                                    $form .='<th>CSS grade</th>';
-                                $form .='</tr>';
                             $form .='</tfoot>';
                         $form .='</table>';
                         $form .='</div>';
@@ -239,7 +253,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    public function sb_FormEnd()
+    static function sb_FormEnd()
     {
         $form = '';
                             $form .= '</form>';
@@ -251,16 +265,18 @@ class Form extends Model
         return print_r($form);
     }
 
-    function print_rpre($valor)
+
+
+    static function print_rpre($valor)
     {
         echo "<pre>";
         print_r($valor);
         echo "</pre>";
     }
 
-
-
 }
+
+
 
 
 

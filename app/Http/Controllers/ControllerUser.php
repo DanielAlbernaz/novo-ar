@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Form;
 use App\Models\User;
+use App\Models\Usuario;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -52,6 +53,7 @@ class ControllerUser extends Controller
             $objUser->password = Hash::make($request->password);
             $objUser->nivel_acesso = $request->nivel_acesso;
             $objUser->imagem = $imagem;
+            $objUser->status = 1;
             $objUser->save();
 
             $retorno = [
@@ -67,7 +69,34 @@ class ControllerUser extends Controller
  }
 
  function list(Request $request){
+    $users = User::all();
 
-    return view('painel.usuario.frmListaUsuario');
+    $usersList = array();
+    for($i = 0; $i < count($users); $i++){
+        $usersList[$i]['ID'] = $users[$i]->id;
+        $usersList[$i]['NAME'] = $users[$i]->name;
+        $usersList[$i]['EMAIL'] = $users[$i]->email;
+        $usersList[$i]['STATUS'] = $users[$i]->status;
+        $usersList[$i]['DATA CADASTRO'] = date_format($users[$i]->created_at, 'd/m/Y H:i:s');
+    }
+    return view('painel.usuario.frmListaUsuario', compact('usersList'));
+ }
+
+ function status(Request $request){
+    $user = User::find($request->id);
+
+    if($user->status == 1){
+        $user->status = 0;
+    }else{
+        $user->status = 1;
+    }
+    $user->save();
+
+    $retorno = [
+        'situacao' => 'success',
+    ];
+
+    return $retorno;
+
  }
 }
