@@ -35,7 +35,7 @@ class Form extends Model
 
             $form .='<div class="col-sm-10" input>';
             $form .='<span class="error"></span>';
-                $form .='<input type="text" id="'. $id .'" class="form-control" name="'. $id .'" value="'. $value .'" title="'. $title .'" style="width:'. $width .'" '.($required == true ? 'required' : '').'></div>';
+                $form .='<input type="text" id="'. $id .'" class="form-control" name="'. $id .'" value="'. ($value ? $value : '') .'" title="'. $title .'" style="width:'. $width .'" '.($required == true ? 'required' : '').'></div>';
             $form .='</div>';
 
         $form .='<div class="hr-line-dashed"></div>';
@@ -52,7 +52,7 @@ class Form extends Model
 
             $form .='<div class="col-sm-10" input>';
             $form .='<span class="error"></span>';
-                $form .='<input type="email" id="'. $id .'" class="form-control" name="'. $id .'" value="'. $value .'" title="'. $title .'" style="width:'. $width .'" '.($required == true ? 'required' : '').'></div>';
+                $form .='<input type="email" id="'. $id .'" class="form-control" name="'. $id .'" value="'. ($value ? $value : '') .'" title="'. $title .'" style="width:'. $width .'" '.($required == true ? 'required' : '').'></div>';
             $form .='</div>';
 
         $form .='<div class="hr-line-dashed"></div>';
@@ -69,7 +69,7 @@ class Form extends Model
 
             $form .='<div id="message" class="col-sm-10" input>';
             $form .='<span class="error"></span>';
-                $form .='<input onchange="validPasswords();" type="password" id="'. $id .'" class="form-control" name="'. $id .'" value="'. $value .'" title="'. $title .'" style="width:'. $width .'"  '.($required == true ? 'required' : '').' ></div>';
+                $form .='<input onchange="validPasswords();" type="password" id="'. $id .'" class="form-control" name="'. $id .'"  value="'. ($value ? $value : '') .'" title="'. $title .'" style="width:'. $width .'"  '.($required == true ? 'required' : '').' ></div>';
             $form .='</div>';
 
         $form .='<div class="hr-line-dashed"></div>';
@@ -96,20 +96,47 @@ class Form extends Model
 
         return print_r($form);
     }
-    static function sb_FormCropImage()
+    static function sb_FormCropImage($imgValue)
     {
+        // $pathSite =  $_SERVER['SERVER_NAME'];
+        $pathSiteImg =  'http://127.0.0.1:8000/storage/';
+
         $form = '';
 
-        $form .='<div class="">';
-        $form .=' <h5>Selecionar Imagem</h5>';
-        $form .='<input type="file"  name="image" class="image">';
-        $form .='<input type="hidden" name="image_file" id="image_file">';
-        $form .='</div>';
+        if($imgValue){
+            $form .='<div class="form-group row">';
+            $form .='<div class="col-sm-10">';
+            // $form .='<img src="http://127.0.0.1:8000/storage/usuarios/photo_1614470337.png" style="margin-left: 435px;">';
+            $form .='<img src="'.$pathSiteImg . $imgValue.'" style="margin-left: 435px;">';
+            $form .='</div>';
+            $form .='</div>';
+        }
+
+
+        $form .='<div class="form-group  row">';
+            $form .='<label class="col-sm-2 col-form-label">Imagem perfil</label>';
+
+            $form .='<div class="col-sm-10" input>';
+            $form .=' <h5>Selecionar Imagem</h5>';
+            $form .='<input type="file"  name="image" class="image">';
+            $form .='<input type="hidden" name="image_file" id="image_file">';
+            $form .='</div>';
+
+        $form .='<div class="hr-line-dashed"></div>';
+
+
+        // $form .='<div class="">';
+        // $form .=' <h5>Selecionar Imagem</h5>';
+        // $form .='<input type="file"  name="image" class="image">';
+        // $form .='<input type="hidden" name="image_file" id="image_file">';
+        // $form .='</div>';
+
+
         $form .='<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">';
         $form .='<div class="modal-dialog modal-lg" role="document">';
         $form .='<div class="modal-content">';
         $form .='<div class="modal-header">';
-        $form .='<h5 class="modal-title" id="modalLabel">Crop image</h5>';
+        $form .='<h5 class="modal-title" id="modalLabel">Recorte da imagem</h5>';
         $form .='<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
         $form .='<span aria-hidden="true">×</span>';
         $form .='</button>';
@@ -127,8 +154,8 @@ class Form extends Model
         $form .='</div>';
         $form .='</div>';
         $form .=' <div class="modal-footer">';
-        $form .='<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>';
-        $form .='<button type="button" class="btn btn-primary" id="crop">Crop</button>';
+        $form .='<button type="button" class="btn btn-secondary" data-dismiss="modal">Canclar</button>';
+        $form .='<button type="button" class="btn btn-primary" id="crop">Recortar</button>';
         $form .='</div>';
         $form .='</div>';
         $form .='</div>';
@@ -139,20 +166,24 @@ class Form extends Model
         return print_r($form);
     }
 
-    static function sb_FormSubmit($name = '')
+    static function sb_FormSubmit($name = '', $routeCreate, $routeEdit)
     {
         $form = '';
 
         $form .='<div class="form-group row">';
             $form .='<div class="col-sm-4 col-sm-offset-2">';
-                $form .='<button class="btn btn-primary btn-sm"  onclick="formularios()">'. $name .'</button>';
+            if($routeCreate){
+                $form .='<button style="margin-top: 9px;" class="btn btn-w-m btn-primary" id="'. $routeCreate .'"  onclick="formularios(this.id)">'. $name .'</button>';
+            }elseif($routeEdit){
+                $form .='<button style="margin-top: 9px;" class="btn btn-w-m btn-primary" id="'. $routeEdit .'"  onclick="formularios(this.id)">'. $name .'</button>';
+            }
             $form .='</div>';
         $form .='</div>';
 
         return print_r($form);
     }
 
-    static  function sb_Table($title, $dados = array(), $routeStatus)
+    static  function sb_Table($title, $dados = array(), $routeStatus, $routeEdit, $routeDelete)
     {
         $form = '';
 
@@ -199,7 +230,7 @@ class Form extends Model
                                                     $form .='<th>'. $key .'</th>';
                                                 }
                                             }
-                                            $form .='<th >STATUS</th>';
+                                            // $form .='<th >STATUS</th>';
                                             $form .='<th >AÇÃO</th>';
                                         $form .='</tr>';
                                     $form .='</thead>';
@@ -210,7 +241,10 @@ class Form extends Model
                                                 for($i = 0; $i < count($dados); $i++){
                                                     $keys = array_keys($dados[$i]);
                                                     foreach($keys as $key){
-                                                        $form .='<th>'. $dados[$i][$key] .'</th>';
+                                                        if($key != 'STATUS'){
+                                                            $form .='<th>'. $dados[$i][$key] .'</th>';
+                                                        }
+
 
                                                     }
                                                     if($dados[$i]['STATUS'] == 1){
@@ -224,10 +258,10 @@ class Form extends Model
                                                     }
 
                                                     $form .='<td class="center">';
-                                                    $form .='<a href="'. $dados[$i]['ID'] .'" class="btn btn-success  dim" title="Editar" style="padding: 7px; ">';
+                                                    $form .='<a href=" '. $routeEdit . "/" . $dados[$i]['ID'] .'" class="btn btn-success  dim" title="Editar" style="padding: 7px; ">';
                                                         $form .='<i class="fa fa-edit" style="color: white; font-size: 17px; "></i></a>';
 
-                                                        $form .='<a href="'. $dados[$i]['ID'] .'" class="btn btn-danger  dim " title="Excluir" style="padding: 7px; margin-left: 10px;">';
+                                                        $form .='<a class="btn btn-danger  dim " id="'.$routeDelete.'" onclick="deletar(this.id, '. $dados[$i]['ID'] .')" title="Excluir" style="padding: 7px; margin-left: 10px;">';
                                                         $form .='<i class="fa fa-trash" style="color: white; font-size: 17px; "></i></a>';
                                                     $form .='</td>';
 
@@ -261,6 +295,14 @@ class Form extends Model
                     $form .= '</div>';
                 $form .= '</div>';
             $form .= '</div>';
+
+        return print_r($form);
+    }
+
+    static function sb_FormHidden($id, $value)
+    {
+        $form = '';
+        $form .='<input  type="hidden" id="'. $id .'"  name="'. $id .'"  value="'. ($value ? $value : '') .'" ></div>';
 
         return print_r($form);
     }

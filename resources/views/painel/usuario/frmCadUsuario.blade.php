@@ -10,12 +10,13 @@
         width: 160px;
         height: 160px;
         margin: 10px;
-        border:  1px solid red;
+        border:  1px solid black;
     }
 </style>
 
 <?php
 use App\Models\Form;
+//Form::print_rpre($user->id);
 
 Form::sb_FormBegin('Cadastro de usuários', 'validation');
 
@@ -25,22 +26,21 @@ Form::sb_FormTextEmail('Usuário / email', 'email', 'Defina um nome ou use seu e
 
 Form::sb_FormPassword('Escolha uma senha', 'password','Escolha uma senha para logar no painel', '500px', '', true);
 
-$form = '';
-$opcaoNivel[] = "<option value='1' >Administrador</option>";
-$opcaoNivel[] .= "<option value='2' >Usuário</option>";
+$form = array();
+$opcaoNivel[] = "<option value='1'  >Administrador</option>";
+$opcaoNivel[] .= "<option value='2'  >Usuário</option>";
 Form::sb_FormSelect('Nível acesso', 'nivel_acesso', $opcaoNivel, '250px', true);
 
-Form::sb_FormCropImage('Imagem', 'imagem');
+Form::sb_FormCropImage('');
 
-Form::sb_FormSubmit('Salvar');
-
-
+Form::sb_FormSubmit('Salvar', 'salvar-usuario', '');
 
 
 Form::sb_FormEnd();
 
 
 ?>
+
 
 
 <script>

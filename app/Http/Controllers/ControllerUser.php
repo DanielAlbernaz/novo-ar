@@ -44,7 +44,7 @@ class ControllerUser extends Controller
                 $img = ImageManagerStatic::make($image_base64);
                 $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
 
-                $imagem = $localStorage . "/" . $namePhoto;
+                $request->image_file= $localStorage . "/" . $namePhoto;
                 //$objForm->print_rpre($namePhoto);
             }
 
@@ -52,17 +52,21 @@ class ControllerUser extends Controller
             $objUser->email = $request->email;
             $objUser->password = Hash::make($request->password);
             $objUser->nivel_acesso = $request->nivel_acesso;
-            $objUser->imagem = $imagem;
+            $objUser->imagem = $request->image_file;
             $objUser->status = 1;
             $objUser->save();
 
             $retorno = [
                 'situacao' => 'success',
+                'form' => 'cad',
+                'msg' => 'Cadastro salvo com sucesso!',
             ];
             return $retorno;
         } catch (Exception $e) {
             $retorno = [
                 'situacao' => 'error',
+                'form' => 'cad',
+                'msg' => 'Erro ao salvar o cadastro!',
             ];
             return $retorno;
         }
@@ -76,8 +80,8 @@ class ControllerUser extends Controller
         $usersList[$i]['ID'] = $users[$i]->id;
         $usersList[$i]['NAME'] = $users[$i]->name;
         $usersList[$i]['EMAIL'] = $users[$i]->email;
-        $usersList[$i]['STATUS'] = $users[$i]->status;
         $usersList[$i]['DATA CADASTRO'] = date_format($users[$i]->created_at, 'd/m/Y H:i:s');
+        $usersList[$i]['STATUS'] = $users[$i]->status;
     }
     return view('painel.usuario.frmListaUsuario', compact('usersList'));
  }
@@ -97,6 +101,77 @@ class ControllerUser extends Controller
     ];
 
     return $retorno;
+ }
+
+ function findUser(Request $request){
+   $user = User::find($request->id);
+
+    return view('painel.usuario.frmAltUsuario', compact('user'));
+ }
+
+
+ function edit(Request $request){
+
+    try {
+        if($request->image_file){
+            $image_parts = explode(";base64,", $request->image_file);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+
+            //Se não existir cria o diretorio
+            $localStorage = 'usuarios';
+            $namePhoto = 'photo_' . time() . '.' . $image_type;
+            try {
+                mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
+            } catch (Exception $e) {
+
+            }
+            $img = ImageManagerStatic::make($image_base64);
+            $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
+
+            $request->image_file= $localStorage . "/" . $namePhoto;
+        }
+
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->password){
+            $user->password = Hash::make($request->password);
+        }
+        $user->nivel_acesso = $request->nivel_acesso;
+        $user->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
+        $user->save();
+
+        $retorno = [
+            'situacao' => 'success',
+            'form' => 'alt',
+            'msg' => 'Alteração realizada com sucesso!',
+        ];
+        return $retorno;
+
+    } catch (Exception $e) {
+        $retorno = [
+            'situacao' => 'error',
+            'form' => 'alt',
+            'msg' => 'Erro ao realizar alteração!',
+        ];
+        return $retorno;
+    }
 
  }
+
+ function delete(Request $request){
+    $user = User::find($request->id);
+    $user->delete();
+
+    $retorno = [
+        'situacao' => 'success',
+    ];
+
+    return $retorno;
+ }
+
+
+
 }

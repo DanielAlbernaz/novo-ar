@@ -33,6 +33,9 @@ Route::get('/cadastrar-usuario', [ControllerUser::class, 'create']);
 Route::post('/salvar-usuario', [ControllerUser::class, 'store']);
 Route::get('/listar-usuario', [ControllerUser::class, 'list']);
 Route::post('/status-usuario', [ControllerUser::class, 'status']);
+Route::get('/editar-usuario/{id}', [ControllerUser::class, 'findUser']);
+Route::post('/edit-usuario', [ControllerUser::class, 'edit']);
+Route::post('/deletar-usuario/{id}', [ControllerUser::class, 'delete']);
 
 
 
