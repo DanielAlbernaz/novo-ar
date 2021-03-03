@@ -446,12 +446,13 @@ $(document).ready(function() {
 
 // }, 1300);
 
-$('.navbar-minimalize').on('click', function (event) {
-event.preventDefault();
-$("body").toggleClass("mini-navbar");
-SmoothlyMenu();
+// $('.navbar-minimalize').on('click', function (event) {
+//     alert('aqui');
+// event.preventDefault();
+// $("body").toggleClass("mini-navbar");
+// SmoothlyMenu();
 
-});
+// });
 
 
 var data1 = [
