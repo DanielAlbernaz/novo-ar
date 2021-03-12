@@ -2,7 +2,7 @@
             <div class="footer">
 
 <div>
-    <strong>Copyright</strong> Software AlberBras &copy; 2020
+    <strong>Copyright</strong> AlbernBras Software  &copy; 2020
 </div>
 </div>
 </div>
@@ -433,6 +433,12 @@
 <script src="{{asset('assests/painel/js/plugins/dataTables/datatables.min.js')}}"></script>
 <script src="{{asset('assests/painel/js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 
+<script src="{{asset('assests/painel/js/plugins/summernote/summernote-bs4.js')}}"></script>
+
+<script src="{{asset('assests/painel/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+<script src="{{asset('assests/painel/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+
 <script>
 $(document).ready(function() {
 // setTimeout(function() {
@@ -454,6 +460,7 @@ $(document).ready(function() {
 
 // });
 
+$('.summernote').summernote();
 
 var data1 = [
 [0,4],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13],[13,4],[14,3],[15,3],[16,6]

@@ -1,31 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Painel;
 
-use Illuminate\Http\Request;
-use App\Models\Form;
-use App\Models\User;
-use App\Models\Usuario;
+use App\Models\Produto;
+use DateTime;
 use Exception;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Intervention\Image\ImageManagerStatic;
 
-class ControllerUser extends Controller
+class ControllerProduto extends Controller
 {
     public function create(Request $request)
     {
-        return view('painel.usuario.frmCadUsuario');
+        //$this->inactivateDate();
+        return view('painel.produto.frmCadProduto');
     }
 
-    /**
-     * Function que salva cria o User
-     */
     public function store(Request $request)
     {
-        $objForm = new Form();
-        $objUser = new User();
+        $objProduto = new Produto();
 
         try {
             if($request->image_file){
@@ -35,7 +29,7 @@ class ControllerUser extends Controller
                 $image_base64 = base64_decode($image_parts[1]);
 
                 //Se não existir cria o diretorio
-                $localStorage = 'usuarios';
+                $localStorage = 'produto';
                 $namePhoto = 'photo_' . time() . '.' . $image_type;
                 try {
                     mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
@@ -46,21 +40,21 @@ class ControllerUser extends Controller
                 $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
 
                 $request->image_file= $localStorage . "/" . $namePhoto;
-                //$objForm->print_rpre($namePhoto);
             }
 
-            $objUser->name = $request->name;
-            $objUser->email = $request->email;
-            $objUser->password = Hash::make($request->password);
-            $objUser->nivel_acesso = $request->nivel_acesso;
-            $objUser->imagem = $request->image_file;
-            $objUser->status = 1;
-            $objUser->save();
+            $objProduto->title = $request->title;
+            $objProduto->url = $request->url;
+            $objProduto->target_page = $request->target_page;
+            $objProduto->status = $request->status;
+            $objProduto->begin_date = ($request->begin_date ? $request->begin_date  : date('Y-m-d H:i:s'));
+            $objProduto->end_date = $request->end_date;
+            $objProduto->imagem = $request->image_file;
+            $objProduto->save();
 
             $retorno = [
                 'situacao' => 'success',
                 'form' => 'cad',
-                'redirect' => 'sistema/listar-usuario',
+                'redirect' => 'sistema/listar-produto',
                 'msg' => 'Cadastro salvo com sucesso!',
             ];
             return $retorno;
@@ -75,21 +69,22 @@ class ControllerUser extends Controller
  }
 
  function list(Request $request){
-    $users = User::all();
+    $produtos = Produto::all();
 
-    $usersList = array();
-    for($i = 0; $i < count($users); $i++){
-        $usersList[$i]['ID'] = $users[$i]->id;
-        $usersList[$i]['NAME'] = $users[$i]->name;
-        $usersList[$i]['EMAIL'] = $users[$i]->email;
-        $usersList[$i]['DATA CADASTRO'] = date_format($users[$i]->created_at, 'd/m/Y H:i:s');
-        $usersList[$i]['STATUS'] = $users[$i]->status;
+    $produtosList = array();
+    for($i = 0; $i < count($produtos); $i++){
+        $produtosList[$i]['ID'] = $produtos[$i]->id;
+        $produtosList[$i]['TÍTULO'] = $produtos[$i]->title;
+        $produtosList[$i]['IMAGEM'] = '<img src="'.session('URL_IMG'). $produtos[$i]->imagem.'" style="width: 100px; overflow: hidden;" >' ;
+        $produtosList[$i]['INÍCIO EXIBIÇÃO'] = date_format(new DateTime($produtos[$i]->begin_date), 'd/m/Y H:i:s');
+        $produtosList[$i]['FIM EXIBIÇÃO'] = ($produtos[$i]->end_date ? date_format(new DateTime($produtos[$i]->end_date), 'd/m/Y H:i:s') : '');
+        $produtosList[$i]['STATUS'] = $produtos[$i]->status;
     }
-    return view('painel.usuario.frmListaUsuario', compact('usersList'));
+    return view('painel.produto.frmListaProduto', compact('produtosList'));
  }
 
  function status(Request $request){
-    $user = User::find($request->id);
+    $user = Produto::find($request->id);
 
     if($user->status == 1){
         $user->status = 0;
@@ -105,14 +100,24 @@ class ControllerUser extends Controller
     return $retorno;
  }
 
- function findUser(Request $request){
-   $user = User::find($request->id);
+ function delete(Request $request){
+    $produto = Produto::find($request->id);
+    $produto->delete();
 
-    return view('painel.usuario.frmAltUsuario', compact('user'));
+    $retorno = [
+        'situacao' => 'success',
+    ];
+
+    return $retorno;
  }
 
+ function find(Request $request){
+    $produto = Produto::find($request->id);
 
- function edit(Request $request){
+     return view('painel.produto.frmAltProduto', compact('produto'));
+  }
+
+  function edit(Request $request){
 
     try {
         if($request->image_file){
@@ -122,7 +127,7 @@ class ControllerUser extends Controller
             $image_base64 = base64_decode($image_parts[1]);
 
             //Se não existir cria o diretorio
-            $localStorage = 'usuarios';
+            $localStorage = 'produto';
             $namePhoto = 'photo_' . time() . '.' . $image_type;
             try {
                 mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
@@ -135,20 +140,20 @@ class ControllerUser extends Controller
             $request->image_file= $localStorage . "/" . $namePhoto;
         }
 
-        $user = User::find($request->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if($request->password){
-            $user->password = Hash::make($request->password);
-        }
-        $user->nivel_acesso = $request->nivel_acesso;
-        $user->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
-        $user->save();
+        $objProduto = Produto::find($request->id);
+        $objProduto->title = $request->title;
+        $objProduto->url = $request->url;
+        $objProduto->target_page = $request->target_page;
+        $objProduto->status = $request->status;
+        $objProduto->begin_date = ($request->begin_date ? $request->begin_date  : date('Y-m-d H:i:s'));
+        $objProduto->end_date = $request->end_date;
+        $objProduto->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
+        $objProduto->save();
 
         $retorno = [
             'situacao' => 'success',
             'form' => 'alt',
-            'redirect' => 'sistema/listar-usuario',
+            'redirect' => 'sistema/listar-produto',
             'msg' => 'Alteração realizada com sucesso!',
         ];
         return $retorno;
@@ -157,7 +162,7 @@ class ControllerUser extends Controller
         $retorno = [
             'situacao' => 'error',
             'form' => 'alt',
-            'redirect' => 'sistema/listar-usuario',
+            'redirect' => 'sistema/listar-produto',
             'msg' => 'Erro ao realizar alteração!',
         ];
         return $retorno;
@@ -165,39 +170,10 @@ class ControllerUser extends Controller
 
  }
 
- function delete(Request $request){
-    $user = User::find($request->id);
-    $user->delete();
-
-    $retorno = [
-        'situacao' => 'success',
-    ];
-
-    return $retorno;
- }
-
- function logar(Request $request){
-    $credentials =[
-        'email' => $request->email,
-        'password' => $request->password,
-        'status' => 1
-    ];
-
-    if(Auth::attempt($credentials)){
-        return view('painel.principal');
-    }
-
- }
-
- public function logout(Request $request)
+ function inactivateDate()
  {
-     Auth::logout();
-    //  return view('painel.principal');
-
-     return redirect()->route('usuario.logout');
-
+    Produto::where('status', 1)
+    ->where('end_date', '<', date('Y-m-d H:i:s'))
+    ->update(['status' => 0]);
  }
-
-
-
 }

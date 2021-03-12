@@ -10,33 +10,38 @@
        width: 160px;
        height: 160px;
        margin: 10px;
-       border:  1px solid red;
+       border:  1px solid black;
    }
 </style>
 
 <?php
 use App\Models\Form;
-//Form::print_rpre($user->id);
 
-Form::sb_FormBegin('Alterar usuário', 'validation');
+Form::sb_FormBegin('Alterar banner', 'validation');
 
-Form::sb_FormText('Nome', 'name', 'Defina um nome para ser reconhecido no sistema', '800px', $user->name, true);
 
-Form::sb_FormTextEmail('Usuário / email', 'email', 'Defina um nome ou use seu email para logar no sistema', '800px', $user->email, true);
+Form::sb_FormText('Título', 'title', 'Defina um título para o banner', '800px', $banner->title, true);
 
-Form::sb_FormPassword('Escolha uma senha', 'password','Escolha uma senha para logar no painel', '500px', '', false);
+Form::sb_FormCropImage('Imagem banner', $banner->imagem, false);
 
-$form = array();
-$opcaoNivel[] = "<option value='1'  ".($user->nivel_acesso == 1 ? 'selected="selected" ' : '')." >Administrador</option>";
-$opcaoNivel[] .= "<option value='2'  ".($user->nivel_acesso == 2 ? 'selected="selected" ' : '')." >Usuário</option>";
-Form::sb_FormSelect('Nível acesso', 'nivel_acesso', $opcaoNivel, '250px', true);
+Form::sb_FormText('Link redirecionamento', 'url', 'Defina uma url para redirecionar', '800px', $banner->url, false);
 
-Form::sb_FormCropImage('Imagem perfil',  $user->imagem);
+$opcaoAba[] = "<option value='1'  ".($banner->target_page == 1 ? 'selected="selected" ' : '')." >Sim</option>";
+$opcaoAba[] .= "<option value='2'  ".($banner->target_page == 0 ? 'selected="selected" ' : '')." >Não</option>";
+Form::sb_FormSelect('Abrir link mesma aba ?', 'target_page', $opcaoAba, '250px', false);
 
-Form::sb_FormSubmit('Salvar', '', 'sistema/edit-usuario');
+$opcaoAba[] = "<option value='1'  ".($banner->status == 1 ? 'selected="selected" ' : '')." >Ativo</option>";
+$opcaoAba[] .= "<option value='2'  ".($banner->status == 0 ? 'selected="selected" ' : '')." >Inativo</option>";
+Form::sb_FormSelect('Status', 'status', $opcaoAba, '250px', true);
 
-Form::sb_FormHidden('id', $user->id);
-Form::sb_FormHidden('imgOld', $user->imagem);
+Form::sb_FormDate('Data início exibição', 'begin_date', 'Data inícial que o conteúdo será exibido', '289px', str_replace(' ','T',$banner->begin_date) , false);
+
+Form::sb_FormDate('Data final exibição', 'end_date', 'Data final máxima que o conteúdo será exibido', '289px',str_replace(' ','T',$banner->end_date), false);
+
+Form::sb_FormSubmit('Salvar', '', 'sistema/edit-banner');
+
+Form::sb_FormHidden('id', $banner->id);
+Form::sb_FormHidden('imgOld', $banner->imagem);
 
 
 Form::sb_FormEnd();
@@ -75,7 +80,7 @@ Form::sb_FormEnd();
 
    bs_modal.on('shown.bs.modal', function() {
        cropper = new Cropper(image, {
-           aspectRatio: 48 / 48,
+           aspectRatio: 1920 / 715,
            viewMode: 1,
            preview: '.preview'
        });
@@ -86,8 +91,8 @@ Form::sb_FormEnd();
 
    $("#crop").click(function() {
        canvas = cropper.getCroppedCanvas({
-           width: 48,
-           height: 48,
+           width: 1920,
+           height: 715,
        });
 
        canvas.toBlob(function(blob) {

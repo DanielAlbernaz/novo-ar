@@ -31,9 +31,9 @@ $opcaoNivel[] = "<option value='1'  >Administrador</option>";
 $opcaoNivel[] .= "<option value='2'  >Usuário</option>";
 Form::sb_FormSelect('Nível acesso', 'nivel_acesso', $opcaoNivel, '250px', true);
 
-Form::sb_FormCropImage('');
+Form::sb_FormCropImage('Imagem perfil', '');
 
-Form::sb_FormSubmit('Salvar', 'salvar-usuario', '');
+Form::sb_FormSubmit('Salvar', 'sistema/salvar-usuario', '');
 
 
 Form::sb_FormEnd();

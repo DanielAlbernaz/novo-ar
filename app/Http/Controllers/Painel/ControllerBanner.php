@@ -1,31 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Painel;
 
-use Illuminate\Http\Request;
+use App\Models\Banner;
 use App\Models\Form;
-use App\Models\User;
-use App\Models\Usuario;
+use DateTime;
 use Exception;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Intervention\Image\ImageManagerStatic;
 
-class ControllerUser extends Controller
+class ControllerBanner extends Controller
 {
     public function create(Request $request)
     {
-        return view('painel.usuario.frmCadUsuario');
+        $this->inactivateDate();
+        return view('painel.banner.frmCadBanner');
     }
 
-    /**
-     * Function que salva cria o User
-     */
     public function store(Request $request)
     {
-        $objForm = new Form();
-        $objUser = new User();
+        $objBanner = new Banner();
 
         try {
             if($request->image_file){
@@ -35,7 +30,7 @@ class ControllerUser extends Controller
                 $image_base64 = base64_decode($image_parts[1]);
 
                 //Se não existir cria o diretorio
-                $localStorage = 'usuarios';
+                $localStorage = 'banner';
                 $namePhoto = 'photo_' . time() . '.' . $image_type;
                 try {
                     mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
@@ -46,21 +41,21 @@ class ControllerUser extends Controller
                 $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
 
                 $request->image_file= $localStorage . "/" . $namePhoto;
-                //$objForm->print_rpre($namePhoto);
             }
 
-            $objUser->name = $request->name;
-            $objUser->email = $request->email;
-            $objUser->password = Hash::make($request->password);
-            $objUser->nivel_acesso = $request->nivel_acesso;
-            $objUser->imagem = $request->image_file;
-            $objUser->status = 1;
-            $objUser->save();
+            $objBanner->title = $request->title;
+            $objBanner->url = $request->url;
+            $objBanner->target_page = $request->target_page;
+            $objBanner->status = $request->status;
+            $objBanner->begin_date = ($request->begin_date ? $request->begin_date  : date('Y-m-d H:i:s'));
+            $objBanner->end_date = $request->end_date;
+            $objBanner->imagem = $request->image_file;
+            $objBanner->save();
 
             $retorno = [
                 'situacao' => 'success',
                 'form' => 'cad',
-                'redirect' => 'sistema/listar-usuario',
+                'redirect' => 'sistema/listar-banner',
                 'msg' => 'Cadastro salvo com sucesso!',
             ];
             return $retorno;
@@ -75,21 +70,22 @@ class ControllerUser extends Controller
  }
 
  function list(Request $request){
-    $users = User::all();
+    $banners = Banner::all();
 
-    $usersList = array();
-    for($i = 0; $i < count($users); $i++){
-        $usersList[$i]['ID'] = $users[$i]->id;
-        $usersList[$i]['NAME'] = $users[$i]->name;
-        $usersList[$i]['EMAIL'] = $users[$i]->email;
-        $usersList[$i]['DATA CADASTRO'] = date_format($users[$i]->created_at, 'd/m/Y H:i:s');
-        $usersList[$i]['STATUS'] = $users[$i]->status;
+    $bannersList = array();
+    for($i = 0; $i < count($banners); $i++){
+        $bannersList[$i]['ID'] = $banners[$i]->id;
+        $bannersList[$i]['TÍTULO'] = $banners[$i]->title;
+        $bannersList[$i]['IMAGEM'] = '<img src="'.session('URL_IMG'). $banners[$i]->imagem.'" style="width: 100px; overflow: hidden;" >' ;
+        $bannersList[$i]['INÍCIO EXIBIÇÃO'] = date_format(new DateTime($banners[$i]->begin_date), 'd/m/Y H:i:s');
+        $bannersList[$i]['FIM EXIBIÇÃO'] = ($banners[$i]->end_date ? date_format(new DateTime($banners[$i]->end_date), 'd/m/Y H:i:s') : '');
+        $bannersList[$i]['STATUS'] = $banners[$i]->status;
     }
-    return view('painel.usuario.frmListaUsuario', compact('usersList'));
+    return view('painel.banner.frmListaBanner', compact('bannersList'));
  }
 
  function status(Request $request){
-    $user = User::find($request->id);
+    $user = Banner::find($request->id);
 
     if($user->status == 1){
         $user->status = 0;
@@ -105,14 +101,24 @@ class ControllerUser extends Controller
     return $retorno;
  }
 
- function findUser(Request $request){
-   $user = User::find($request->id);
+ function delete(Request $request){
+    $user = Banner::find($request->id);
+    $user->delete();
 
-    return view('painel.usuario.frmAltUsuario', compact('user'));
+    $retorno = [
+        'situacao' => 'success',
+    ];
+
+    return $retorno;
  }
 
+ function find(Request $request){
+    $banner = Banner::find($request->id);
 
- function edit(Request $request){
+     return view('painel.banner.frmAltBanner', compact('banner'));
+  }
+
+  function edit(Request $request){
 
     try {
         if($request->image_file){
@@ -122,7 +128,7 @@ class ControllerUser extends Controller
             $image_base64 = base64_decode($image_parts[1]);
 
             //Se não existir cria o diretorio
-            $localStorage = 'usuarios';
+            $localStorage = 'banner';
             $namePhoto = 'photo_' . time() . '.' . $image_type;
             try {
                 mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
@@ -135,20 +141,20 @@ class ControllerUser extends Controller
             $request->image_file= $localStorage . "/" . $namePhoto;
         }
 
-        $user = User::find($request->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if($request->password){
-            $user->password = Hash::make($request->password);
-        }
-        $user->nivel_acesso = $request->nivel_acesso;
-        $user->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
-        $user->save();
+        $objBanner = Banner::find($request->id);
+        $objBanner->title = $request->title;
+        $objBanner->url = $request->url;
+        $objBanner->target_page = $request->target_page;
+        $objBanner->status = $request->status;
+        $objBanner->begin_date = ($request->begin_date ? $request->begin_date  : date('Y-m-d H:i:s'));
+        $objBanner->end_date = $request->end_date;
+        $objBanner->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
+        $objBanner->save();
 
         $retorno = [
             'situacao' => 'success',
             'form' => 'alt',
-            'redirect' => 'sistema/listar-usuario',
+            'redirect' => 'sistema/listar-banner',
             'msg' => 'Alteração realizada com sucesso!',
         ];
         return $retorno;
@@ -157,7 +163,7 @@ class ControllerUser extends Controller
         $retorno = [
             'situacao' => 'error',
             'form' => 'alt',
-            'redirect' => 'sistema/listar-usuario',
+            'redirect' => 'sistema/listar-banner',
             'msg' => 'Erro ao realizar alteração!',
         ];
         return $retorno;
@@ -165,39 +171,11 @@ class ControllerUser extends Controller
 
  }
 
- function delete(Request $request){
-    $user = User::find($request->id);
-    $user->delete();
-
-    $retorno = [
-        'situacao' => 'success',
-    ];
-
-    return $retorno;
- }
-
- function logar(Request $request){
-    $credentials =[
-        'email' => $request->email,
-        'password' => $request->password,
-        'status' => 1
-    ];
-
-    if(Auth::attempt($credentials)){
-        return view('painel.principal');
-    }
-
- }
-
- public function logout(Request $request)
+ function inactivateDate()
  {
-     Auth::logout();
-    //  return view('painel.principal');
-
-     return redirect()->route('usuario.logout');
-
+    Banner::where('status', 1)
+    ->where('end_date', '<', date('Y-m-d H:i:s'))
+    ->update(['status' => 0]);
  }
-
-
 
 }

@@ -31,7 +31,7 @@ class Form extends Model
         $form = '';
 
         $form .='<div class="form-group  row ">';
-            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label>*</label>' : '').'</label>';
+            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
 
             $form .='<div class="col-sm-10" input>';
             $form .='<span class="error"></span>';
@@ -43,16 +43,61 @@ class Form extends Model
         return print_r($form);
     }
 
+
     static function sb_FormTextEmail($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
     {
         $form = '';
 
         $form .='<div class="form-group  row ">';
-            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label>*</label>' : '').'</label>';
+            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
 
             $form .='<div class="col-sm-10" input>';
+
             $form .='<span class="error"></span>';
                 $form .='<input type="email" id="'. $id .'" class="form-control" name="'. $id .'" value="'. ($value ? $value : '') .'" title="'. $title .'" style="width:'. $width .'" '.($required == true ? 'required' : '').'></div>';
+            $form .='</div>';
+
+        $form .='<div class="hr-line-dashed"></div>';
+
+        return print_r($form);
+    }
+
+    static function sb_FormTextHtml($name = '', $id = '', $title = '', $value = '', $required = false)
+    {
+        $form = '';
+
+        $form .= '<div class="form-group  row">';
+        $form .= '<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
+        $form .= '<div class="col-sm-10">';
+        $form .= '<textarea id="textarea" name="textarea" title="'. $title .'" value="'. ($value ? $value : '') .'" '.($required == true ? 'required' : '').'></textarea>';
+        $form .='</div>';
+        $form .='</div>';
+        $form .= '<div class="hr-line-dashed"></div>';
+
+
+    // $form = '<script src="{{asset("assests/painel/js/plugins/summernote/summernote-bs4.js")}}"></script>';
+    // $form = '<script> $(document).ready(function(){ $(".summernote").summernote();});</script>';
+        return print_r($form);
+    }
+
+
+
+
+
+    static function sb_FormDate($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
+    {
+        $form = '';
+
+        $form .='<div class="form-group  row ">';
+            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label style="color: red" >*</label>' : '').'</label>';
+
+            $form .='<div class="col-sm-10" input>';
+
+            $form .='<div class="input-group date"  style="width:'. $width .'">';
+                $form .='<span class="input-group-addon"><i class="fa fa-calendar"></i></span>';
+                $form .=' <input type="datetime-local" class="form-control" name="'. $id .'"  id="'. $id .'" title="'. $title .'"   value="'. ($value ? $value : '') .'" '.($required == true ? 'required' : '').'>';
+            $form .='</div>';
+            $form .='</div>';
             $form .='</div>';
 
         $form .='<div class="hr-line-dashed"></div>';
@@ -65,7 +110,7 @@ class Form extends Model
         $form = '';
 
         $form .='<div class="form-group  row">';
-            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label>*</label>' : '').'</label>';
+            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
 
             $form .='<div id="message" class="col-sm-10" input>';
             $form .='<span class="error"></span>';
@@ -81,7 +126,7 @@ class Form extends Model
     {
         $form = '';
         $form .='<div class="form-group row">';
-            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label>*</label>' : '').'</label>';
+            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
                 $form .='<div class="col-sm-10">';
                     $form .='<select id="'. $id .'"  name="'. $id .'" class="form-control m-b" style="width:'. $width .'"  '.($required == true ? 'required' : '').'>';
 
@@ -96,33 +141,44 @@ class Form extends Model
 
         return print_r($form);
     }
-    static function sb_FormCropImage($imgValue)
+    static function sb_FormCropImage($title, $imgValue, $required = false)
     {
         // $pathSite =  $_SERVER['SERVER_NAME'];
-        $pathSiteImg =  'http://127.0.0.1:8000/storage/';
+       // $pathSiteImg =  'http://127.0.0.1:8000/storage/';
 
         $form = '';
 
         if($imgValue){
-            $form .='<div class="form-group row">';
-            $form .='<div class="col-sm-10">';
-            // $form .='<img src="http://127.0.0.1:8000/storage/usuarios/photo_1614470337.png" style="margin-left: 435px;">';
-            $form .='<img src="'.$pathSiteImg . $imgValue.'" style="margin-left: 435px;">';
+            // $form .='<div class="form-group row">';
+            // $form .='<div class="col-sm-10">';
+            // // $form .='<img src="http://127.0.0.1:8000/storage/usuarios/photo_1614470337.png" style="margin-left: 435px;">';
+            // $form .='<img src="'.session('URL_IMG'). $imgValue.'" style="margin-left: 435px;width: 100px; overflow: hidden;">';
+            // $form .='</div>';
+            // $form .='</div>';
+            $form .='<div class="form-group row" >';
+            $form .='<div class="col-sm-3" >';
+            $form .='</div>';
+            $form .='<div class="col-sm-3" >';
+            $form .=' <div class="lightBoxGallery" >';
+            $form .='<a data-gallery=""><img src="'.session('URL_IMG'). $imgValue.'"></a>';
             $form .='</div>';
             $form .='</div>';
+            $form .='</div>';
+
+
         }
 
 
         $form .='<div class="form-group  row">';
-            $form .='<label class="col-sm-2 col-form-label">Imagem perfil</label>';
+            $form .='<label class="col-sm-2 col-form-label">'. $title .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
 
             $form .='<div class="col-sm-10" input>';
             $form .=' <h5>Selecionar Imagem</h5>';
-            $form .='<input type="file"  name="image" class="image">';
+            $form .='<input type="file"  name="image" class="image" '.($required == true ? 'required' : '').' >';
             $form .='<input type="hidden" name="image_file" id="image_file">';
             $form .='</div>';
 
-        $form .='<div class="hr-line-dashed"></div>';
+
 
 
         // $form .='<div class="">';
@@ -154,15 +210,15 @@ class Form extends Model
         $form .='</div>';
         $form .='</div>';
         $form .=' <div class="modal-footer">';
-        $form .='<button type="button" class="btn btn-secondary" data-dismiss="modal">Canclar</button>';
+        $form .='<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>';
         $form .='<button type="button" class="btn btn-primary" id="crop">Recortar</button>';
         $form .='</div>';
         $form .='</div>';
         $form .='</div>';
         $form .='</div>';
         $form .='</div> ';
-        $form .='</div>';
-
+        // $form .='</div>';
+        $form .='<div class="hr-line-dashed"></div>';
         return print_r($form);
     }
 
@@ -248,7 +304,7 @@ class Form extends Model
 
                                                     }
                                                     if($dados[$i]['STATUS'] == 1){
-                                                        $form .='<td class="center">';
+                                                        $form .='<td class="center" >';
                                                         $form .='<a class="btn btn-primary dim" style="height: 23px; border-radius: 9px;" id="'. $routeStatus .'" onclick="status(this.id , '. $dados[$i]['ID'] .');"></a>';
                                                         $form .='</td>';
                                                     }else{
@@ -257,7 +313,7 @@ class Form extends Model
                                                         $form .='</td>';
                                                     }
 
-                                                    $form .='<td class="center">';
+                                                    $form .='<td class="center" style="display: flex;">';
                                                     $form .='<a href=" '. $routeEdit . "/" . $dados[$i]['ID'] .'" class="btn btn-success  dim" title="Editar" style="padding: 7px; ">';
                                                         $form .='<i class="fa fa-edit" style="color: white; font-size: 17px; "></i></a>';
 
@@ -298,6 +354,7 @@ class Form extends Model
 
         return print_r($form);
     }
+
 
     static function sb_FormHidden($id, $value)
     {

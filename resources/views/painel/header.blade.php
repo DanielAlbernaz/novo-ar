@@ -19,7 +19,7 @@
     <link href="{{asset('assests/painel/js/plugins/gritter/jquery.gritter.css')}}" rel="stylesheet" type="text/css">
 
     <link href="{{asset('assests/painel/css/animate.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('assests/painel/css/style.css')}}" rel="stylesheet" type="text/css">
+
     {{-- Crop Indiano --}}
     <link href="{{asset('assests/painel/crop/cropper.min.css')}}" rel="stylesheet" type="text/css">
 
@@ -28,39 +28,66 @@
 
     {{-- Table list Indiano --}}
     <link href="{{asset('assests/painel/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assests/painel/css/plugins/summernote/summernote-bs4.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('assests/painel/css/style.css')}}" rel="stylesheet" type="text/css">
 
+    <script src="https://cdn.tiny.cloud/1/bhivvpzxh2vxllhxysw5xfv6zrzckbi70ium07ecngf8owpo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+          selector: '#textarea',
+         language: 'pt_BR',
+        });
+      </script>
 
 </head>
 
 <body>
+
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <img alt="image" class="rounded-circle" src="assests/painel/img/profile_small.jpg"/>
+                            @isset(auth()->user()->imagem)
+                            <img alt="image" class="rounded-circle" src="{{session('URL_IMG') .  auth()->user()->imagem }}"/>
+                            @endisset
+
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block m-t-xs font-bold">David Williams</span>
-                                <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                                <span class="block m-t-xs font-bold">
+                                    @isset(auth()->user()->name)
+                                    {{ 'Olá ' . auth()->user()->name }}
+                                    @endisset
+
+                                </span>
                             </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                                <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
-                                <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
-                                <li class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="login.html">Logout</a></li>
-                            </ul>
                         </div>
                         <div class="logo-element">
                             SA
                         </div>
                     </li>
                     <li class="">
-                        <a href="index.html"><i class="fa fa-users"></i> <span class="nav-label">Usuários</span> <span class="fa arrow"></span></a>
+                        <a href="#" ><i class="fa fa-users"></i> <span class="nav-label">Usuários</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class=""><a href="/cadastrar-usuario">Cadastrar</a></li>
-                            <li class=""><a href="/listar-usuario">Listar</a></li>
+                            <li class=""><a href="{{ route('usuario.cadastrar') }}">Cadastrar</a></li>
+                            <li class=""><a href="{{ route('usuario.listar') }}">Listar</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="#" ><i class="fa fa-window-restore"></i> <span class="nav-label">Banner</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class=""><a href="{{ route('banner.cadastrar') }}">Cadastrar</a></li>
+                            <li class=""><a href="{{ route('banner.listar') }}">Listar</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="#" ><i class="fa fa-cubes"></i><span class="nav-label">Produtos</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class=""><a href="{{ route('produto.cadastrar') }}">Cadastrar</a></li>
+                            <li class=""><a href="{{ route('produto.listar') }}">Listar</a></li>
                         </ul>
                     </li>
 
@@ -174,8 +201,8 @@
 
 
                 <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
+                    <a  href="{{ route('usuario.logout') }}">
+                        <i class="fa fa-sign-out"></i> Sair
                     </a>
                 </li>
             </ul>

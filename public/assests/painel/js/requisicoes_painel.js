@@ -41,14 +41,14 @@ function formularios(route){
                 if(data.form == 'cad'){
                     mesages('success', data.msg);
                     setTimeout(function() {
-                        window.location.href = pathSite + 'listar-usuario'
+                        window.location.href = pathSite + data.redirect
                       }, 1000);
                 }
 
                 if(data.form == 'alt'){
                     mesages('success',  data.msg);
                     setTimeout(function() {
-                        window.location.href = pathSite + 'listar-usuario'
+                        window.location.href = pathSite + data.redirect
                       }, 1000);
                 }
 
@@ -95,7 +95,7 @@ function status(route, id){
 function deletar(route, id){
     var route = pathSite + route + '/' +  id;
     Swal.fire({
-        title: 'Você tem certeza de deseja excluir o usuário?',
+        title: 'Você tem certeza de deseja excluir?',
         text: "Pode ser irreversível!",
         icon: 'warning',
         showCancelButton: true,
@@ -119,7 +119,7 @@ function deletar(route, id){
                     if(data.situacao == 'success'){
                         Swal.fire(
                             'Deletado!',
-                            'Usuário excluido com sucesso.',
+                            'Excluido com sucesso.',
                             'success'
                           )
                         setTimeout(function() {
