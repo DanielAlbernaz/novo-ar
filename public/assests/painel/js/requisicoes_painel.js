@@ -25,7 +25,7 @@ function mesages(status, msg){
 }
 
 function formularios(route){
-
+    tinyMCE.triggerSave();
     jQuery.ajax({
         url: pathSite + route,
         type: "POST",

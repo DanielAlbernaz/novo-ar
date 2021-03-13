@@ -69,7 +69,7 @@ class Form extends Model
         $form .= '<div class="form-group  row">';
         $form .= '<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
         $form .= '<div class="col-sm-10">';
-        $form .= '<textarea id="textarea" name="textarea" title="'. $title .'" value="'. ($value ? $value : '') .'" '.($required == true ? 'required' : '').'></textarea>';
+        $form .= '<textarea id="text" name="text" title="'. $title .'"  '.($required == true ? 'required' : '').'>'. ($value ? $value : '') .'</textarea>';
         $form .='</div>';
         $form .='</div>';
         $form .= '<div class="hr-line-dashed"></div>';
@@ -143,18 +143,10 @@ class Form extends Model
     }
     static function sb_FormCropImage($title, $imgValue, $required = false)
     {
-        // $pathSite =  $_SERVER['SERVER_NAME'];
-       // $pathSiteImg =  'http://127.0.0.1:8000/storage/';
 
         $form = '';
 
         if($imgValue){
-            // $form .='<div class="form-group row">';
-            // $form .='<div class="col-sm-10">';
-            // // $form .='<img src="http://127.0.0.1:8000/storage/usuarios/photo_1614470337.png" style="margin-left: 435px;">';
-            // $form .='<img src="'.session('URL_IMG'). $imgValue.'" style="margin-left: 435px;width: 100px; overflow: hidden;">';
-            // $form .='</div>';
-            // $form .='</div>';
             $form .='<div class="form-group row" >';
             $form .='<div class="col-sm-3" >';
             $form .='</div>';
@@ -164,10 +156,7 @@ class Form extends Model
             $form .='</div>';
             $form .='</div>';
             $form .='</div>';
-
-
         }
-
 
         $form .='<div class="form-group  row">';
             $form .='<label class="col-sm-2 col-form-label">'. $title .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
@@ -177,16 +166,6 @@ class Form extends Model
             $form .='<input type="file"  name="image" class="image" '.($required == true ? 'required' : '').' >';
             $form .='<input type="hidden" name="image_file" id="image_file">';
             $form .='</div>';
-
-
-
-
-        // $form .='<div class="">';
-        // $form .=' <h5>Selecionar Imagem</h5>';
-        // $form .='<input type="file"  name="image" class="image">';
-        // $form .='<input type="hidden" name="image_file" id="image_file">';
-        // $form .='</div>';
-
 
         $form .='<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">';
         $form .='<div class="modal-dialog modal-lg" role="document">';
@@ -235,6 +214,41 @@ class Form extends Model
             }
             $form .='</div>';
         $form .='</div>';
+
+        return print_r($form);
+    }
+    static function sb_FormGalleria($name = '', $routeCreate, $routeEdit)
+    {
+        $form = '';
+
+        // $form .='<div class="container">';
+        $form .='<hr class="mt-2 mb-5">';
+        $form .='<div class="row text-center text-lg-left">';
+
+            $form .='<div class="col-lg-12 col-md-12 col-12">';
+
+                    for($i = 0; $i < 7; $i++){
+                        $form .='<a  style="padding: 5px; cursor:pointer" id="imagemGalleria">';
+                        $form .='<img style="display: inline !important;  margin: 5px;  width: 100px;"  class="img-fluid img-thumbnail"src="'.session('URL_IMG'). auth()->user()->imagem.'" alt="">';
+
+                        $form .=' <button  id="buttonGalleria" type="button" style="margin-left: -41px; margin-top: 68px;" class="btn btn-sm btn-danger " data-image="16" data-url="http://127.0.0.1:8000/sistema/cms/blog/posts/1/gallery/16">';
+                        $form .='<i class="fa fa-trash"></i>';
+                        $form .='</button>';
+
+
+
+                        $form .='</a>';
+                    }
+            $form .='</div>';
+
+            $form .='</div>';
+            // $form .='</div>';
+            $form .='<div class="hr-line-dashed"></div>';
+
+
+        $form .=' <div class="dropzone" id="myDropzone" name="myDropzone"> </div>';
+        $form .=' <div class="ideaform" id="ideaform" name="ideaform"> </div>';
+        $form .='<div class="hr-line-dashed"></div>';
 
         return print_r($form);
     }
@@ -359,7 +373,7 @@ class Form extends Model
     static function sb_FormHidden($id, $value)
     {
         $form = '';
-        $form .='<input  type="hidden" id="'. $id .'"  name="'. $id .'"  value="'. ($value ? $value : '') .'" ></div>';
+        $form .='<input  type="hidden" id="'. $id .'"  name="'. $id .'"  value="'. ($value ? $value : '') .'" >';
 
         return print_r($form);
     }

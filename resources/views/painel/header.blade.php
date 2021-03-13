@@ -30,12 +30,14 @@
     <link href="{{asset('assests/painel/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assests/painel/css/plugins/summernote/summernote-bs4.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assests/painel/css/style.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.8.1/dropzone.css" rel="stylesheet" type="text/css">
 
     <script src="https://cdn.tiny.cloud/1/bhivvpzxh2vxllhxysw5xfv6zrzckbi70ium07ecngf8owpo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.8.1/dropzone.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
-          selector: '#textarea',
+          selector: '#text',
          language: 'pt_BR',
         });
       </script>

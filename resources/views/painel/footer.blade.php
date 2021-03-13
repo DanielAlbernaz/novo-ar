@@ -7,7 +7,7 @@
 </div>
 </div>
 
-<div id="right-sidebar" class="animated">
+{{-- <div id="right-sidebar" class="animated">
 <div class="sidebar-container">
 
 <ul class="nav nav-tabs navs-3">
@@ -32,8 +32,8 @@
             <small><i class="fa fa-tim"></i> You have 10 new message.</small>
         </div>
 
-        <div>
-
+        <div> --}}
+{{--
             <div class="sidebar-message">
                 <a href="#">
                     <div class="float-left text-center">
@@ -379,7 +379,7 @@
 </div>
 </div>
 </div>
-</div>
+</div> --}}
 
 <!-- Mainly scripts -->
 
@@ -437,6 +437,9 @@
 
 <script src="{{asset('assests/painel/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
 <script src="{{asset('assests/painel/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+
+
 
 
 <script>

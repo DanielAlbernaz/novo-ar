@@ -25,9 +25,9 @@ Form::sb_FormText('Vazão de ar', 'vazao', 'Defina um valor para o campo', '200p
 Form::sb_FormText('Motor', 'motor', 'Defina um valor para o campo', '200px', '', false);
 Form::sb_FormText('Consumo elétrico', 'consumo', 'Defina um valor para o campo', '200px', '', false);
 Form::sb_FormText('Abertura de parede', 'abertura', 'Defina um valor para o campo', '200px', '', false);
-Form::sb_FormText('Reservatório / peso seco', 'reservatori', 'Defina um valor para o campo', '200px', '', false);
+Form::sb_FormText('Reservatório / peso seco', 'reservatorio', 'Defina um valor para o campo', '200px', '', false);
 
-Form::sb_FormTextHtml('Descrição produto', 'textarea', 'Escre uma descrição', '', false);
+Form::sb_FormTextHtml('Descrição produto', 'text', 'Escre uma descrição', '', false);
 
 Form::sb_FormCropImage('Imagem produto', '', true);
 
@@ -39,6 +39,7 @@ Form::sb_FormDate('Data início exibição', 'begin_date', 'Data inícial que o 
 
 Form::sb_FormDate('Data final exibição', 'end_date', 'Data final máxima que o conteúdo será exibido', '289px', '', false);
 
+
 Form::sb_FormSubmit('Salvar', 'sistema/salvar-produto', '');
 
 Form::sb_FormEnd();
@@ -46,9 +47,13 @@ Form::sb_FormEnd();
 
 ?>
 
-<div id="gallery" class="dropzone"></div>
 
 <script>
+
+
+
+
+
     var bs_modal = $('#modal');
     var image = document.getElementById('image');
     var cropper,reader,file;

@@ -6,7 +6,7 @@ use App\Models\Form;
 
 
 
-Form::sb_Table('Banners cadastrado', $bannersList, 'status-banner', 'editar-banner', 'sistema/deletar-banner');
+Form::sb_Table('Produtos cadastrado', $produtosList, 'status-produto', 'editar-produto', 'sistema/deletar-produto');
 
 ?>
 

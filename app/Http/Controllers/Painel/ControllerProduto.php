@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Painel;
 
+use App\Models\Form;
+use App\Models\GalleriaProduto;
 use App\Models\Produto;
 use DateTime;
 use Exception;
@@ -20,7 +22,6 @@ class ControllerProduto extends Controller
     public function store(Request $request)
     {
         $objProduto = new Produto();
-
         try {
             if($request->image_file){
                 $image_parts = explode(";base64,", $request->image_file);
@@ -43,8 +44,12 @@ class ControllerProduto extends Controller
             }
 
             $objProduto->title = $request->title;
-            $objProduto->url = $request->url;
-            $objProduto->target_page = $request->target_page;
+            $objProduto->vazao = $request->vazao;
+            $objProduto->motor = $request->motor;
+            $objProduto->consumo = $request->consumo;
+            $objProduto->abertura = $request->abertura;
+            $objProduto->reservatorio = $request->reservatorio;
+            $objProduto->text = $request->text;
             $objProduto->status = $request->status;
             $objProduto->begin_date = ($request->begin_date ? $request->begin_date  : date('Y-m-d H:i:s'));
             $objProduto->end_date = $request->end_date;
@@ -115,6 +120,43 @@ class ControllerProduto extends Controller
     $produto = Produto::find($request->id);
 
      return view('painel.produto.frmAltProduto', compact('produto'));
+  }
+
+ function storeGalleria(Request $request){
+
+
+    $files = $request->file;
+
+    for($i = 0; $i < count($files); $i++){
+        try {
+            if($files[$i]){
+                $extensaoPhoto = $files[$i]->extension();
+                $img = ImageManagerStatic::make($files[$i]);
+
+                //Se não existir cria o diretorio
+                $localStorage = 'produto/' . $request->id;
+                $namePhoto = 'photo_' . time() . '.' . $extensaoPhoto;
+                try {
+                    mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
+                } catch (Exception $e) {
+
+                }
+                $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
+
+                $imagem = $localStorage . "/" . $namePhoto;
+            }
+
+        }catch (Exception $e) {
+        }
+
+        $galleriaProduto = new GalleriaProduto();
+
+        $galleriaProduto->id_produto = $request->id;
+        $galleriaProduto->imagem = $imagem;
+        $galleriaProduto->save();
+    }
+
+    exit;
   }
 
   function edit(Request $request){
