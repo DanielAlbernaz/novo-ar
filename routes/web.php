@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function() {
                 Route::get('/listar-produto', 'App\Http\Controllers\Painel\ControllerProduto@list')->name('listar');
                 Route::post('/status-produto', 'App\Http\Controllers\Painel\ControllerProduto@status')->name('status');
                 Route::post('/deletar-produto/{id}', 'App\Http\Controllers\Painel\ControllerProduto@delete')->name('delete');
+                Route::post('/deletar-produto-imagem/{id}', 'App\Http\Controllers\Painel\ControllerProduto@destroyImage')->name('destroy');
                 Route::get('/editar-produto/{id}', 'App\Http\Controllers\Painel\ControllerProduto@find')->name('find');
                 Route::post('/edit-produto', 'App\Http\Controllers\Painel\ControllerProduto@edit')->name('edit');
             });

@@ -7,6 +7,7 @@ use App\Models\GalleriaProduto;
 use App\Models\Produto;
 use DateTime;
 use Exception;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Intervention\Image\ImageManagerStatic;
@@ -107,6 +108,8 @@ class ControllerProduto extends Controller
 
  function delete(Request $request){
     $produto = Produto::find($request->id);
+    unlink(storage_path('\app\public/\/'.$produto->imagem));
+    $this->destroyImage($produto->id);
     $produto->delete();
 
     $retorno = [
@@ -118,8 +121,22 @@ class ControllerProduto extends Controller
 
  function find(Request $request){
     $produto = Produto::find($request->id);
+    $galleriaProduto = GalleriaProduto::where('id_produto',  $request->id)->get();
 
-     return view('painel.produto.frmAltProduto', compact('produto'));
+     return view('painel.produto.frmAltProduto', compact('produto', 'galleriaProduto'));
+  }
+
+ function destroyImage($id){
+    $galleriaProduto = GalleriaProduto::find($id);
+    unlink(storage_path('\app\public/\/'.$galleriaProduto->imagem));
+    $galleriaProduto->delete();
+
+    $retorno = [
+        'situacao' => 'success',
+    ];
+
+    return $retorno;
+    exit;
   }
 
  function storeGalleria(Request $request){
@@ -135,7 +152,7 @@ class ControllerProduto extends Controller
 
                 //Se não existir cria o diretorio
                 $localStorage = 'produto/' . $request->id;
-                $namePhoto = 'photo_' . time() . '.' . $extensaoPhoto;
+                $namePhoto = 'photo_' . time() . rand(1, 100) .  $i . '.' . $extensaoPhoto;
                 try {
                     mkdir(storage_path('/app/public/'. $localStorage), 0777, true);
                 } catch (Exception $e) {

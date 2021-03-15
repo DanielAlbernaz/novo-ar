@@ -1,3 +1,4 @@
+
 // const pathSite = window.location.hostname
 const pathSite = 'http://127.0.0.1:8000/';
 
@@ -132,9 +133,56 @@ function deletar(route, id){
                     }
                 }
             });
-
-
         }
       })
-
 }
+
+function destroyImage(id)
+{
+    var quebra = id.split(',');
+    var id = quebra[0];
+    var route = quebra[1];
+
+    var route = pathSite + route + '/' +  id;
+    Swal.fire({
+        title: 'Você tem certeza de deseja excluir?',
+        text: "Pode ser irreversível!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, deletar!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+            jQuery.ajax({
+                url: route,
+                type: "POST",
+                dataType: "JSON",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {id:id},
+                success: function( data )
+                {
+                    if(data.situacao == 'success'){
+                        Swal.fire(
+                            'Deletado!',
+                            'Excluido com sucesso.',
+                            'success'
+                          )
+                        setTimeout(function() {
+                            window.location.reload();
+                          }, 1000);
+
+                    }
+                    if(data.situacao == 'error'){
+                        mesages('error', 'Erro ao alterar o status!');
+                    }
+                }
+            });
+        }
+      })
+}
+

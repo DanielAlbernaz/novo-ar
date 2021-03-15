@@ -44,8 +44,7 @@ Form::sb_FormTextHtml('Descrição produto', 'text', 'Escre uma descrição', $p
 
 Form::sb_FormCropImage('Imagem produto', $produto->imagem, false);
 
-
-Form::sb_FormGalleria('Salvar', '', 'sistema/edit-banner');
+Form::sb_FormGalleria($galleriaProduto, 'sistema/deletar-produto-imagem');
 
 $opcaoAba[] = "<option value='1'  ".($produto->status == 1 ? 'selected="selected" ' : '')." >Ativo</option>";
 $opcaoAba[] .= "<option value='2'  ".($produto->status == 0 ? 'selected="selected" ' : '')." >Inativo</option>";

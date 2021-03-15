@@ -217,7 +217,7 @@ class Form extends Model
 
         return print_r($form);
     }
-    static function sb_FormGalleria($name = '', $routeCreate, $routeEdit)
+    static function sb_FormGalleria($value= null, $route)
     {
         $form = '';
 
@@ -227,11 +227,11 @@ class Form extends Model
 
             $form .='<div class="col-lg-12 col-md-12 col-12">';
 
-                    for($i = 0; $i < 7; $i++){
-                        $form .='<a  style="padding: 5px; cursor:pointer" id="imagemGalleria">';
-                        $form .='<img style="display: inline !important;  margin: 5px;  width: 100px;"  class="img-fluid img-thumbnail"src="'.session('URL_IMG'). auth()->user()->imagem.'" alt="">';
+                    for($i = 0; $i < count($value); $i++){
+                        $form .='<a  style="padding: 5px; cursor:pointer; width: 150px;height: 189px;display: -webkit-inline-box;" id="imagemGalleria">';
+                        $form .='<img style="display: inline !important;  margin: 5px;  width: 100%;height: 100%;"   class="img-fluid img-thumbnail"src="'.session('URL_IMG'). $value[$i]->imagem.'" alt="">';
 
-                        $form .=' <button  id="buttonGalleria" type="button" style="margin-left: -41px; margin-top: 68px;" class="btn btn-sm btn-danger " data-image="16" data-url="http://127.0.0.1:8000/sistema/cms/blog/posts/1/gallery/16">';
+                        $form .=' <button  id="buttonGalleria" value="'. $value[$i]->id . ','. $route .'" onclick="destroyImage(this.value)" type="button" style="margin-left: -39px; margin-top: 142px;" class="btn btn-sm btn-danger " data-image="16" data-url="http://127.0.0.1:8000/sistema/cms/blog/posts/1/gallery/16">';
                         $form .='<i class="fa fa-trash"></i>';
                         $form .='</button>';
 
