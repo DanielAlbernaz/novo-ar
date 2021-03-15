@@ -55,7 +55,7 @@ Form::sb_FormDate('Data início exibição', 'begin_date', 'Data inícial que o 
 Form::sb_FormDate('Data final exibição', 'end_date', 'Data final máxima que o conteúdo será exibido', '289px',str_replace(' ','T',$produto->end_date), false);
 
 
-Form::sb_FormSubmit('Salvar', '', 'sistema/edit-banner');
+Form::sb_FormSubmit('Salvar', '', 'sistema/edit-produto');
 
 Form::sb_FormHidden('id', $produto->id);
 Form::sb_FormHidden('imgOld', $produto->imagem);
@@ -128,7 +128,7 @@ Form::sb_FormEnd();
 
    bs_modal.on('shown.bs.modal', function() {
        cropper = new Cropper(image, {
-           aspectRatio: 1920 / 715,
+           aspectRatio: 800 / 800,
            viewMode: 1,
            preview: '.preview'
        });
@@ -139,8 +139,8 @@ Form::sb_FormEnd();
 
    $("#crop").click(function() {
        canvas = cropper.getCroppedCanvas({
-           width: 1920,
-           height: 715,
+           width: 800,
+           height: 800,
        });
 
        canvas.toBlob(function(blob) {

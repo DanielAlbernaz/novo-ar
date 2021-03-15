@@ -112,6 +112,7 @@ class ControllerProduto extends Controller
     $this->destroyImage($produto->id);
     $produto->delete();
 
+
     $retorno = [
         'situacao' => 'success',
     ];
@@ -177,7 +178,6 @@ class ControllerProduto extends Controller
   }
 
   function edit(Request $request){
-
     try {
         if($request->image_file){
             $image_parts = explode(";base64,", $request->image_file);
@@ -201,12 +201,16 @@ class ControllerProduto extends Controller
 
         $objProduto = Produto::find($request->id);
         $objProduto->title = $request->title;
-        $objProduto->url = $request->url;
-        $objProduto->target_page = $request->target_page;
+        $objProduto->vazao = $request->vazao;
+        $objProduto->motor = $request->motor;
+        $objProduto->consumo = $request->consumo;
+        $objProduto->abertura = $request->abertura;
+        $objProduto->reservatorio = $request->reservatorio;
+        $objProduto->text = $request->text;
         $objProduto->status = $request->status;
         $objProduto->begin_date = ($request->begin_date ? $request->begin_date  : date('Y-m-d H:i:s'));
         $objProduto->end_date = $request->end_date;
-        $objProduto->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
+        $objProduto->imagem =  ($request->image_file ? $request->image_file : $request->imgOld);
         $objProduto->save();
 
         $retorno = [
