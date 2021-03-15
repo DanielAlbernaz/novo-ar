@@ -1,7 +1,7 @@
 @include('site.main.header')
 
 
-        <h1>Hekllodasd</h1>
+        <h1></h1>
 
 
 
