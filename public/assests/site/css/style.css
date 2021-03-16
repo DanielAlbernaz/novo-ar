@@ -12,16 +12,14 @@
 /*======== CONTAINER =========*/
 .container-nav{
     width: 100%;
-    height: 500px;
     float: left;
-    padding: 3% 4%;
-    text-align: center;
+    padding: 1% 4%;
 }
 
 .container{
     width: 100%;
     float: left;
-    padding: 1% 4%;
+    padding: 1% 17%;
     text-align: center;
 }
 
@@ -34,7 +32,7 @@
 
 /*======== BG COLORS =========*/
 .bg-gradient{
-    background: linear-gradient(to right, #acaaaa, #696663);
+    background: linear-gradient(to right, #2289cd, #e5e5e7);
 }
 .bg-black{
     background-color: #130400;
@@ -68,7 +66,7 @@ img{
 
 /* CABEÇALHO */
 .cabecalho{
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 .logo {
@@ -88,9 +86,10 @@ img{
     height: 56px;
     float: right;
     text-align: center;
-    color: #fff;
+    color: #e5e5e7;
     border-radius:56px;
     cursor: pointer;
+    z-index: 999999;
 }
 
 .fa-lg {
@@ -103,14 +102,15 @@ img{
     width: 100%;
     height: 100%;
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #e5e5e7;
     top: 0;
     left: 0;
+    z-index: 999999;
 }
 
 .btn-close{
     font-size: 1.5em;
-    color: #fff;
+    color: rgb(0, 0, 0);
     float: right;
     cursor: pointer;
     margin: 3% 4% 0 0;
@@ -128,7 +128,7 @@ img{
 
 .menu li a{
     font-size: 2em;
-    color: #fff;
+    color: #130400;
     padding: 1.5% 0%;
 }
 
@@ -180,20 +180,56 @@ img{
     margin-top: 2%;
 }
 
+/* Separador */
+.nossos-produtos{
+    text-align: center;
+    margin-top: 13px;
+    text-transform: uppercase;
+    background-color: #f9f9f9;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding-top: 80px;
+    padding-right: 30px;
+    padding-bottom: 72px;
+    padding-left: 30px;
+}
+
+.text-produtos h1{
+    font-family: "Panton Reg", Arial, Helvetica, sans-serif;
+    color: #333;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.separador{
+    border-bottom: 4px solid #0d5ab5;
+    border-top-width: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 80px;
+}
+
 /* Servicos */
 
-.servico{
+.produto{
     width: 100%;
     text-align: left;
     margin-bottom: 3%;
 }
 
-.servico img{
+.produto img{
     border-radius: 7px 7px 0 0;
 }
 
+.produto a{
+    background: #f5f5f5;
+}
+
 .inner{
-    padding: 7%;
+    background: #f5f5f5;
+    padding: 4%;
 }
 
 .inner a{
@@ -202,16 +238,68 @@ img{
     font-weight: 700;
 }
 
-.inner h4{
-    font-size: 1.2em;
-    color: #130400;
+.inner h2{
+    padding: 7px 0;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 700;
+    text-align: center;
+}
+
+.saiba-mais{
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    color: #fff;
+    background-color: #0d5ab5;
+    padding: 5%;
+    border-radius: 5px;
+    border: 1px solid rgb(122, 118, 118);
+    cursor: pointer;
     margin-top: 2%;
 }
 
-.inner p{
-    margin-top: 6%;
-    color: #130400;
-    line-height: 1.5em;
+
+.text-produtos h1{
+    font-family: "Panton Reg", Arial, Helvetica, sans-serif;
+    color: #333333;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.fusion-beneficios{
+    width: 100%;
+    height: 600px;
+    float: left;
+    padding: 4%;
+    background: #fff;
+}
+
+.fusion-text h1{
+    width: 40%;
+    font-size: 55px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0px;
+    font-style: normal;
+}
+
+.fusion-text p{
+    width: 40%;
+    float: left;
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 300;
+    color: #160D19;
+    margin-top: 20px;
+}
+
+.fusion-img {
+    width: 40%;
+    float: right;
+    margin-top: -110px;
+    margin-right: -54px;
 }
 
 /* NEWSLWTTER */
@@ -289,6 +377,27 @@ img{
     .Espacamentoicon{
         margin-right: 0;
     }
+    .fusion-beneficios{
+        width: 100%;
+        height: 100%;
+        float: left;
+        padding: 4%;
+        background: #fff;
+    }
+    .fusion-text p{
+        width: 90%;
+        float: left;
+        font-size: 32px;
+        line-height: 42px;
+        font-weight: 300;
+        color: #160D19;
+        margin-top: 20px;
+    }
+    .fusion-img {
+        width: 100%;
+        float: left;
+        margin-top: 20px;
+    }
 }
 
 /*SMALL DEVICES - TABLETS*/
@@ -296,14 +405,15 @@ img{
     .Espacamentoicon{
         margin-right: 0;
     }
-    .servico{
+    .produto{
         width: 49%;
         float: left;
         margin-right: 2%;
     }
-    .servico:nth-child(2){
+    .produto:nth-child(2n+0){
         margin-right: 0;
     }
+
     .newsletter input{
         width: 70%;
         float: left;
@@ -315,6 +425,21 @@ img{
         float: right;
         padding: 2%;
         margin-top: 0;
+    }
+    .fusion-text p{
+        width: 50%;
+        float: left;
+        font-size: 32px;
+        line-height: 42px;
+        font-weight: 300;
+        color: #160D19;
+        margin-top: 20px;
+    }
+    .fusion-img {
+        width: 49%;
+        float: right;
+        margin-top: -10px;
+        margin-right: -31px;
     }
 }
 
@@ -329,15 +454,16 @@ img{
         margin-top: 0;
         margin-top: 135px;
     }
-    .servico{
+    .produto{
         width: 32%;
     }
-    .servico:nth-child(2){
+    .produto:nth-child(2n+0){
         margin-right: 2%;
     }
-    .servico:nth-child(3){
+    .produto:nth-child(3n+0){
         margin-right: 0;
     }
+
     .newsletter input{
         width: 60%;
         float: none;
@@ -345,6 +471,19 @@ img{
     .newsletter button{
         width: 20%;
         float: none;
+    }
+    .fusion-beneficios {
+        width: 100%;
+        height: 600px;
+        float: left;
+        padding: 4%;
+        background: #fff;
+    }
+    .fusion-img {
+        width: 46%;
+        float: right;
+        margin-top: -41px;
+        margin-right: -39px;
     }
 }
 
@@ -362,7 +501,7 @@ img{
         height: 56px;
         line-height: 56px;
         float: right;
-        background-color: #000000;
+        background-color: #ffffff;
         display: block !important;
         position: static;
     }
@@ -371,7 +510,7 @@ img{
         float: left;
     }
     .menu li a{
-        color: #ffffff;
+        color: #130400;
         font-size: 20px;
         padding: 15px;
     }
@@ -381,5 +520,18 @@ img{
     }
     .Espacamentoicon{
         margin-right: 280px;
+    }
+    .fusion-beneficios {
+        width: 100%;
+        height: 600px;
+        float: left;
+        padding: 4%;
+        background: #fff;
+    }
+    .fusion-img {
+        width: 40%;
+        float: right;
+        margin-top: -110px;
+        margin-right: -54px;
     }
 }

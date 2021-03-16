@@ -21,47 +21,83 @@
             </div>
         </div>
     
-        div
-    
+        <!-- Separador -->
+        <div class="text-produtos">
+            <div class="nossos-produtos">
+                <h1>Conheça nossos produtos</h1>
+                <div class="separador"></div>
+            </div>
+        </div>
+
+
         <!-- SERVIÇOS -->
         <main class="servicos container">
 
-            <article class="servico bg-white radius">
-                <a href="#"><img src="images/criacoes.jpg" alt="Campanhas publicitárias"></a>
+            <article class="produto bg-white radius">
+                <a href="#"><img src="images/product1.png" alt="NAC02 C"></a>
                 <div class="inner">
-                    <a href=""> Campanhas publicitárias </a>
-                    <h4>Impressos, VTs e Jingles</h4>
-                    <p>Se voccê está precisando de criação de algum material em específico, conte com a nossa equipe de profissionais.Eles farão toda campanha publicitária. Vt, outdoor, folder, anúncio e muito mais pela sua empresa no mais alto padrão de qualidade.</p>
+                    <h2> Climatizador NAC02 C</h2>
+                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
                 </div>
             </article>
 
-            <article class="servico bg-white radius">
-                <a href="#"><img src="images/md.jpg" alt="Marketing digital"></a>
+            <article class="produto bg-white radius">
+                <a href="#"><img src="images/product2.png" alt="CT305 T"></a>
                 <div class="inner">
-                    <a href=""> Marketing digital </a>
-                    <h4>Adiministração de Redes Sociais</h4>
-                    <p>Como agência de publicidade aplicamos estratégias nos meios
-                    digitais para que o seu negócio seja visto por milhões de usuários.
-                    O Brasil é o 5° país mais conectado do mundo. Por este motivo, o seu 
-                    negócio não pode ficar de fora do mercade digital.
-                    </p>
+                    <h2> Climatizador CT305 T </h2>
+                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
                 </div>
             </article>
 
-            <article class="servico bg-white radius">
-                <a href="#"><img src="images/cs.jpg" alt="Criação de Sites"></a>
+            <article class="produto bg-white radius">
+                <a href="#"><img src="images/product1.png" alt="NAC02 C"></a>
                 <div class="inner">
-                    <a href=""> Criação de Sites </a>
-                    <h4> Sites Administráveis </h4>
-                    <p>Agora você pode administrar seu site quando e como quiser.
-                    E melhor ainda pois você pode pagar por este serviço, pois desenvolvemos
-                    de forma prática. Seu site atualizado, com seus últimos 
-                    produtos , integração com redes sociais, agora é possível.
-                    </p>
+                    <h2> Climatizador NAC02 C</h2>
+                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                </div>
+            </article>
+
+            <article class="produto bg-white radius">
+                <a href="#"><img src="images/product2.png" alt="CT305 T"></a>
+                <div class="inner">
+                    <h2> Climatizador CT305 T </h2>
+                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                </div>
+            </article>
+
+            <article class="produto bg-white radius">
+                <a href="#"><img src="images/product3.png" alt="BT202 N"></a>
+                <div class="inner">
+                    <h2> Climatizador BT202 N</h2>
+                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                </div>
+            </article>
+
+            <article class="produto bg-white radius">
+                <a href="#"><img src="images/product3.png" alt="BT202 N"></a>
+                <div class="inner">
+                    <h2> Climatizador BT202 N</h2>
+                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
                 </div>
             </article>
         </main>
-    
+
+    <!-- Benefícios -->
+        <div class="fusion-beneficios">
+            <div class="fusion-text">
+                <h1>Benefícios</h1>
+                <p>Diminuir a temperatura sem gastar tanta
+                    energia elétrica? Que tal fazer isso com
+                    climatizadores tecnológicos que gastam
+                    90% menos energia elétrica?!
+                </p>
+                <div class="fusion-img">
+                    <img src="images/ar.png" alt="">
+                </div>
+            </div>
+            
+        </div>
+
     <!-- NEWSLETTER -->
     <section class="newsletter container-footer bg-black">
         <h2> Inscreva-se agora! </h2>

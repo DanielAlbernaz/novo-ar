@@ -23,7 +23,7 @@
     <body>
 
     <!-- CABEÇALHO -->
-    <header class="cabecalho container">
+    <header class="cabecalho container-nav">
             <div class="logo">
                 <a href="index.html" class="logo">
                     <img src="images/logonovoar.png">
@@ -35,7 +35,7 @@
                     <ul>
                         <li><a href="#">Quem somos</a></li>
                         <li><a href="#">Produtos</a></li>
-                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Instalações</a></li>
                         <li class="Espacamentoicon"><a href="#">Contato</a></li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.instagram.com/alberncamp/?hl=pt-br"><i class="fa fa-instagram"></i></a></li>

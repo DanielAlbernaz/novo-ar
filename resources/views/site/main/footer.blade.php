@@ -4,9 +4,7 @@
 <footer class="rodape container-footer bg-gradient">
         <div class="social-icons">
             <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-google"></i></a>
             <a href="https://www.instagram.com/alberncamp/?hl=pt-br"><i class="fa fa-instagram"></i></a>
-            <a href="#"><i class="fa fa-envelope"></i></a>
         </div>
         <p class="copyright">
             copyright © ALBERNCAMP 2021. Todos direitos reservados.
