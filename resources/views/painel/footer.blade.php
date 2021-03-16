@@ -424,7 +424,6 @@
 <script src="{{asset('assests/painel/js/plugins/toastr/toastr.min.js')}}"></script>
 <script src="{{asset('assests/painel/js/requisicoes_painel.js')}}"></script>
 <script src="{{'https://cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.15/js/jquery.Jcrop.min.js'}}"></script>
-<script src="{{asset('assests/painel/js/plugin-validate-campos.js')}}"></script>
 
 {{-- Crop imagem --}}
 <script src="{{asset('assests/painel/crop/cropper.min.js')}}"></script>

@@ -81,10 +81,20 @@ class ControllerUser extends Controller
     for($i = 0; $i < count($users); $i++){
         $usersList[$i]['ID'] = $users[$i]->id;
         $usersList[$i]['NAME'] = $users[$i]->name;
+        $usersList[$i]['IMAGEM'] = ( $users[$i]->imagem ? '<img src="'.session('URL_IMG'). $users[$i]->imagem.'" style="width: 50px; overflow: hidden;" >' : '') ;
         $usersList[$i]['EMAIL'] = $users[$i]->email;
         $usersList[$i]['DATA CADASTRO'] = date_format($users[$i]->created_at, 'd/m/Y H:i:s');
         $usersList[$i]['STATUS'] = $users[$i]->status;
     }
+
+    if(count($usersList) == 0){
+        $usersList[0]['ID'] = 0;
+        $usersList[0]['NAME'] = 0;
+        $usersList[0]['IMAGEM'] = 0;
+        $usersList[0]['EMAIL'] = 0;
+        $usersList[0]['IDATA CADASTRO'] = 0;
+        $usersList[0]['STATUS'] = 0;
+        }
     return view('painel.usuario.frmListaUsuario', compact('usersList'));
  }
 
@@ -167,6 +177,9 @@ class ControllerUser extends Controller
 
  function delete(Request $request){
     $user = User::find($request->id);
+    if($user->imagem){
+        unlink(storage_path('\app\public/\/'.$user->imagem));
+    }
     $user->delete();
 
     $retorno = [

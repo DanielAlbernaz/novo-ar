@@ -26,46 +26,52 @@ function mesages(status, msg){
 }
 
 function formularios(route){
-    tinyMCE.triggerSave();
-    jQuery.ajax({
-        url: pathSite + route,
-        type: "POST",
-        dataType: "JSON",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data: $('#validation').serialize(),
-        success: function( data )
-        {
-            if(data.situacao == 'success'){
+    $("#validation").validate();
 
-                if(data.form == 'cad'){
-                    mesages('success', data.msg);
-                    setTimeout(function() {
-                        window.location.href = pathSite + data.redirect
-                      }, 1000);
+     if($("#validation").valid()){
+        tinyMCE.triggerSave();
+        jQuery.ajax({
+            url: pathSite + route,
+            type: "POST",
+            dataType: "JSON",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: $('#validation').serialize(),
+            success: function( data )
+            {
+                if(data.situacao == 'success'){
+
+                    if(data.form == 'cad'){
+                        mesages('success', data.msg);
+                        setTimeout(function() {
+                            window.location.href = pathSite + data.redirect
+                          }, 1000);
+                    }
+
+                    if(data.form == 'alt'){
+                        mesages('success',  data.msg);
+                        setTimeout(function() {
+                            window.location.href = pathSite + data.redirect
+                          }, 1000);
+                    }
+
                 }
 
-                if(data.form == 'alt'){
-                    mesages('success',  data.msg);
-                    setTimeout(function() {
-                        window.location.href = pathSite + data.redirect
-                      }, 1000);
-                }
+                if(data.situacao == 'error'){
+                    if(data.form == 'alt'){
+                        mesages('error',  data.msg);
+                    }
 
+                    if(data.form == 'alt'){
+                        mesages('error',  data.msg);
+                    }
+                }
             }
+        });
+    }
 
-            if(data.situacao == 'error'){
-                if(data.form == 'alt'){
-                    mesages('error',  data.msg);
-                }
 
-                if(data.form == 'alt'){
-                    mesages('error',  data.msg);
-                }
-            }
-        }
-    });
 }
 
 function status(route, id){

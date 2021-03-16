@@ -35,9 +35,27 @@
     <script src="https://cdn.tiny.cloud/1/bhivvpzxh2vxllhxysw5xfv6zrzckbi70ium07ecngf8owpo/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.8.1/dropzone.js" referrerpolicy="origin"></script>
+
+    <!-- Inclusão do Plugin jQuery Validation-->
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
     <script>
         tinymce.init({
           selector: '#text',
+         language: 'pt_BR',
+        });
+
+        tinymce.init({
+          selector: '#missao',
+         language: 'pt_BR',
+        });
+
+        tinymce.init({
+          selector: '#valores',
+         language: 'pt_BR',
+        });
+
+        tinymce.init({
+          selector: '#visao',
          language: 'pt_BR',
         });
       </script>
@@ -82,6 +100,14 @@
                         <ul class="nav nav-second-level">
                             <li class=""><a href="{{ route('banner.cadastrar') }}">Cadastrar</a></li>
                             <li class=""><a href="{{ route('banner.listar') }}">Listar</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="#" ><i class="fa fa-institution"></i></i><span class="nav-label">Quem Somos</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class=""><a href="{{ route('institucional-find', '1') }}">Alterar</a></li>
+                            {{-- <li class=""><a href="editar-institucional/1">Alterar</a></li> --}}
                         </ul>
                     </li>
 

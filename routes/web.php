@@ -61,6 +61,11 @@ Route::middleware(['auth'])->group(function() {
                 Route::post('/edit-produto', 'App\Http\Controllers\Painel\ControllerProduto@edit')->name('edit');
             });
 
+            Route::name('institucional.')->group(function (){
+                Route::get('/editar-institucional/{id}', 'App\Http\Controllers\Painel\ControllerInstitucional@find')->name('find');
+                Route::post('/edit-institucional', 'App\Http\Controllers\Painel\ControllerInstitucional@edit')->name('edit');
+            });
+
 
 
     });

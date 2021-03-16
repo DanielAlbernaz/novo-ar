@@ -21,7 +21,7 @@ class Form extends Model
                         $form .= '<h5>' . $nome . '</h5>';
                  $form .= '</div>';
             $form .= '<div class="ibox-content">';
-        $form .= '<form id="'. $id .'" method="POST"  enctype="multipart/form-data" action="javascript:void(0)" >';
+        $form .= '<form id="'. $id .'" method="POST"  enctype="multipart/form-data" action="javascript:void(0);" >';
 
         return print_r($form);
     }
@@ -69,14 +69,11 @@ class Form extends Model
         $form .= '<div class="form-group  row">';
         $form .= '<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
         $form .= '<div class="col-sm-10">';
-        $form .= '<textarea id="text" name="text" title="'. $title .'"  '.($required == true ? 'required' : '').'>'. ($value ? $value : '') .'</textarea>';
+        $form .= '<textarea id="'.$id.'" name="'.$id.'" title="'. $title .'"  '.($required == true ? 'required' : '').'>'. ($value ? $value : '') .'</textarea>';
         $form .='</div>';
         $form .='</div>';
         $form .= '<div class="hr-line-dashed"></div>';
 
-
-    // $form = '<script src="{{asset("assests/painel/js/plugins/summernote/summernote-bs4.js")}}"></script>';
-    // $form = '<script> $(document).ready(function(){ $(".summernote").summernote();});</script>';
         return print_r($form);
     }
 
@@ -253,7 +250,7 @@ class Form extends Model
         return print_r($form);
     }
 
-    static  function sb_Table($title, $dados = array(), $routeStatus, $routeEdit, $routeDelete)
+    static  function sb_Table($title, $dados = array(), $routeStatus, $routeEdit, $routeDelete, $routeCadastro)
     {
         $form = '';
 
@@ -294,7 +291,6 @@ class Form extends Model
                                     $form .='<thead>';
                                     $form .='<tr>';
                                             for($i = 0; $i < 1; $i++){
-
                                                 $keys = array_keys($dados[$i]);
                                                 foreach($keys as $key){
                                                     $form .='<th>'. $key .'</th>';
@@ -305,8 +301,8 @@ class Form extends Model
                                     $form .='</thead>';
 
                                     $form .='<tbody>';
-                                        $form .='<tr class="gradeC">';
-                                                if(count($dados) > 1){
+                                                if(count($dados) > 0 && $dados[0]['ID'] != 0){
+                                                    $form .='<tr class="gradeC">';
                                                     for($i = 0; $i < count($dados); $i++){
                                                         $keys = array_keys($dados[$i]);
                                                         foreach($keys as $key){
@@ -336,31 +332,14 @@ class Form extends Model
 
                                                 $form .='</tr>';
                                                     }
-                                                }else{
-
-                                                            $form .='<td class="center">';
-                                                            $form .='</td>';
-
-
-                                                        $form .='<td class="center" style="display: flex;">';
-
-                                                        $form .='</td>';
-
-                                                $form .='</tr>';
-
                                                 }
-
-
-
-
-
                                     $form .='</tbody>';
 
                             $form .='<tfoot>';
                             $form .='</tfoot>';
                         $form .='</table>';
                         $form .='</div>';
-
+                        $form .='<a href="'.$routeCadastro.'" style="color: white;" type="button" class="btn btn-w-m btn-primary"><i class="fa fa-plus"></i> Cadastrar</a>';
                         $form .='</div>';
                     $form .='</div>';
                 $form .='</div>';

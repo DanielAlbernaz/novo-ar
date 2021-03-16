@@ -17,19 +17,21 @@
 <?php
 use App\Models\Form;
 
-Form::sb_FormBegin('Cadastro de produtos', 'validation');
+Form::sb_FormBegin('Cadastro de Quem somos', 'validation');
 
-Form::sb_FormText('Título', 'title', 'Defina um título para o produto', '800px', '', true);
+Form::sb_FormText('Título', 'title', 'Defina um título para o sobre nós', '800px', '', true);
 
-Form::sb_FormText('Vazão de ar', 'vazao', 'Defina um valor para o campo', '200px', '', false);
-Form::sb_FormText('Motor', 'motor', 'Defina um valor para o campo', '200px', '', false);
-Form::sb_FormText('Consumo elétrico', 'consumo', 'Defina um valor para o campo', '200px', '', false);
-Form::sb_FormText('Abertura de parede', 'abertura', 'Defina um valor para o campo', '200px', '', false);
-Form::sb_FormText('Reservatório / peso seco', 'reservatorio', 'Defina um valor para o campo', '200px', '', false);
+Form::sb_FormCropImage('Imagem institucional', '', false);
 
-Form::sb_FormTextHtml('Descrição produto', 'text', 'Escre uma descrição', '', false);
+Form::sb_FormTextHtml('Descrição', 'text', 'Escre uma descrição', '', true);
 
-Form::sb_FormCropImage('Imagem produto', '', true);
+Form::sb_FormTextHtml('Missão', 'missao', 'Defina uma descrição para missão', '', true);
+
+Form::sb_FormTextHtml('Visão', 'visao', 'Defina uma descrição para visão', '', true);
+
+Form::sb_FormTextHtml('Valores', 'valores', 'Defina uma descrição para valores', '', true);
+
+Form::sb_FormText('Link vídeo', 'url', 'Informar a url do vídeo', '800px', '', false);
 
 $opcaoStatus[] = "<option value='1'  selected>Ativo</option>";
 $opcaoStatus[] .= "<option value='0' >Inativo</option>";
@@ -39,13 +41,13 @@ Form::sb_FormDate('Data início exibição', 'begin_date', 'Data inícial que o 
 
 Form::sb_FormDate('Data final exibição', 'end_date', 'Data final máxima que o conteúdo será exibido', '289px', '', false);
 
-
-Form::sb_FormSubmit('Salvar', 'sistema/salvar-produto', '');
+Form::sb_FormSubmit('Salvar', 'sistema/salvar-institucional', '');
 
 Form::sb_FormEnd();
 
 
 ?>
+
 
 
 <script>
@@ -106,7 +108,6 @@ Form::sb_FormEnd();
     });
 
 </script>
-
 
 @include('painel/footer')
 

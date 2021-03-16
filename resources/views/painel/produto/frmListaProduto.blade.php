@@ -4,9 +4,8 @@
 <?php
 use App\Models\Form;
 
-// Form::print_rpre($produtosList);exit;
 
-Form::sb_Table('Produtos cadastrado', $produtosList, 'status-produto', 'editar-produto', 'sistema/deletar-produto');
+Form::sb_Table('Produtos cadastrado', $produtosList, 'status-produto', 'editar-produto', 'sistema/deletar-produto', 'cadastrar-produto');
 
 ?>
 

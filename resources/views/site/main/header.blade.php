@@ -11,11 +11,11 @@
     	<link href="{{asset('assests/site/css/style.css')}}" rel="stylesheet" type="text/css">
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
-    	
+
         {{-- css banner --}}
         <link rel="stylesheet" href="{{asset('assests/site/js/font-awesome/css/font-awesome.min.css')}}" />
         <link rel="stylesheet" href="{{asset('assests/site/js/slider/css/nivo-slider.css')}}" />
-        <link rel="stylesheet" href="{{asset('assests/site/js/slider/css/preview.css')}}" />  
+        <link rel="stylesheet" href="{{asset('assests/site/js/slider/css/preview.css')}}" />
         <link rel="stylesheet" href="{{asset('assests/site/js/slider/css/style.css')}}" />
 
         <link rel="icon" href="images/icon.png">
@@ -41,5 +41,5 @@
                         <li><a href="https://www.instagram.com/alberncamp/?hl=pt-br"><i class="fa fa-instagram"></i></a></li>
                         </div>
                     </ul>
-                </nav>          
+                </nav>
             </header>

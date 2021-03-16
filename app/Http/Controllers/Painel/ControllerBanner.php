@@ -81,6 +81,15 @@ class ControllerBanner extends Controller
         $bannersList[$i]['FIM EXIBIÇÃO'] = ($banners[$i]->end_date ? date_format(new DateTime($banners[$i]->end_date), 'd/m/Y H:i:s') : '');
         $bannersList[$i]['STATUS'] = $banners[$i]->status;
     }
+
+    if(count($bannersList) == 0){
+        $bannersList[0]['ID'] = 0;
+        $bannersList[0]['TÍTULO'] = 0;
+        $bannersList[0]['IMAGEM'] = 0;
+        $bannersList[0]['INÍCIO EXIBIÇÃO'] = 0;
+        $bannersList[0]['FIM EXIBIÇÃO'] = 0;
+        $bannersList[0]['STATUS'] = 0;
+        }
     return view('painel.banner.frmListaBanner', compact('bannersList'));
  }
 
@@ -102,8 +111,9 @@ class ControllerBanner extends Controller
  }
 
  function delete(Request $request){
-    $user = Banner::find($request->id);
-    $user->delete();
+    $banner = Banner::find($request->id);
+    unlink(storage_path('\app\public/\/'.$banner->imagem));
+    $banner->delete();
 
     $retorno = [
         'situacao' => 'success',
