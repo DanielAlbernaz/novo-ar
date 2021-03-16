@@ -86,6 +86,15 @@ class ControllerProduto extends Controller
         $produtosList[$i]['FIM EXIBIÇÃO'] = ($produtos[$i]->end_date ? date_format(new DateTime($produtos[$i]->end_date), 'd/m/Y H:i:s') : '');
         $produtosList[$i]['STATUS'] = $produtos[$i]->status;
     }
+
+    if(count($produtos) == 0){
+        $produtosList[0]['ID'] = 0;
+        $produtosList[0]['TÍTULO'] = 0;
+        $produtosList[0]['IMAGEM'] = 0;
+        $produtosList[0]['INÍCIO EXIBIÇÃO'] = 0;
+        $produtosList[0]['FIM EXIBIÇÃO'] = 0;
+        $produtosList[0]['STATUS'] = 0;
+        }
     return view('painel.produto.frmListaProduto', compact('produtosList'));
  }
 
@@ -108,16 +117,30 @@ class ControllerProduto extends Controller
 
  function delete(Request $request){
     $produto = Produto::find($request->id);
-    unlink(storage_path('\app\public/\/'.$produto->imagem));
-    $this->destroyImage($produto->id);
-    $produto->delete();
+    $galleriaProduto = GalleriaProduto::where('id_produto', $produto->id)->get();
 
+    if(isset($galleriaProduto[0]['id'])){
+        for($i = 0; $i < count($galleriaProduto); $i++){
+            $this->destroyGalleria($galleriaProduto[$i]['id']);
+        }
+
+    }
+    unlink(storage_path('\app\public/\/'.$produto->imagem));
+    $produto->delete();
 
     $retorno = [
         'situacao' => 'success',
     ];
 
     return $retorno;
+ }
+
+ function destroyGalleria($id){
+    $galleriaProduto = GalleriaProduto::find($id);
+
+    unlink(storage_path('\app\public/\/'.$galleriaProduto->imagem));
+
+    $galleriaProduto->delete();
  }
 
  function find(Request $request){
@@ -128,6 +151,7 @@ class ControllerProduto extends Controller
   }
 
  function destroyImage($id){
+
     $galleriaProduto = GalleriaProduto::find($id);
     unlink(storage_path('\app\public/\/'.$galleriaProduto->imagem));
     $galleriaProduto->delete();
