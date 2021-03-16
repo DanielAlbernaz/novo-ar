@@ -300,43 +300,56 @@ class Form extends Model
                                                     $form .='<th>'. $key .'</th>';
                                                 }
                                             }
-                                            // $form .='<th >STATUS</th>';
                                             $form .='<th >AÇÃO</th>';
                                         $form .='</tr>';
                                     $form .='</thead>';
 
                                     $form .='<tbody>';
                                         $form .='<tr class="gradeC">';
+                                                if(count($dados) > 1){
+                                                    for($i = 0; $i < count($dados); $i++){
+                                                        $keys = array_keys($dados[$i]);
+                                                        foreach($keys as $key){
+                                                            if($key != 'STATUS'){
+                                                                $form .='<th>'. $dados[$i][$key] .'</th>';
+                                                            }
 
-                                                for($i = 0; $i < count($dados); $i++){
-                                                    $keys = array_keys($dados[$i]);
-                                                    foreach($keys as $key){
-                                                        if($key != 'STATUS'){
-                                                            $form .='<th>'. $dados[$i][$key] .'</th>';
+
+                                                        }
+                                                        if($dados[$i]['STATUS'] == 1){
+                                                            $form .='<td class="center" >';
+                                                            $form .='<a class="btn btn-primary dim" style="height: 23px; border-radius: 9px;" id="'. $routeStatus .'" onclick="status(this.id , '. $dados[$i]['ID'] .');"></a>';
+                                                            $form .='</td>';
+                                                        }else{
+                                                            $form .='<td class="center">';
+                                                            $form .='<a class="btn btn-danger dim" style="height: 23px; border-radius: 9px;" id="'. $routeStatus .'" onclick="status(this.id , '. $dados[$i]['ID'] .');"></a>';
+                                                            $form .='</td>';
                                                         }
 
+                                                        $form .='<td class="center" style="display: flex;">';
+                                                        $form .='<a href=" '. $routeEdit . "/" . $dados[$i]['ID'] .'" class="btn btn-success  dim" title="Editar" style="padding: 7px; ">';
+                                                            $form .='<i class="fa fa-edit" style="color: white; font-size: 17px; "></i></a>';
 
-                                                    }
-                                                    if($dados[$i]['STATUS'] == 1){
-                                                        $form .='<td class="center" >';
-                                                        $form .='<a class="btn btn-primary dim" style="height: 23px; border-radius: 9px;" id="'. $routeStatus .'" onclick="status(this.id , '. $dados[$i]['ID'] .');"></a>';
+                                                            $form .='<a class="btn btn-danger  dim " id="'.$routeDelete.'" onclick="deletar(this.id, '. $dados[$i]['ID'] .')" title="Excluir" style="padding: 7px; margin-left: 10px;">';
+                                                            $form .='<i class="fa fa-trash" style="color: white; font-size: 17px; "></i></a>';
                                                         $form .='</td>';
-                                                    }else{
-                                                        $form .='<td class="center">';
-                                                        $form .='<a class="btn btn-danger dim" style="height: 23px; border-radius: 9px;" id="'. $routeStatus .'" onclick="status(this.id , '. $dados[$i]['ID'] .');"></a>';
-                                                        $form .='</td>';
+
+                                                $form .='</tr>';
                                                     }
+                                                }else{
 
-                                                    $form .='<td class="center" style="display: flex;">';
-                                                    $form .='<a href=" '. $routeEdit . "/" . $dados[$i]['ID'] .'" class="btn btn-success  dim" title="Editar" style="padding: 7px; ">';
-                                                        $form .='<i class="fa fa-edit" style="color: white; font-size: 17px; "></i></a>';
+                                                            $form .='<td class="center">';
+                                                            $form .='</td>';
 
-                                                        $form .='<a class="btn btn-danger  dim " id="'.$routeDelete.'" onclick="deletar(this.id, '. $dados[$i]['ID'] .')" title="Excluir" style="padding: 7px; margin-left: 10px;">';
-                                                        $form .='<i class="fa fa-trash" style="color: white; font-size: 17px; "></i></a>';
-                                                    $form .='</td>';
 
-                                            $form .='</tr>';
+                                                        $form .='<td class="center" style="display: flex;">';
+
+                                                        $form .='</td>';
+
+                                                $form .='</tr>';
+
                                                 }
+
 
 
 
