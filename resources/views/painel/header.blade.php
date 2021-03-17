@@ -71,7 +71,8 @@
                     <li class="nav-header">
                         <div class="dropdown profile-element">
                             @isset(auth()->user()->imagem)
-                            <img alt="image" class="rounded-circle" src="{{session('URL_IMG') .  auth()->user()->imagem }}"/>
+                            {{-- <img alt="image" class="rounded-circle" src="{{session('URL_IMG') .  auth()->user()->imagem }}"/> --}}
+                            <img alt="image" class="rounded-circle" src="{{asset('storage/usuarios/photo_1615997921.png')}}"/>
                             @endisset
 
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -103,13 +104,6 @@
                         </ul>
                     </li>
 
-                    <li class="">
-                        <a href="#" ><i class="fa fa-institution"></i></i><span class="nav-label">Quem Somos</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li class=""><a href="{{ route('institucional-find', '1') }}">Alterar</a></li>
-                            {{-- <li class=""><a href="editar-institucional/1">Alterar</a></li> --}}
-                        </ul>
-                    </li>
 
                     <li class="">
                         <a href="#" ><i class="fa fa-cubes"></i><span class="nav-label">Produtos</span> <span class="fa arrow"></span></a>

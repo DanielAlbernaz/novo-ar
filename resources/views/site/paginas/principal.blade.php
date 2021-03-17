@@ -83,20 +83,42 @@
         </main>
 
     <!-- Benefícios -->
-        <div class="fusion-beneficios">
+        <div class="fusion-beneficios container-nav">
             <div class="fusion-text">
                 <h1>Benefícios</h1>
+                <dd></dd>
+            </div>
+            <div class="fusion-paragrafo">
                 <p>Diminuir a temperatura sem gastar tanta
                     energia elétrica? Que tal fazer isso com
                     climatizadores tecnológicos que gastam
                     90% menos energia elétrica?!
                 </p>
-                <div class="fusion-img">
-                    <img src="images/ar.png" alt="">
-                </div>
             </div>
 
+            <div class="fusion-circulo">
+                <ul>
+                    <li>
+                        <img src="images/90.png">
+                    </li>
+                    <li>
+                        <img src="images/temperatura.png" >
+                    </li>
+                    <li>
+                        <img src="images/ruido.png" >
+                    </li>
+                    <li>
+                        <img src="images/eficiencia.png">
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="fusion-img">
+                <img src="images/ar.png" alt="">
+            </div>
         </div>
+
+        
 
     <!-- NEWSLETTER -->
     <section class="newsletter container-footer bg-black">
