@@ -66,6 +66,16 @@ Route::middleware(['auth'])->group(function() {
                 Route::post('/edit-institucional', 'App\Http\Controllers\Painel\ControllerInstitucional@edit')->name('edit');
             });
 
+            Route::name('empresa.')->group(function (){
+                Route::get('/editar-empresa/{id}', 'App\Http\Controllers\Painel\ControllerEmpresa@find')->name('find');
+                Route::post('/edit-empresa', 'App\Http\Controllers\Painel\ControllerEmpresa@edit')->name('edit');
+            });
+
+            Route::name('instalacoes.')->group(function (){
+                Route::get('/editar-instalacoes/{id}', 'App\Http\Controllers\Painel\ControllerInstalacoes@find')->name('find');
+                Route::post('/edit-instalacoes', 'App\Http\Controllers\Painel\ControllerInstalacoes@edit')->name('edit');
+            });
+
 
 
     });

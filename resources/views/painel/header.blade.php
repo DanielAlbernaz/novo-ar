@@ -106,8 +106,7 @@
                     <li class="">
                         <a href="#" ><i class="fa fa-institution"></i></i><span class="nav-label">Quem Somos</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class=""><a href="{{ route('institucional-find', '1') }}">Alterar</a></li>
-                            {{-- <li class=""><a href="editar-institucional/1">Alterar</a></li> --}}
+                            <li class=""><a href="{{ url('sistema/editar-institucional/1') }}">Alterar</a></li>
                         </ul>
                     </li>
 
@@ -116,6 +115,20 @@
                         <ul class="nav nav-second-level">
                             <li class=""><a href="{{ route('produto.cadastrar') }}">Cadastrar</a></li>
                             <li class=""><a href="{{ route('produto.listar') }}">Listar</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="#" ><i class="fa fa-building-o"></i><span class="nav-label">Novo Ar</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class=""><a href="{{ url('sistema/editar-empresa/1') }}">Alterar</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="#" ><i class="fa fa-file-image-o"></i><span class="nav-label">Instalações</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li class=""><a href="{{ url('sistema/editar-instalacoes/1') }}">Alterar</a></li>
                         </ul>
                     </li>
 

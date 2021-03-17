@@ -436,7 +436,7 @@
 
 <script src="{{asset('assests/painel/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
 <script src="{{asset('assests/painel/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-
+<script src="{{asset('assests/painel/js/clone/dist/jquery.cloner.min.js')}}"></script>
 
 
 

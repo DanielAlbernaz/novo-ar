@@ -43,6 +43,23 @@ class Form extends Model
         return print_r($form);
     }
 
+    static function sb_FormPhone($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
+    {
+        $form = '';
+
+        $form .='<div class="form-group  row ">';
+            $form .='<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
+
+            $form .='<div class="col-sm-10" input>';
+            $form .='<span class="error"></span>';
+                $form .='<input  onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" type="text" id="'. $id .'" class="form-control" name="'. $id .'" value="'. ($value ? $value : '') .'" title="'. $title .'" style="width:'. $width .'" '.($required == true ? 'required' : '').'></div>';
+            $form .='</div>';
+
+        $form .='<div class="hr-line-dashed"></div>';
+
+        return print_r($form);
+    }
+
 
     static function sb_FormTextEmail($name = '', $id = '', $title = '', $width = '', $value = '', $required = false)
     {
@@ -214,6 +231,40 @@ class Form extends Model
 
         return print_r($form);
     }
+
+    static function sb_FormClone($name, $id, $width, $value = null)
+    {
+        $form = '';
+
+        $form .= '<div class="form-group row">';
+            $form .= '<label class="col-sm-2 col-form-label">'.$name.'</label>';
+
+            $form .= '<div class="clonable-block " data-toggle="cloner">';
+            if(count($value) > 0){
+                for($i = 0; $i < count($value); $i++){
+                    $form .= '<div class="clonable " data-clone-number="1">';
+                        $form .= '<div  style="display: flex; padding: 5px; margin-left: 9px;" class="col-sm-10">';
+                            // $form = '<label for="attr_1" class="clonable-increment-for">Attribute <span class="clonable-increment-html">1</span></label>';
+                            $form .= '<input  onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"  id="'.$id.'[]" style="width: '.$width.' ; height: 35px;" class="clonable-increment-id clonable-increment-name form-control" value="'.$value[$i]['telefone'].'" type="text" name="'.$id.'[]">';
+                            $form .= '<button type="button" style="margin-left: 20px;" class="clonable-button-close btn btn-danger  dim"><i class="fa fa-trash"></i></button>';
+                        $form .= '</div>';
+                    $form .= '</div>';
+                }
+            }else{
+                $form .= '<div class="clonable " data-clone-number="1">';
+                        $form .= '<div  style="display: flex; padding: 5px; margin-left: 9px;" class="col-sm-10">';
+                            // $form = '<label for="attr_1" class="clonable-increment-for">Attribute <span class="clonable-increment-html">1</span></label>';
+                            $form .= '<input  onkeypress="mask(this, mphone);" onblur="mask(this, mphone);"  id="'.$id.'[]" style="width: '.$width.' ; height: 35px;" class="clonable-increment-id clonable-increment-name form-control" type="text" name="'.$id.'[]">';
+                            $form .= '<button type="button" style="margin-left: 20px;" class="clonable-button-close btn btn-danger  dim"><i class="fa fa-trash"></i></button>';
+                        $form .= '</div>';
+                    $form .= '</div>';
+            }
+            $form .= '<button style="margin-left: 15px;" class="clonable-button-add btn btn-success  dim" type="button"><i class="fa fa-plus"></i></button>';
+            $form .= '</div>';
+        $form .= '</div>';
+
+        return print_r($form);
+    }
     static function sb_FormGalleria($value= null, $route)
     {
         $form = '';
@@ -224,6 +275,7 @@ class Form extends Model
 
             $form .='<div class="col-lg-12 col-md-12 col-12">';
 
+                if($value != null){
                     for($i = 0; $i < count($value); $i++){
                         $form .='<a  style="padding: 5px; cursor:pointer; width: 150px;height: 189px;display: -webkit-inline-box;" id="imagemGalleria">';
                         $form .='<img style="display: inline !important;  margin: 5px;  width: 100%;height: 100%;"   class="img-fluid img-thumbnail"src="'.session('URL_IMG'). $value[$i]->imagem.'" alt="">';
@@ -232,10 +284,9 @@ class Form extends Model
                         $form .='<i class="fa fa-trash"></i>';
                         $form .='</button>';
 
-
-
                         $form .='</a>';
                     }
+                }
             $form .='</div>';
 
             $form .='</div>';
