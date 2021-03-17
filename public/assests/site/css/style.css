@@ -27,7 +27,6 @@
     width: 100%;
     float: left;
     padding: 3% 4%;
-    text-align: center;
 }
 
 /*======== BG COLORS =========*/
@@ -47,8 +46,10 @@
 }
 
 body {
+    width: 100%;
     background-color: #f5f5f5;
 }
+
 a {
     text-decoration: none;
 }
@@ -269,10 +270,9 @@ img{
 
 .fusion-beneficios{
     width: 100%;
-    height: 600px;
     float: left;
     padding: 4%;
-    background: #fff;
+    background: #e6e6e6;
 }
 
 .fusion-text h1{
@@ -285,14 +285,40 @@ img{
     font-style: normal;
 }
 
-.fusion-text p{
-    width: 40%;
-    float: left;
-    font-size: 32px;
+.fusion-paragrafo p{
+    width: 60%;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 0 0 20px;
+    font-size: 24px;
     line-height: 42px;
-    font-weight: 300;
+    font-weight: 200;
     color: #160D19;
-    margin-top: 20px;
+    padding-left: 5px;
+}
+
+.fusion-text dd{
+    color: #160D19 !important;
+    border: 0;
+    margin-left: 5px;
+    margin-right: 1041px;
+    border-top: 5px solid #4f93ce;
+    padding-bottom: 20px;
+}
+
+/* .fusion-text{
+    left: 10%;   
+} */
+.fusion-circulo{
+    width: 100%;
+}
+
+.fusion-circulo ul li{
+    width: 140px;
+    margin: 5px;
+    display: inline-block;
+    float: left;
+    margin-left: 5px;
+    
 }
 
 .fusion-img {
@@ -338,24 +364,69 @@ img{
 
 /* RODAPÉ */
 
+.rodape-footer{
 
-.social-icons a{
-    font-size: 1.5em;
-    color: rgba(255, 255, 255, 0.726);
-    margin-right: 3%;
 }
 
-.social-icons a:last-child{
-    margin-right: 0;
+.col-md-1 {
+    width: 33.33333%;
+    padding: 0 1%;
+    float: left;
 }
 
-.social-icons a:hover{
-    color: rgb(255, 255, 255);
+.col-md-1 h3 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #3861bd;
+    font-family: "Montserrat", Arial, sans-serif;
 }
 
-.copyright{
-    margin-top: 2%;
-    color: rgba(255, 255, 255, 0.7);
+.col-md-1 p{
+    width: 367px;
+    margin-bottom: 20px;
+    margin: 0 0 10px;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #828282;
+}
+
+.col-md-2 {
+    width: 20%;
+    display: inline-block;
+    margin-left: 98px;
+}
+
+.col-md-2 ul li{
+    padding: 1.5% 1%;
+}
+
+.col-md-2 ul li a{
+    color: #000000;
+    font-weight: 400;
+}
+
+.col-md-2 ul li a:hover{
+    border-bottom: 1px solid #000000;
+}
+
+.col-md-3{
+    width: 30%;
+    display: inline-block;
+    margin-top: 0%;
+}
+
+.col-md-3 ul li{
+    padding: 1% 3%;
+}
+
+.col-md-3 ul li a{
+    color: #000000;
+    font-weight: 400;
 }
 
 /*======= MOBILE FIRST =======*/
@@ -363,6 +434,12 @@ img{
 @media screen and (min-width: 320px) {
     .Espacamentoicon{
         margin-right: 0;
+    }
+    .fusion-img {
+        width: 0%;
+        margin-right: 0px;
+        float: left;
+        margin-top: 24px;
     }
 }
 @media screen and (min-width: 480px) {
@@ -379,13 +456,12 @@ img{
     }
     .fusion-beneficios{
         width: 100%;
-        height: 100%;
         float: left;
         padding: 4%;
-        background: #fff;
+        background: #e6e6e6;
     }
     .fusion-text p{
-        width: 90%;
+        width: 100%;
         float: left;
         font-size: 32px;
         line-height: 42px;
@@ -394,10 +470,15 @@ img{
         margin-top: 20px;
     }
     .fusion-img {
-        width: 100%;
+        width: 0%;
+        margin-right: 0px;
         float: left;
-        margin-top: 20px;
+        margin-top: 24px;
     }
+    .fusion-circulo{
+        width: 100%;
+    }
+
 }
 
 /*SMALL DEVICES - TABLETS*/
@@ -427,7 +508,7 @@ img{
         margin-top: 0;
     }
     .fusion-text p{
-        width: 50%;
+        width: 80%;
         float: left;
         font-size: 32px;
         line-height: 42px;
@@ -436,10 +517,10 @@ img{
         margin-top: 20px;
     }
     .fusion-img {
-        width: 49%;
+        margin-right: -35px;
+        width: 40%;
         float: right;
-        margin-top: -10px;
-        margin-right: -31px;
+        margin-top: -445px;
     }
 }
 
@@ -474,19 +555,37 @@ img{
     }
     .fusion-beneficios {
         width: 100%;
-        height: 600px;
         float: left;
         padding: 4%;
-        background: #fff;
+        background: #e6e6e6;
+    }
+    .fusion-text p{
+        width: 70%;
+        float: left;
+        font-size: 32px;
+        line-height: 42px;
+        font-weight: 300;
+        color: #160D19;
+        margin-top: 20px;
     }
     .fusion-img {
-        width: 46%;
+        width: 40%;
         float: right;
-        margin-top: -41px;
+        margin-top: -413px;
         margin-right: -39px;
     }
 }
 
+
+
+@media screen and (min-width: 1017px){
+    .fusion-img {
+        width: 40%;
+        float: right;
+        margin-top: -287px;
+        margin-right: -39px;
+    }
+} 
 
 /* LARGE DEVICES - WIDE SCREENS */
 @media screen and (min-width: 1280px) {
@@ -523,15 +622,14 @@ img{
     }
     .fusion-beneficios {
         width: 100%;
-        height: 600px;
         float: left;
         padding: 4%;
-        background: #fff;
+        background: #e6e6e6;
     }
     .fusion-img {
         width: 40%;
         float: right;
-        margin-top: -110px;
+        margin-top: -282px;
         margin-right: -54px;
     }
 }

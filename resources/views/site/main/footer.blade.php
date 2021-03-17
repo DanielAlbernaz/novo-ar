@@ -1,14 +1,44 @@
 </body>
 
 <!-- RODAPÉ -->
-<footer class="rodape container-footer bg-gradient">
-        <div class="social-icons">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="https://www.instagram.com/alberncamp/?hl=pt-br"><i class="fa fa-instagram"></i></a>
-        </div>
-        <p class="copyright">
-            copyright © ALBERNCAMP 2021. Todos direitos reservados.
-        </p>
+<footer class="rodape-footer container-footer">
+    <div class="col-md-1 fh5co-widget">
+        <h3>Novo Ar</h3>
+        <p>
+            A Solução Ideal Para Sua Empresa!
+            Trabalhamos com Climatizadores Industriais e Comerciais</p>
+    </div>
+
+    <div class="col-md-2">
+        <ul>
+            <li><a href="">Sobre nós</a></li>
+            <li><a href="">Produtos</a></li>
+            <li><a href="">Contatos</a></li>
+            <li><a href="">Termos de uso</a></li>
+        </ul>
+    </div>
+
+    <div class="col-md-3">
+        <ul>
+            <li>
+                <i class="fa fa-phone"></i> 
+                <a href="tel:5562984080282">(62) 98408-0282 </a>
+            </li>
+            <li>
+                <i class="fa fa-phone"></i> 
+                <a href="tel:5562984080282">(62) 98408-0282 </a>
+            </li>
+            <li>
+                <i class="fa fa-whatsapp"></i>
+                 <a target="_blank" href="https://web.whatsapp.com/send?phone=5562984080282&amp;text=Olá, tenho interesse!">(62) 98408-0282</a>
+                </li>
+            <li>
+                <i class="fa fa-envelope"></i> 
+                <a href="mailto:novoarclimatizadores@gmail.com"> novoarclimatizadores@gmail.com</a>
+            </li>
+        </ul>
+    </div>
+       
     </footer>
 	
     <!-- JQUERY -->

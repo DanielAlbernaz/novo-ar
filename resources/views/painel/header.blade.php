@@ -71,7 +71,8 @@
                     <li class="nav-header">
                         <div class="dropdown profile-element">
                             @isset(auth()->user()->imagem)
-                            <img alt="image" class="rounded-circle" src="{{session('URL_IMG') .  auth()->user()->imagem }}"/>
+                            {{-- <img alt="image" class="rounded-circle" src="{{session('URL_IMG') .  auth()->user()->imagem }}"/> --}}
+                            <img alt="image" class="rounded-circle" src="{{asset('storage/usuarios/photo_1615997921.png')}}"/>
                             @endisset
 
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
