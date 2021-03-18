@@ -2,7 +2,7 @@
             <div class="footer">
 
 <div>
-    <strong>Copyright</strong> AlbernBras Software  &copy; 2020
+    <strong>Copyright</strong> AlbernCamp Software  &copy; 2020
 </div>
 </div>
 </div>

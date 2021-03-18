@@ -40,6 +40,9 @@ class ControllerEmpresa extends Controller
             $objempresa->facebook = $request->facebook;
             $objempresa->save();
 
+            /**Log */
+            createLog(auth()->user()->id, 'Alterar', 'Empresa',  $objempresa->id, $_SERVER['REMOTE_ADDR']);
+
             $retorno = [
                 'situacao' => 'success',
                 'form' => 'alt',

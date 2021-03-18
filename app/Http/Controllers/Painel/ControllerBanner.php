@@ -52,6 +52,9 @@ class ControllerBanner extends Controller
             $objBanner->imagem = $request->image_file;
             $objBanner->save();
 
+            /**Log */
+            createLog(auth()->user()->id, 'Adicionar', 'Banner',  $objBanner->id, $_SERVER['REMOTE_ADDR']);
+
             $retorno = [
                 'situacao' => 'success',
                 'form' => 'cad',
@@ -103,6 +106,9 @@ class ControllerBanner extends Controller
     }
     $user->save();
 
+    /**Log */
+    createLog(auth()->user()->id, 'Status', 'Banner',  $user->id, $_SERVER['REMOTE_ADDR']);
+
     $retorno = [
         'situacao' => 'success',
     ];
@@ -114,6 +120,9 @@ class ControllerBanner extends Controller
     $banner = Banner::find($request->id);
     unlink(storage_path('\app\public/\/'.$banner->imagem));
     $banner->delete();
+
+     /**Log */
+     createLog(auth()->user()->id, 'Deletar', 'Banner',  $request->id, $_SERVER['REMOTE_ADDR']);
 
     $retorno = [
         'situacao' => 'success',
@@ -160,6 +169,9 @@ class ControllerBanner extends Controller
         $objBanner->end_date = $request->end_date;
         $objBanner->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
         $objBanner->save();
+
+        /**Log */
+        createLog(auth()->user()->id, 'Alterar', 'Banner',  $request->id, $_SERVER['REMOTE_ADDR']);
 
         $retorno = [
             'situacao' => 'success',

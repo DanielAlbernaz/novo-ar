@@ -6,12 +6,22 @@ use App\Http\Controllers\ControllerProduto;
 use App\Http\Controllers\ControllerUser;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return view('site.paginas.principal');
 });
 
 Auth::routes();
+
+Route::get('envio-email', function(){
+
+    $user = new stdClass();
+    $user->name = 'Daniel Albernaz';
+    $user->email = 'danielgomesalbernaz@gmail.com';
+    // return new \App\Mail\newLaravelTips($user);
+    Mail::send(new \App\Mail\newLaravelTips($user));
+});
 
 
 Route::post('/logar', [ControllerUser::class, 'logar'])->name('logar');
@@ -24,7 +34,6 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/', function () {
             return view('painel/principal');
         });
-
 
             Route::name('usuario.')->group(function (){
                 Route::get('/cadastrar-usuario', [ControllerUser::class, 'create'])->name('cadastrar');
@@ -74,6 +83,8 @@ Route::middleware(['auth'])->group(function() {
             Route::name('instalacoes.')->group(function (){
                 Route::get('/editar-instalacoes/{id}', 'App\Http\Controllers\Painel\ControllerInstalacoes@find')->name('find');
                 Route::post('/edit-instalacoes', 'App\Http\Controllers\Painel\ControllerInstalacoes@edit')->name('edit');
+                Route::post('/salvar-galleria-instalacoes/{id}', 'App\Http\Controllers\Painel\ControllerInstalacoes@storeGalleria')->name('galleria');
+                Route::post('/deletar-instalacoes-imagem/{id}', 'App\Http\Controllers\Painel\ControllerInstalacoes@destroyImage')->name('destroy');
             });
 
 

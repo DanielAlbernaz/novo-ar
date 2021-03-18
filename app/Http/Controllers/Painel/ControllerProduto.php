@@ -57,6 +57,9 @@ class ControllerProduto extends Controller
             $objProduto->imagem = $request->image_file;
             $objProduto->save();
 
+            /**Log */
+            createLog(auth()->user()->id, 'Cadastro', 'Institucional',  $objProduto->id, $_SERVER['REMOTE_ADDR']);
+
             $retorno = [
                 'situacao' => 'success',
                 'form' => 'cad',
@@ -108,6 +111,9 @@ class ControllerProduto extends Controller
     }
     $user->save();
 
+     /**Log */
+     createLog(auth()->user()->id, 'Status', 'Institucional',  $user->id, $_SERVER['REMOTE_ADDR']);
+
     $retorno = [
         'situacao' => 'success',
     ];
@@ -127,6 +133,9 @@ class ControllerProduto extends Controller
     }
     unlink(storage_path('\app\public/\/'.$produto->imagem));
     $produto->delete();
+
+     /**Log */
+     createLog(auth()->user()->id, 'Deletar', 'Institucional', $request->id, $_SERVER['REMOTE_ADDR']);
 
     $retorno = [
         'situacao' => 'success',
@@ -236,6 +245,9 @@ class ControllerProduto extends Controller
         $objProduto->end_date = $request->end_date;
         $objProduto->imagem =  ($request->image_file ? $request->image_file : $request->imgOld);
         $objProduto->save();
+
+        /**Log */
+        createLog(auth()->user()->id, 'Alterar', 'Institucional', $objProduto->id, $_SERVER['REMOTE_ADDR']);
 
         $retorno = [
             'situacao' => 'success',

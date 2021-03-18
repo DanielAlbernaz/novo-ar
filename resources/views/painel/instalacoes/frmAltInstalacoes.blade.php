@@ -23,9 +23,9 @@ Form::sb_FormText('Título', 'title', 'Defina um título para o  instalações',
 
 Form::sb_FormTextHtml('Texto', 'text', 'Escre uma texto', $instalacoes->text, false);
 
-Form::sb_FormGalleria('', 'sistema/deletar-instalacoes-imagem');
+Form::sb_FormGalleria($galleriaInstalacoes, 'sistema/deletar-instalacoes-imagem');
 
-Form::sb_FormSubmit('Salvar', '', 'sistema/edit-institucional');
+Form::sb_FormSubmit('Salvar', '', 'sistema/edit-instalacoes');
 
 Form::sb_FormHidden('id', $instalacoes->id);
 
@@ -35,15 +35,17 @@ Form::sb_FormEnd();
 ?>
 
 <script>
+    var urlDomain = window.location.origin;
+
     Dropzone.options.myDropzone= {
-    url: 'http://127.0.0.1:8000/sistema/salvar-galleria/' + '<?php print $instalacoes->id; ?>',
+    url: urlDomain + '/sistema/salvar-galleria-instalacoes/1',
     //autoProcessQueue: false,
     uploadMultiple: true,
     addRemoveLinks:false,
     dictDefaultMessage: "Arraste ou clique para importar suas fotos.",
-    parallelUploads: 10,
-    maxFiles: 10,
-    maxFilesize: 55,
+    parallelUploads: 100,
+    maxFiles: 100,
+    maxFilesize: 100,
     acceptedFiles: 'image/*',
     headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

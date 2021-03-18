@@ -1,6 +1,5 @@
 
-// const pathSite = window.location.hostname
-const pathSite = 'http://127.0.0.1:8000/';
+const pathSite = window.location.origin + '/';
 
 /* Máscaras ER */
 function mask(o, f) {
@@ -90,6 +89,9 @@ function formularios(route){
 
                     if(data.form == 'alt'){
                         mesages('error',  data.msg);
+                        setTimeout(function() {
+                            window.location.href = pathSite + data.redirect
+                          }, 1000);
                     }
                 }
             }

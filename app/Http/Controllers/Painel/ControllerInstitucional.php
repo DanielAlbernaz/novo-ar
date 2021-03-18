@@ -48,10 +48,11 @@ class ControllerInstitucional extends Controller
         $objInstitucional->missao = $request->missao;
         $objInstitucional->url = $request->url;
         $objInstitucional->status = $request->status;
-        $objInstitucional->begin_date = ($request->begin_date ? $request->begin_date  : date('Y-m-d H:i:s'));
-        $objInstitucional->end_date = $request->end_date;
         $objInstitucional->imagem =  ($request->image_file ? $request->image_file : $request->imgOld);
         $objInstitucional->save();
+
+        /**Log */
+        createLog(auth()->user()->id, 'Alterar', 'Institucional',  $objInstitucional->id, $_SERVER['REMOTE_ADDR']);
 
         $retorno = [
             'situacao' => 'success',

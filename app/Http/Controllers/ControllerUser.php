@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Usuario;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Intervention\Image\ImageManagerStatic;
@@ -46,7 +47,6 @@ class ControllerUser extends Controller
                 $img->save(storage_path('\app\public'. '/\/'  . $localStorage) . '/\/' . $namePhoto,100);
 
                 $request->image_file= $localStorage . "/" . $namePhoto;
-                //$objForm->print_rpre($namePhoto);
             }
 
             $objUser->name = $request->name;
@@ -56,6 +56,9 @@ class ControllerUser extends Controller
             $objUser->imagem = $request->image_file;
             $objUser->status = 1;
             $objUser->save();
+
+            /**Log */
+            createLog(auth()->user()->id, 'Adicionar', 'Usuário',  $objUser->id, $_SERVER['REMOTE_ADDR']);
 
             $retorno = [
                 'situacao' => 'success',
@@ -108,6 +111,9 @@ class ControllerUser extends Controller
     }
     $user->save();
 
+    /**Log */
+    createLog(auth()->user()->id, 'Status', 'Usuário',  $user->id, $_SERVER['REMOTE_ADDR']);
+
     $retorno = [
         'situacao' => 'success',
     ];
@@ -155,6 +161,9 @@ class ControllerUser extends Controller
         $user->imagem = ($request->image_file ? $request->image_file : $request->imgOld);
         $user->save();
 
+         /**Log */
+        createLog(auth()->user()->id, 'Alterar', 'Usuário',  $user->id, $_SERVER['REMOTE_ADDR']);
+
         $retorno = [
             'situacao' => 'success',
             'form' => 'alt',
@@ -182,6 +191,9 @@ class ControllerUser extends Controller
     }
     $user->delete();
 
+    /**Log */
+    createLog(auth()->user()->id, 'Deletar', 'Usuário',  $request->id, $_SERVER['REMOTE_ADDR']);
+
     $retorno = [
         'situacao' => 'success',
     ];
@@ -198,6 +210,8 @@ class ControllerUser extends Controller
 
     if(Auth::attempt($credentials)){
         return view('painel.principal');
+    }else{
+        return Redirect::back()->withErrors([' Email ou senha incorretos. favor tentar novamente.']);
     }
 
  }
