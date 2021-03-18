@@ -37,7 +37,7 @@
                 <a href="#"><img src="images/product1.png" alt="NAC02 C"></a>
                 <div class="inner">
                     <h2> Climatizador NAC02 C</h2>
-                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
                 </div>
             </article>
 
@@ -45,7 +45,7 @@
                 <a href="#"><img src="images/product2.png" alt="CT305 T"></a>
                 <div class="inner">
                     <h2> Climatizador CT305 T </h2>
-                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
                 </div>
             </article>
 
@@ -53,7 +53,7 @@
                 <a href="#"><img src="images/product1.png" alt="NAC02 C"></a>
                 <div class="inner">
                     <h2> Climatizador NAC02 C</h2>
-                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
                 </div>
             </article>
 
@@ -61,7 +61,7 @@
                 <a href="#"><img src="images/product2.png" alt="CT305 T"></a>
                 <div class="inner">
                     <h2> Climatizador CT305 T </h2>
-                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
                 </div>
             </article>
 
@@ -69,7 +69,7 @@
                 <a href="#"><img src="images/product3.png" alt="BT202 N"></a>
                 <div class="inner">
                     <h2> Climatizador BT202 N</h2>
-                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
                 </div>
             </article>
 
@@ -77,7 +77,7 @@
                 <a href="#"><img src="images/product3.png" alt="BT202 N"></a>
                 <div class="inner">
                     <h2> Climatizador BT202 N</h2>
-                    <a href=""><button class="saiba-mais">  Saiba [+]  </button></a>
+                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
                 </div>
             </article>
         </main>
@@ -118,9 +118,15 @@
             </div>
         </div>
 
-        
+        <div class="ccw_plugin chatbot">
+			<div class="animate_animated animate_bounce ">
+					<a target="blank" href="https://web.whatsapp.com/send?phone=5562984080282&amp;text=Olá, tenho interesse!" class="animateanimated animate_bounce">
+						<img class="img-icon ccw-analytics" id="style-3" data-ccw="style-3" style="height: 65px;" src="images/whatsapp.png" alt="WhatsApp chat">
+					</a>
+			</div>
+		</div>
 
-    <!-- NEWSLETTER -->
+    {{-- <!-- NEWSLETTER -->
     <section class="newsletter container-footer bg-black">
         <h2> Inscreva-se agora! </h2>
         <h3> Receba novidades, dicas e muito mais </h3>
@@ -128,7 +134,7 @@
             <input class="bg-black radius" type="email" name="email" placeholder="Seu email">
             <button class="bg-white radius"> Cadastrar </button>
         </form>
-    </section>
+    </section> --}}
 
 
 

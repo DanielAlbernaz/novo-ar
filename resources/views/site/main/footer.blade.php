@@ -3,7 +3,7 @@
 <!-- RODAPÉ -->
 <footer class="rodape-footer container-footer">
     <div class="col-md-1 fh5co-widget">
-        <h3>Novo Ar</h3>
+        <img class="img-rodape" src="{{ asset('images/logonovoar.png') }} ">
         <p>
             A Solução Ideal Para Sua Empresa!
             Trabalhamos com Climatizadores Industriais e Comerciais</p>
@@ -38,8 +38,29 @@
             </li>
         </ul>
     </div>
-       
-    </footer>
+        <div class="col-md-4">
+            <ul>
+                <i class="fa fa-map"></i>
+                <a href="">
+                    Vila São Judas Tadeu, <br>
+                    Rua Belo Horizonte<br>
+                    Qd. 40 Lt. 03 Casa 02<br>
+                    Goiânia - GO<br>
+                </a>
+            </ul>
+        </div>
+    </div>  
+    <div class="col-md-5 text-center">
+						
+						
+        <p>
+            <small class="block">© 2020  TODOS OS DIREITOS RESERVADOS - NOVO AR CLIMATIZADORES </small> 
+            <small class="block">DESENVOLVIDO POR -  ALBERCAMP SOFTWARE </small>
+        </p>
+        
+    </div>  
+</footer>
+
 	
     <!-- JQUERY -->
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
