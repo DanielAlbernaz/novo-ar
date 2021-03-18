@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{asset('assests/site/js/slider/css/preview.css')}}" />
         <link rel="stylesheet" href="{{asset('assests/site/js/slider/css/style.css')}}" />
 
-        <link rel="icon" href="images/icon.png">
+        <link rel="icon" href="{{ asset('images/icon.png') }} ">
     </head>
     <body>
 
@@ -26,7 +26,7 @@
     <header class="cabecalho container-nav">
             <div class="logo">
                 <a href="index.html" class="logo">
-                    <img src="images/logonovoar.png">
+                    <img src="{{ asset('images/logonovoar.png') }}">
                 </a>
             </div>
                 <button class="btn-menu bg-gradient"><i class="fa fa-bars fa-lg"></i></button>
