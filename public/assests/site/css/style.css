@@ -304,8 +304,8 @@ img{
 .fusion-text dd{
     color: #160D19 !important;
     border: 0;
-    margin-left: 5px;
-    margin-right: 1041px;
+    margin-left: 4px;
+    margin-right: 1124px;
     border-top: 5px solid #4f93ce;
     padding-bottom: 20px;
 }
@@ -479,6 +479,141 @@ img{
     color: #000000;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 15px;
+}
+
+/* Pagina Produto */
+.name-produto-text{
+    width: 100%;
+    display: inline-flex;
+}
+.name-produto-text h1{
+    width: 100%;
+    text-align: center;
+    background: #f9f9f9;
+    color: #4c4c4c;
+    padding: 4%;
+    font-size: 35px;
+    border-bottom: 1px solid #ececec;
+    height: 151px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: "Montserrat", Arial, sans-serif;   
+}
+
+.product{
+    width: 100%;
+    background: #f9f9f9;
+    padding: 7% 4%;
+}
+
+.container-product{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row-product{
+    height: 580px;
+    display: flex;
+}
+
+.imagem-product{
+    width: 40%;
+    height: 482px;
+    margin-left: 8.33333%;
+}
+
+.prod-imagem{
+    height: 482px;
+}
+
+.owl-controls{
+    margin-top: 10px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.row-formulario{
+    background: #fff;
+    width: 30%;
+    height: 482px;
+    margin-left: 164px;
+}
+
+.contain-form{
+    padding: 30px 0px;
+}
+
+.contain-form h1{
+    font-size: 28px;
+    font-family: "Panton Reg", Arial, Helvetica, sans-serif;
+    color: #0e56c8;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 23px;
+}
+
+.contain-form form{
+    margin: 0%;
+}
+
+.form-control{
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.name-mask{
+    margin-left: 11px;
+    width: 40%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.phone-ddd-mask{
+    margin-left: 11px;
+    width: 50%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.email-mask{
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.cidade-mask{
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.mensagem-mask{
+    padding-bottom: 101px;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 140px;
+    border: 1px solid #ececec;
+}
+
+.enviar-mask{
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 48px;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    background: #0e56c8;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0px;
 }
 
 /*======= MOBILE FIRST =======*/
