@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
-Route::get('/', function () {
-    return view('site.paginas.principal');
-});
+// Route::get('/', function () {
+//     return view('site.paginas.principal');
+// });
+Route::get('/', 'App\Http\Controllers\Site\ControllerPrincipal@index')->name('principal');
 
 Auth::routes();
 

@@ -10,6 +10,7 @@ use Exception;
 use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Carbon;
 use Intervention\Image\ImageManagerStatic;
 
 class ControllerProduto extends Controller
@@ -22,6 +23,7 @@ class ControllerProduto extends Controller
 
     public function store(Request $request)
     {
+        date_default_timezone_set('America/Sao_Paulo');
         $objProduto = new Produto();
         try {
             if($request->image_file){
@@ -269,10 +271,10 @@ class ControllerProduto extends Controller
 
  }
 
- function inactivateDate()
+ static function inactivateDate()
  {
     Produto::where('status', 1)
-    ->where('end_date', '<', date('Y-m-d H:i:s'))
+    ->where('end_date', '<=', Carbon::now()->toDateString())
     ->update(['status' => 0]);
  }
 }

@@ -27,11 +27,11 @@ Form::sb_FormCropImage('Imagem banner', $banner->imagem, false);
 Form::sb_FormText('Link redirecionamento', 'url', 'Defina uma url para redirecionar', '800px', $banner->url, false);
 
 $opcaoAba[] = "<option value='1'  ".($banner->target_page == 1 ? 'selected="selected" ' : '')." >Sim</option>";
-$opcaoAba[] .= "<option value='2'  ".($banner->target_page == 0 ? 'selected="selected" ' : '')." >Não</option>";
+$opcaoAba[] .= "<option value='0'  ".($banner->target_page == 0 ? 'selected="selected" ' : '')." >Não</option>";
 Form::sb_FormSelect('Abrir link mesma aba ?', 'target_page', $opcaoAba, '250px', false);
 
 $opcaoAba[] = "<option value='1'  ".($banner->status == 1 ? 'selected="selected" ' : '')." >Ativo</option>";
-$opcaoAba[] .= "<option value='2'  ".($banner->status == 0 ? 'selected="selected" ' : '')." >Inativo</option>";
+$opcaoAba[] .= "<option value='0'  ".($banner->status == 0 ? 'selected="selected" ' : '')." >Inativo</option>";
 Form::sb_FormSelect('Status', 'status', $opcaoAba, '250px', true);
 
 Form::sb_FormDate('Data início exibição', 'begin_date', 'Data inícial que o conteúdo será exibido', '289px', str_replace(' ','T',$banner->begin_date) , false);

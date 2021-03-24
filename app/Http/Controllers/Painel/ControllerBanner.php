@@ -8,6 +8,7 @@ use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Carbon;
 use Intervention\Image\ImageManagerStatic;
 
 class ControllerBanner extends Controller
@@ -193,10 +194,10 @@ class ControllerBanner extends Controller
 
  }
 
- function inactivateDate()
+ static function inactivateDate()
  {
     Banner::where('status', 1)
-    ->where('end_date', '<', date('Y-m-d H:i:s'))
+    ->where('end_date', '<=', Carbon::now()->toDateString())
     ->update(['status' => 0]);
  }
 

@@ -2,85 +2,45 @@
 
 
         <!-- BANNER'S-->
-        {{-- <div class=" container-nav" style="background: url('images/banner-tecnologia1.jpg') no-repeat fixed;">
-
-        </div> --}}
-        <div class="slider-area slider-one-style banner">
-            <div class="bend niceties preview-1">
-                <div id="ensign-nivoslider-3" class="slides">
-
-                        <a href="" target="_blank" title="taça">
-                            <img src="images/banner1.png" alt="taça" />
-                        </a>
-
-                        <a href="" target="_blank" title="Patrocinadores">
-                            <img src="images/banner.png" alt="Patrocinadores" />
-                        </a>
-
+        @if (count($banner) > 0)
+            <div class="slider-area slider-one-style banner">
+                <div class="bend niceties preview-1">
+                    <div id="ensign-nivoslider-3" class="slides">
+                            @for ($i = 0; $i < count($banner); $i++)
+                                <a href="{{ $banner[$i]->url ? $banner[$i]->url : '' }}"  target="{{$banner[$i]->target_page == 1 ?"_self":"_blank"}}" title="{{ $banner[$i]->title }}">
+                                    <img src="{{ session('URL_IMG') .  $banner[$i]-> imagem}}" alt="{{ $banner[$i]->title }}" />
+                                </a>
+                            @endfor
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
+
 
         <!-- Separador -->
-        <div class="text-produtos">
-            <div class="nossos-produtos">
-                <h1>Conheça nossos produtos</h1>
-                <div class="separador"></div>
+        @if (count($produto) > 0)
+            <div class="text-produtos">
+                <div class="nossos-produtos">
+                    <h1>Conheça nossos produtos</h1>
+                    <div class="separador"></div>
+                </div>
             </div>
-        </div>
 
-
-        <!-- SERVIÇOS -->
-        <main class="servicos container">
-
-            <article class="produto bg-white radius">
-                <a href="#"><img src="images/product1.png" alt="NAC02 C"></a>
-                <div class="inner">
-                    <h2> Climatizador NAC02 C</h2>
-                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
-                </div>
-            </article>
-
-            <article class="produto bg-white radius">
-                <a href="#"><img src="images/product2.png" alt="CT305 T"></a>
-                <div class="inner">
-                    <h2> Climatizador CT305 T </h2>
-                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
-                </div>
-            </article>
-
-            <article class="produto bg-white radius">
-                <a href="#"><img src="images/product1.png" alt="NAC02 C"></a>
-                <div class="inner">
-                    <h2> Climatizador NAC02 C</h2>
-                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
-                </div>
-            </article>
-
-            <article class="produto bg-white radius">
-                <a href="#"><img src="images/product2.png" alt="CT305 T"></a>
-                <div class="inner">
-                    <h2> Climatizador CT305 T </h2>
-                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
-                </div>
-            </article>
-
-            <article class="produto bg-white radius">
-                <a href="#"><img src="images/product3.png" alt="BT202 N"></a>
-                <div class="inner">
-                    <h2> Climatizador BT202 N</h2>
-                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
-                </div>
-            </article>
-
-            <article class="produto bg-white radius">
-                <a href="#"><img src="images/product3.png" alt="BT202 N"></a>
-                <div class="inner">
-                    <h2> Climatizador BT202 N</h2>
-                    <a href=""><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
-                </div>
-            </article>
-        </main>
+            <!-- SERVIÇOS -->
+            <main class="servicos container">
+                @for ($i = 0; $i < count($produto); $i++)
+                    <article class="produto bg-white radius">
+                        <a href="produto/{{ $produto[$i]->id }}"><img src="{{ session('URL_IMG') .  $produto[$i]-> imagem}}" alt="{{ $produto[$i]->title }}"></a>
+                        <div class="inner">
+                            <a href="produto/{{ $produto[$i]->id }}">
+                                <h2>{{ $produto[$i]->title }}</h2>
+                            </a>
+                            <a href="produto/{{ $produto[$i]->id }}"><button class="saiba-mais">  Saiba Mais  [+]  </button></a>
+                        </div>
+                    </article>
+                    @endfor
+            </main>
+        @endif
 
     <!-- Benefícios -->
         <div class="fusion-beneficios container-nav">
@@ -112,7 +72,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div class="fusion-img">
                 <img src="images/ar.png" alt="">
             </div>
