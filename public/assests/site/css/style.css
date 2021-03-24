@@ -963,7 +963,5 @@ img{
 /* Pagina PRODUTO */
 
 @media screen and (min-width: 320px) {
-    .row-product{
-        display: inline;
-    }
+    
 }
