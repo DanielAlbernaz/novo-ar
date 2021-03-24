@@ -25,7 +25,7 @@ Route::get('envio-email', function(){
 });
 
 
-Route::get('/logar', [ControllerUser::class, 'logar'])->name('logar');
+Route::post('/logar', [ControllerUser::class, 'logar'])->name('logar');
 /**Usuários painel */
 
 
