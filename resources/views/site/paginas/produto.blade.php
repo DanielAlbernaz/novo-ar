@@ -63,6 +63,51 @@
                             <p>18L / 89kg</p>
                         </div>
                     </div>
+                    <div class="descrition">
+                        <div class="titulo-descrit">
+                            <h2> Descrição </h2>
+                        </div>
+                        <div class="text-descrit">
+                            <p>Climatizador evaporativo de porte industrial, abrange uma extensa área de climatização e resfriamento. Ideal para ambientes grandes</p>
+                        </div>
+                        <div class="titulo-descrit">
+                            <h2> Porque escolher a Novo Ar </h2>
+                        </div>
+                        <div class="text-descrit">
+                            <p>Tecnologia inovadora no mercado, a Novo Ar oferece os melhores climatizadores tecnológicos para que você possa aproveitar seus benefícios em qualquer lugar. Desde uma loja, empresa, na igreja e até na sua casa!</p>
+                        </div>
+                        <div class="titulo-descrit">
+                            <h2> Vantagens do climatizador Novo Ar </h2>
+                        </div>
+                        <div class="text-descrit">
+                            <p>São muitas as vantagens dos climatizadores Novo Ar, confira!</p>
+                        </div>
+                        <div class="itens-descrit">
+                            <ul>
+                                <li>
+                                   Redução de até 12 graus a temperatura do ambiente;
+                                </li>
+                                <li>
+                                    Economia de até 90% de energia em relação ao ar-condicionado;
+                                </li>
+                                <li>
+                                    Resfria e umidifica o estabelecimento sem arrastar água;
+                                </li>
+                                <li>
+                                    Hélice especial que garante ruído baixíssimo;
+                                </li>
+                                <li>
+                                    Aço Inox® em toda estrutura;
+                                </li>
+                                <li>
+                                    Não precisa fechar portas e janelas;
+                                </li>
+                                <li>
+                                    Fácil limpeza e manutenção.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
              </div>
         </div>

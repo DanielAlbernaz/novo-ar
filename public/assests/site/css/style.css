@@ -7,7 +7,8 @@
     outline: none;
     font-weight: 300;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;}
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
 
 /*======== CONTAINER =========*/
 .container-nav{
@@ -503,7 +504,7 @@ img{
 .product{
     width: 100%;
     background: #f9f9f9;
-    padding: 7% 4%;
+    padding: 7% 0%;
 }
 
 .container-product{
@@ -539,7 +540,7 @@ img{
     background: #fff;
     width: 30%;
     height: 482px;
-    margin-left: 164px;
+    margin-left: 146px;
 }
 
 .contain-form{
@@ -622,20 +623,28 @@ img{
     width: 100%;
     height: 800px;
     background: #f9f9f9;
+    display: inline-block;
+    float: left;
+    padding: 3% 2%;
 }
 
 .ficha{
-    width: 349px;
+    width: 100%;
+    display: inline-flex;
+}
+
+.text-ficha{
+    width: 35%;
     height: 482px;
     border: 1px solid #d8d8d8; 
-    border-top: 2px solid #0d5ab5;   
+    border-top: 2px solid #0d5ab5;
 }
 
 .titulo-text{
     height: 65px;
 }
 
-.text-ficha h2{
+.titulo-text h2{
     text-align: center;
     font-weight: 500;
     font-size: 30px;
@@ -662,8 +671,52 @@ img{
     color: gray;
 }
 
+.descrition{
+    width: 60%;
+    padding: 0% 4%;
+}
+
+.titulo-descrit h2{
+    color: #0e56c8;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: "Montserrat" , arial, sans-serif;
+    padding: 3% 0% 0% 0%;
+}
+
+.text-descrit p{
+    margin-top: 13px;
+    font-weight: 500;
+    color: gray;
+    font-size: 18px;
+    padding-bottom: 2px;
+}
+
+.icon-item{
+    font-family: 'icomoon';
+    position: absolute;
+    top: 24px;
+    left: 0;
+    content: 'e116';
+}
+
+.itens-descrit{
+    color: grey;
+}
+
+.itens-descrit ul{
+    margin-top: 30px;
+}
+
+.itens-descrit ul li{
+    padding: 10px;
+}
+
 /*======= MOBILE FIRST =======*/
 /*SMALL DEVICES - SMARTPHONES*/
+
+/* Pagina HOME */
+
 @media screen and (min-width: 320px) {
     .Espacamentoicon{
         margin-right: 0;
@@ -905,4 +958,12 @@ img{
     }
     
     
+}
+
+/* Pagina PRODUTO */
+
+@media screen and (min-width: 320px) {
+    .row-product{
+        display: inline;
+    }
 }
