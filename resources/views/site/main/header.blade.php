@@ -25,7 +25,7 @@
     <!-- CABEÇALHO -->
     <header class="cabecalho container-nav">
             <div class="logo">
-                <a href="index.html" class="logo">
+                <a href="/" class="logo">
                     <img src="{{ asset('images/logonovoar.png') }}">
                 </a>
             </div>
@@ -33,9 +33,9 @@
                 <nav class="menu">
                     <a class="btn-close"><i class="fa fa-times"></i></a>
                     <ul>
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Produtos</a></li>
-                        <li><a href="#">Instalações</a></li>
+                        <li><a href="{{ route('institucional') }}">Quem somos</a></li>
+                        <li><a  href="{{ route('produtos') }}">Produtos</a></li>
+                        <li><a href="#" >Instalações</a></li>
                         <li class="Espacamentoicon"><a href="#">Contato</a></li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.instagram.com/alberncamp/?hl=pt-br"><i class="fa fa-instagram"></i></a></li>

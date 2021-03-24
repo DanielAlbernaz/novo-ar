@@ -25,11 +25,13 @@ Route::get('envio-email', function(){
 });
 
 
-Route::post('/logar', [ControllerUser::class, 'logar'])->name('logar');
+Route::get('/logar', [ControllerUser::class, 'logar'])->name('logar');
 /**Usuários painel */
 
 
 Route::get('/produto/{id}', 'App\Http\Controllers\ControllerProduto@index')->name('produto');
+Route::get('/produtos', 'App\Http\Controllers\ControllerProdutos@index')->name('produtos');
+Route::get('/institucional', 'App\Http\Controllers\ControllerInstitucional@index')->name('institucional');
 
 
 Route::middleware(['auth'])->group(function() {
