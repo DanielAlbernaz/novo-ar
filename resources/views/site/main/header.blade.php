@@ -39,7 +39,6 @@
                         <li class="Espacamentoicon"><a href="#">Contato</a></li>
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.instagram.com/alberncamp/?hl=pt-br"><i class="fa fa-instagram"></i></a></li>
-                        </div>
                     </ul>
                 </nav>
-            </header>
+    </header>

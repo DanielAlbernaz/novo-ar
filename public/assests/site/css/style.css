@@ -7,7 +7,8 @@
     outline: none;
     font-weight: 300;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;}
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
 
 /*======== CONTAINER =========*/
 .container-nav{
@@ -304,8 +305,8 @@ img{
 .fusion-text dd{
     color: #160D19 !important;
     border: 0;
-    margin-left: 5px;
-    margin-right: 1041px;
+    margin-left: 4px;
+    margin-right: 1124px;
     border-top: 5px solid #4f93ce;
     padding-bottom: 20px;
 }
@@ -481,8 +482,241 @@ img{
     font-size: 15px;
 }
 
+/* Pagina Produto - Imagem e Formulario*/
+.name-produto-text{
+    width: 100%;
+    display: inline-flex;
+}
+.name-produto-text h1{
+    width: 100%;
+    text-align: center;
+    background: #f9f9f9;
+    color: #4c4c4c;
+    padding: 4%;
+    font-size: 35px;
+    border-bottom: 1px solid #ececec;
+    height: 151px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: "Montserrat", Arial, sans-serif;   
+}
+
+.product{
+    width: 100%;
+    background: #f9f9f9;
+    padding: 7% 0%;
+}
+
+.container-product{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row-product{
+    height: 580px;
+    display: flex;
+}
+
+.imagem-product{
+    width: 40%;
+    height: 482px;
+    margin-left: 8.33333%;
+}
+
+.prod-imagem{
+    height: 482px;
+}
+
+.owl-controls{
+    margin-top: 10px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.row-formulario{
+    background: #fff;
+    width: 30%;
+    height: 482px;
+    margin-left: 146px;
+}
+
+.contain-form{
+    padding: 30px 0px;
+}
+
+.contain-form h1{
+    font-size: 28px;
+    font-family: "Panton Reg", Arial, Helvetica, sans-serif;
+    color: #0e56c8;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 23px;
+}
+
+.contain-form form{
+    margin: 0%;
+}
+
+.form-control{
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.name-mask{
+    margin-left: 11px;
+    width: 40%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.phone-ddd-mask{
+    margin-left: 11px;
+    width: 50%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.email-mask{
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.cidade-mask{
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 48px;
+    border: 1px solid #ececec;
+}
+
+.mensagem-mask{
+    padding-bottom: 101px;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 140px;
+    border: 1px solid #ececec;
+}
+
+.enviar-mask{
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 94%;
+    height: 48px;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    background: #0e56c8;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0px;
+}
+
+/* Produto - Ficha e descrição */
+
+.row-descricao{
+    width: 100%;
+    height: 800px;
+    background: #f9f9f9;
+    display: inline-block;
+    float: left;
+    padding: 3% 8%;
+}
+
+.ficha{
+    width: 100%;
+    display: inline-flex;
+}
+
+.text-ficha{
+    width: 35%;
+    height: 482px;
+    border: 1px solid #d8d8d8; 
+    border-top: 2px solid #0d5ab5;
+}
+
+.titulo-text{
+    height: 65px;
+}
+
+.titulo-text h2{
+    text-align: center;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: "Montserrat" , arial, sans-serif;
+    color: #0e56c8;
+    padding: 15px;
+    border-bottom: 1px solid #d8d8d8;
+}
+.valor-text{
+    height: 70px;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.valor-text strong{
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+}
+
+.valor-text p{
+    text-align: center;
+    margin-top: 13px;
+    font-weight: 400;
+    color: gray;
+}
+
+.descrition {
+    width: 60%;
+    padding: 0% 0% 0% 7%;
+}
+
+.titulo-descrit h2{
+    color: #0e56c8;
+    font-weight: 500;
+    font-size: 30px;
+    font-family: "Montserrat" , arial, sans-serif;
+    padding: 3% 0% 0% 0%;
+}
+
+.text-descrit p{
+    margin-top: 13px;
+    font-weight: 500;
+    color: gray;
+    font-size: 18px;
+    padding-bottom: 2px;
+}
+
+.icon-item{
+    font-family: 'icomoon';
+    position: absolute;
+    top: 24px;
+    left: 0;
+    content: 'e116';
+}
+
+.itens-descrit{
+    color: grey;
+}
+
+.itens-descrit ul{
+    margin-top: 30px;
+}
+
+.itens-descrit ul li{
+    padding: 10px;
+}
+
 /*======= MOBILE FIRST =======*/
 /*SMALL DEVICES - SMARTPHONES*/
+
+/* Pagina HOME */
+
 @media screen and (min-width: 320px) {
     .Espacamentoicon{
         margin-right: 0;
@@ -723,5 +957,11 @@ img{
         margin-right: -54px;
     }
     
+    
+}
+
+/* Pagina PRODUTO */
+
+@media screen and (min-width: 320px) {
     
 }
