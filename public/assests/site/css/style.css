@@ -625,7 +625,7 @@ img{
     background: #f9f9f9;
     display: inline-block;
     float: left;
-    padding: 3% 2%;
+    padding: 3% 8%;
 }
 
 .ficha{
@@ -671,9 +671,9 @@ img{
     color: gray;
 }
 
-.descrition{
+.descrition {
     width: 60%;
-    padding: 0% 4%;
+    padding: 0% 0% 0% 7%;
 }
 
 .titulo-descrit h2{
