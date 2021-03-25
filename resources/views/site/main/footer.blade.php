@@ -21,11 +21,11 @@
     <div class="col-md-3">
         <ul>
             <li>
-                <i class="fa fa-phone"></i> 
+                <i class="fa fa-phone"></i>
                 <a href="tel:5562984080282">(62) 98408-0282 </a>
             </li>
             <li>
-                <i class="fa fa-phone"></i> 
+                <i class="fa fa-phone"></i>
                 <a href="tel:5562984080282">(62) 98408-0282 </a>
             </li>
             <li>
@@ -33,7 +33,7 @@
                  <a target="_blank" href="https://web.whatsapp.com/send?phone=5562984080282&amp;text=Olá, tenho interesse!">(62) 98408-0282</a>
                 </li>
             <li>
-                <i class="fa fa-envelope"></i> 
+                <i class="fa fa-envelope"></i>
                 <a href="mailto:novoarclimatizadores@gmail.com"> novoarclimatizadores@gmail.com</a>
             </li>
         </ul>
@@ -49,25 +49,38 @@
                 </a>
             </ul>
         </div>
-    </div>  
+    </div>
     <div class="col-md-5 text-center">
-						
-						
+
+
         <p>
-            <small class="block">© 2020  TODOS OS DIREITOS RESERVADOS - NOVO AR CLIMATIZADORES </small> 
+            <small class="block">© 2020  TODOS OS DIREITOS RESERVADOS - NOVO AR CLIMATIZADORES </small>
             <small class="block">DESENVOLVIDO POR -  ALBERCAMP SOFTWARE </small>
         </p>
-        
-    </div>  
+
+    </div>
 </footer>
 
-	
+
     <!-- JQUERY -->
-    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{asset('assests/site/js/main.js')}}"></script>
-    
+
     {{-- Banner js --}}
     <script type="text/javascript" src="{{asset('assests/site/js/minimalist-slider/assets/js/jquery.minimal-plugins.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assests/site/js/minimalist-slider/assets/js/jquery.minimalist-banner.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('assests/site/js/slider/js/jquery.nivo.slider.js')}}"></script> 	     
-    <script type="text/javascript" src="{{asset('assests/site/js/slider/home.js')}}"></script> 	     
+    <script type="text/javascript" src="{{asset('assests/site/js/slider/js/jquery.nivo.slider.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assests/site/js/slider/home.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('assests/site/galleria/dist/galleria.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assests/site/galleria/dist/themes/miniml/galleria.miniml.min.js')}}"></script>
+
+    <script>
+
+    (function() {
+        // Galleria.loadTheme('js/themes/azur/galleria.azur.min.js');
+        Galleria.run('#galleria-azur', {
+        transition: 'fadeslide'
+        });
+    }());
+    </script>

@@ -1,14 +1,16 @@
 @include('site.main.header')
 
     <div class="name-produto-text">
-        <h1 class="name-produto">Climatizador NA202 C</h1>
+        <h1 class="name-produto">{{ $produto->title }}</h1>
     </div>
 
     <div class="product">
         <div class="container-product">
             <div class="row-product">
                 <div class="imagem-product">
-                    <div class="prod-imagem">
+                    <div class="prod-imagem" id="galleria-azur">
+                        <img src="{{ asset('images/product1.png') }}" alt="">
+                        <img src="{{ asset('images/product1.png') }}" alt="">
                         <img src="{{ asset('images/product1.png') }}" alt="">
                     </div>
                 </div>
@@ -111,5 +113,5 @@
                 </div>
              </div>
         </div>
-    </div>    
+    </div>
 @include('site.main.footer')
