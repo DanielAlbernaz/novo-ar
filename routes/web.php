@@ -29,9 +29,9 @@ Route::post('/logar', [ControllerUser::class, 'logar'])->name('logar');
 /**Usuários painel */
 
 
-Route::get('/produto/{id}', 'App\Http\Controllers\ControllerProduto@index')->name('produto');
-Route::get('/produtos', 'App\Http\Controllers\ControllerProdutos@index')->name('produtos');
-Route::get('/institucional', 'App\Http\Controllers\ControllerInstitucional@index')->name('institucional');
+Route::get('/produto/{id}', 'App\Http\Controllers\Site\ControllerProduto@index')->name('produto');
+Route::get('/produtos', 'App\Http\Controllers\Site\ControllerProdutos@index')->name('produtos');
+Route::get('/institucional', 'App\Http\Controllers\Site\ControllerInstitucional@index')->name('institucional');
 
 
 Route::middleware(['auth'])->group(function() {

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\ImageManagerStatic;
 
 class ControllerPrincipal extends Controller
 {
@@ -20,6 +21,7 @@ class ControllerPrincipal extends Controller
         /**
          * Inativações
          */
+        $imagem = new ImageManagerStatic();
         ControllerBanner::inactivateDate();
         ControllerProduto::inactivateDate();
 

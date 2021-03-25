@@ -8,7 +8,7 @@
                     <div id="ensign-nivoslider-3" class="slides">
                             @for ($i = 0; $i < count($banner); $i++)
                                 <a href="{{ $banner[$i]->url ? $banner[$i]->url : '' }}"  target="{{$banner[$i]->target_page == 1 ?"_self":"_blank"}}" title="{{ $banner[$i]->title }}">
-                                    <img src="{{ session('URL_IMG') .  $banner[$i]-> imagem}}" alt="{{ $banner[$i]->title }}" />
+                                    <img src="{{ urlImg() .  $banner[$i]-> imagem}}" alt="{{ $banner[$i]->title }}" />
                                 </a>
                             @endfor
                     </div>
@@ -30,7 +30,7 @@
             <main class="servicos container">
                 @for ($i = 0; $i < count($produto); $i++)
                     <article class="produto bg-white radius">
-                        <a href="produto/{{ $produto[$i]->id }}"><img src="{{ session('URL_IMG') .  $produto[$i]-> imagem}}" alt="{{ $produto[$i]->title }}"></a>
+                        <a href="produto/{{ $produto[$i]->id }}"><img src="{{ urlImg() .  $produto[$i]-> imagem}}" alt="{{ $produto[$i]->title }}"></a>
                         <div class="inner">
                             <a href="produto/{{ $produto[$i]->id }}">
                                 <h2>{{ $produto[$i]->title }}</h2>
