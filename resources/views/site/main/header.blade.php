@@ -21,11 +21,7 @@
         <link rel="icon" href="{{ asset('images/icon.png') }} ">
     </head>
     <body>
-        <style>
-            .galleria{ height: 700px; }
-            .galleria-thumbs{ display: none;}
-            .galleria-fs{ display: none;}
-        </style>
+
     <!-- CABEÇALHO -->
     <header class="cabecalho container-nav">
             <div class="logo">

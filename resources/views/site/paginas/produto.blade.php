@@ -10,8 +10,6 @@
                 <div class="imagem-product">
                     <div class="prod-imagem" id="galleria-azur">
                         <img src="{{ asset('images/product1.png') }}" alt="">
-                        <img src="{{ asset('images/product1.png') }}" alt="">
-                        <img src="{{ asset('images/product1.png') }}" alt="">
                     </div>
                 </div>
                 <div class="row-formulario">
@@ -38,77 +36,38 @@
                             <p>
                                 <strong> Vazão de Ar: </strong>
                             </p>
-                            <p>18.00m³/h</p>
+                            <p>{{ $produto->vazao ? $produto->vazao : ''}}</p>
                         </div>
                         <div class="valor-text">
                             <p>
                                 <strong> Motor: </strong>
                             </p>
-                            <p>1cv 220v</p>
+                            <p>{{ $produto->motor ? $produto->motor : '' }}</p>
                         </div>
                         <div class="valor-text">
                             <p>
                                 <strong> Consumo elétrico: </strong>
                             </p>
-                            <p>8,84 KW/h</p>
+                            <p>{{ $produto->consumo ? $produto->consumo : '' }}</p>
                         </div>
                         <div class="valor-text">
                             <p>
                                 <strong> Abertura de parede: </strong>
                             </p>
-                            <p>82X82cm</p>
+                            <p>{{ $produto->abertura ? $produto->abertura : '' }}</p>
                         </div>
                         <div class="valor-text">
                             <p>
                                 <strong> Reservatório / peso seco: </strong>
                             </p>
-                            <p>18L / 89kg</p>
+                            <p>{{ $produto->reservatorio ? $produto->reservatorio : '' }}</p>
                         </div>
                     </div>
                     <div class="descrition">
                         <div class="titulo-descrit">
                             <h2> Descrição </h2>
                         </div>
-                        <div class="text-descrit">
-                            <p>Climatizador evaporativo de porte industrial, abrange uma extensa área de climatização e resfriamento. Ideal para ambientes grandes</p>
-                        </div>
-                        <div class="titulo-descrit">
-                            <h2> Porque escolher a Novo Ar </h2>
-                        </div>
-                        <div class="text-descrit">
-                            <p>Tecnologia inovadora no mercado, a Novo Ar oferece os melhores climatizadores tecnológicos para que você possa aproveitar seus benefícios em qualquer lugar. Desde uma loja, empresa, na igreja e até na sua casa!</p>
-                        </div>
-                        <div class="titulo-descrit">
-                            <h2> Vantagens do climatizador Novo Ar </h2>
-                        </div>
-                        <div class="text-descrit">
-                            <p>São muitas as vantagens dos climatizadores Novo Ar, confira!</p>
-                        </div>
-                        <div class="itens-descrit">
-                            <ul>
-                                <li>
-                                   Redução de até 12 graus a temperatura do ambiente;
-                                </li>
-                                <li>
-                                    Economia de até 90% de energia em relação ao ar-condicionado;
-                                </li>
-                                <li>
-                                    Resfria e umidifica o estabelecimento sem arrastar água;
-                                </li>
-                                <li>
-                                    Hélice especial que garante ruído baixíssimo;
-                                </li>
-                                <li>
-                                    Aço Inox® em toda estrutura;
-                                </li>
-                                <li>
-                                    Não precisa fechar portas e janelas;
-                                </li>
-                                <li>
-                                    Fácil limpeza e manutenção.
-                                </li>
-                            </ul>
-                        </div>
+                            <p>{{ htmlspecialchars($produto->text) }}</p>
                     </div>
                 </div>
              </div>
