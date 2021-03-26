@@ -87,9 +87,17 @@ class Form extends Model
         $form .= '<label class="col-sm-2 col-form-label">'. $name .' '.($required == true ? '<label  style="color: red">*</label>' : '').'</label>';
         $form .= '<div class="col-sm-10">';
         $form .= '<textarea id="'.$id.'" name="'.$id.'" title="'. $title .'"  '.($required == true ? 'required' : '').'>'. ($value ? $value : '') .'</textarea>';
+        $form .= ' <div  id="'.$id.'" name="'.$id.'">';
+        // $form .= '<textarea  id="'.$id.'" name="'.$id.'" title="'. $title .'" '.($required == true ? 'required' : '').'>'. ($value ? $value : '') .'</textarea>';
+        $form .= '</div>';
         $form .='</div>';
         $form .='</div>';
         $form .= '<div class="hr-line-dashed"></div>';
+
+
+
+
+
 
         return print_r($form);
     }

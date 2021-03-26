@@ -38,6 +38,9 @@
 
     <!-- Inclusão do Plugin jQuery Validation-->
     <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+
+    <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+
     <script>
         tinymce.init({
           selector: '#text',

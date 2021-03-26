@@ -439,6 +439,13 @@
 <script src="{{asset('assests/painel/js/clone/dist/jquery.cloner.min.js')}}"></script>
 
 
+{{-- <script>
+     var editor = CKEDITOR.replace( 'text' );
+    //  editor.CKEDITOR.instances.text.setData('text');
+    CKEDITOR.instances.editor.getData();
+    //  var editor = CKEDITOR.replace( 'text' );
+    // CKFinder.setupCKEditor( editor );
+</script> --}}
 
 
 <script>

@@ -75,12 +75,4 @@
     <script type="text/javascript" src="{{asset('assests/site/galleria/dist/galleria.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('assests/site/galleria/dist/themes/miniml/galleria.miniml.min.js')}}"></script>
 
-    <script>
 
-    (function() {
-        // Galleria.loadTheme('js/themes/azur/galleria.azur.min.js');
-        Galleria.run('#galleria-azur', {
-        transition: 'fadeslide'
-        });
-    }());
-    </script>

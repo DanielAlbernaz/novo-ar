@@ -9,7 +9,12 @@
             <div class="row-product">
                 <div class="imagem-product">
                     <div class="prod-imagem" id="galleria-azur">
-                        <img src="{{ asset('images/product1.png') }}" alt="">
+                        <img src="{{ urlImg() .  $produto-> imagem}}" alt="">
+                        @if ($galeria)
+                            @for ($i = 0; $i < count($galeria); $i++)
+                                <img src="{{ urlImg() .  $galeria[$i]->imagem}}" alt="">
+                            @endfor
+                        @endif
                     </div>
                 </div>
                 <div class="row-formulario">
@@ -26,7 +31,7 @@
                     </div>
                 </div>
              </div>
-             <div class="row-descricao">
+             <div class="row-descricao" >
                 <div class="ficha">
                     <div class="text-ficha">
                         <div class="titulo-text">
@@ -64,13 +69,22 @@
                         </div>
                     </div>
                     <div class="descrition">
-                        <div class="titulo-descrit">
+                        {{-- <div class="titulo-descrit">
                             <h2> Descrição </h2>
-                        </div>
-                            <p>{{ htmlspecialchars($produto->text) }}</p>
+                        </div> --}}
+                        <p><?= print_r($produto->text) ?></p>
+
                     </div>
                 </div>
              </div>
         </div>
     </div>
+
 @include('site.main.footer')
+<script>
+    (function() {
+        Galleria.run('#galleria-azur', {
+        transition: 'fadeslide'
+        });
+    }());
+</script>
