@@ -72,7 +72,7 @@
                         {{-- <div class="titulo-descrit">
                             <h2> Descrição </h2>
                         </div> --}}
-                        <p><?= print_r($produto->text) ?></p>
+                        <p>{!! $produto->text !!} </p>
 
                     </div>
                 </div>

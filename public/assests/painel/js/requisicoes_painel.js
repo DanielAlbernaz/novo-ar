@@ -54,7 +54,7 @@ function formularios(route){
 
      if($("#validation").valid()){
         tinyMCE.triggerSave();
-        if($('#text').val()){
+
             jQuery.ajax({
                         url: pathSite + route,
                         type: "POST",
@@ -97,56 +97,7 @@ function formularios(route){
                             }
                         }
                     });
-        }else{
-        var text = CKEDITOR.instances.text.getData();
 
-        var data = $('#validation').serializeArray();
-        data.push({name: "text", value: text});
-
-                jQuery.ajax({
-                            url: pathSite + route,
-                            type: "POST",
-                            dataType: "JSON",
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data: $.param(data),
-                            success: function( data )
-                            {
-                                if(data.situacao == 'success'){
-
-                                    if(data.form == 'cad'){
-                                        mesages('success', data.msg);
-                                        setTimeout(function() {
-                                            window.location.href = pathSite + data.redirect
-                                        }, 1000);
-                                    }
-
-                                    if(data.form == 'alt'){
-                                        mesages('success',  data.msg);
-                                        setTimeout(function() {
-                                            window.location.href = pathSite + data.redirect
-                                        }, 1000);
-                                    }
-
-                                }
-
-                                if(data.situacao == 'error'){
-                                    if(data.form == 'alt'){
-                                        mesages('error',  data.msg);
-                                    }
-
-                                    if(data.form == 'alt'){
-                                        mesages('error',  data.msg);
-                                        setTimeout(function() {
-                                            window.location.href = pathSite + data.redirect
-                                        }, 1000);
-                                    }
-                                }
-                            }
-                        });
-
-        }
 
 
 
