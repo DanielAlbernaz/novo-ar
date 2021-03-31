@@ -189,7 +189,6 @@ img{
 /* Separador */
 .nossos-produtos{
     text-align: center;
-    margin-top: 13px;
     text-transform: uppercase;
     background-color: #f9f9f9;
     background-position: center center;
@@ -198,6 +197,8 @@ img{
     padding-right: 30px;
     padding-bottom: 72px;
     padding-left: 30px;
+    width: 100%;
+    float: left;
 }
 
 .text-produtos h1{
@@ -813,7 +814,7 @@ img{
 /* MEDIUM DEVICES - TABLETS & DESKTOPS */
 @media screen and (min-width: 960px) {
     .banner{
-        height: 500px;
+        height: 552px;
     }
     .buttons{
         width: 30%;
@@ -974,3 +975,7 @@ img{
 .galleria-theme-miniml.touch .galleria-dots div:active {
     color: #0e56c8;
 }
+.galleria-dots{margin-left: 45%;}
+
+
+

@@ -10,6 +10,8 @@
                 <div class="imagem-product">
                     <div class="prod-imagem" id="galleria-azur">
                         <img src="{{ asset('images/product1.png') }}" alt="">
+                        <img src="{{ asset('images/product1.png') }}" alt="">
+                        <img src="{{ asset('images/product1.png') }}" alt="">
                     </div>
                 </div>
                 <div class="row-formulario">
