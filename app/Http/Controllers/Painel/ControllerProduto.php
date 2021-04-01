@@ -213,6 +213,7 @@ class ControllerProduto extends Controller
   }
 
   function edit(Request $request){
+    //   print_rpre($request->all());exit;
     try {
         if($request->image_file){
             $image_parts = explode(";base64,", $request->image_file);

@@ -33,7 +33,8 @@ class newLaravelTips extends Mailable
     {
         $this->subject('Novo episodeo esta no ar!');
         $this->to($this->user->email, $this->user->name);
-        return $this->view('mail.newLaravelTips', [
+
+        return $this->markdown('mail.newLaravelTips', [
             'user' => $this->user
         ]);
     }

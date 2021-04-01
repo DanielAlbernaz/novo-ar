@@ -28,7 +28,7 @@
                     </div>
                 </div>
              </div>
-             <div class="row-descricao">
+             <div class="row-descricao" >
                 <div class="ficha">
                     <div class="text-ficha">
                         <div class="titulo-text">
@@ -66,13 +66,22 @@
                         </div>
                     </div>
                     <div class="descrition">
-                        <div class="titulo-descrit">
+                        {{-- <div class="titulo-descrit">
                             <h2> Descrição </h2>
-                        </div>
-                            <p>{{ htmlspecialchars($produto->text) }}</p>
+                        </div> --}}
+                        <p>{!! $produto->text !!} </p>
+
                     </div>
                 </div>
              </div>
         </div>
     </div>
+
 @include('site.main.footer')
+<script>
+    (function() {
+        Galleria.run('#galleria-azur', {
+        transition: 'fadeslide'
+        });
+    }());
+</script>
