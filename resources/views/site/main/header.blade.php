@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    <?php $empresa = exibirInfoEmpresa();?>
     <head>
     	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,9 +37,14 @@
                         <li><a href="{{ route('institucional') }}">Quem somos</a></li>
                         <li><a  href="{{ route('produtos') }}">Produtos</a></li>
                         <li><a href="#" >Instalações</a></li>
-                        <li class="Espacamentoicon"><a href="#">Contato</a></li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/alberncamp/?hl=pt-br"><i class="fa fa-instagram"></i></a></li>
+                        <li class="Espacamentoicon"><a href="">Contato</a></li>
+                        @if ($empresa->facebook)
+                            <li><a href="{{ $empresa->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        @endif
+                        @if ($empresa->instagram)
+                            <li><a href="{{ $empresa->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        @endif
                     </ul>
                 </nav>
     </header>
+

@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Empresa;
 use App\Models\Log;
+use App\Models\Telefone;
 use Illuminate\Contracts\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 
@@ -28,7 +30,8 @@ function createLog($user, $action, $form, $idData, $ip)
 
 }
 
-function urlImg(){
+function urlImg()
+{
 
     if($_SERVER["HTTP_HOST"] == '127.0.0.1:8000'){
         $urlImg = 'http://127.0.0.1:8000/storage/';
@@ -36,6 +39,30 @@ function urlImg(){
         $urlImg =  'https://' . $_SERVER['HTTP_HOST'] . '\storage';
     }
     return $urlImg;
+}
+
+function exibirInfoEmpresa()
+{
+    $empresa = Empresa::find(1);
+
+    return $empresa ;
+}
+
+function exibirTelefone()
+{
+    $telefones = Telefone::all();
+
+    return $telefones;
+}
+
+function formatPhone($number)
+{
+    $number = str_replace('(', '', $number);
+    $number = str_replace(')', '', $number);
+    $number = str_replace(' ', '', $number);
+    $number = str_replace('-', '', $number);
+
+    return $number;
 }
 
 

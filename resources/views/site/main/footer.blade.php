@@ -1,9 +1,14 @@
+<?php
+    $empresa = exibirInfoEmpresa();
+    $telefones = exibirTelefone();
+?>
 </body>
 
 <!-- RODAPÉ -->
 <footer class="rodape-footer container-footer">
     <div class="col-md-1 fh5co-widget">
-        <img class="img-rodape" src="{{ asset('images/logonovoar.png') }} ">
+        <a href="/"><img class="img-rodape" src="{{ asset('images/logonovoar.png') }} "></a>
+
         <p>
             A Solução Ideal Para Sua Empresa!
             Trabalhamos com Climatizadores Industriais e Comerciais</p>
@@ -11,8 +16,8 @@
 
     <div class="col-md-2">
         <ul>
-            <li><a href="">Sobre nós</a></li>
-            <li><a href="">Produtos</a></li>
+            <li><a href="{{ route('institucional') }}">Quem somos</a></li>
+            <li><a href="{{ route('produtos') }}">Produtos</a></li>
             <li><a href="">Contatos</a></li>
             <li><a href="">Termos de uso</a></li>
         </ul>
@@ -20,32 +25,36 @@
 
     <div class="col-md-3">
         <ul>
-            <li>
-                <i class="fa fa-phone"></i>
-                <a href="tel:5562984080282">(62) 98408-0282 </a>
-            </li>
-            <li>
-                <i class="fa fa-phone"></i>
-                <a href="tel:5562984080282">(62) 98408-0282 </a>
-            </li>
-            <li>
-                <i class="fa fa-whatsapp"></i>
-                 <a target="_blank" href="https://web.whatsapp.com/send?phone=5562984080282&amp;text=Olá, tenho interesse!">(62) 98408-0282</a>
+            @if ($telefones)
+                @foreach ($telefones as $phone )
+                    <li>
+                        <i class="fa fa-phone"></i>
+                        <a href="tel:55{{ formatPhone($phone->telefone) }}">{{ $phone->telefone }} </a>
+                    </li>
+                @endforeach
+            @endif
+            @if ($empresa->whatsapp)
+                <li>
+                    <i class="fa fa-whatsapp"></i>
+                    <a target="_blank" href="https://web.whatsapp.com/send?phone=55{{ formatPhone($empresa->whatsapp) }}&amp;text=Olá, tenho interesse!">{{ $empresa->whatsapp }}</a>
                 </li>
-            <li>
-                <i class="fa fa-envelope"></i>
-                <a href="mailto:novoarclimatizadores@gmail.com"> novoarclimatizadores@gmail.com</a>
-            </li>
+            @endif
+
+            @if ($empresa->email)
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:novoarclimatizadores@gmail.com">{{ $empresa->email }}</a>
+                </li>
+            @endif
+
         </ul>
     </div>
         <div class="col-md-4">
             <ul>
                 <i class="fa fa-map"></i>
                 <a href="">
-                    Vila São Judas Tadeu, <br>
-                    Rua Belo Horizonte<br>
-                    Qd. 40 Lt. 03 Casa 02<br>
-                    Goiânia - GO<br>
+                    {{ $empresa->endereco }}<br>
+                    {{ $empresa->cidade }}<br>
                 </a>
             </ul>
         </div>
