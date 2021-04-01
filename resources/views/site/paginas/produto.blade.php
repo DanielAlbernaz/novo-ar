@@ -9,12 +9,9 @@
             <div class="row-product">
                 <div class="imagem-product">
                     <div class="prod-imagem" id="galleria-azur">
-                        <img src="{{ urlImg() .  $produto-> imagem}}" alt="">
-                        @if ($galeria)
-                            @for ($i = 0; $i < count($galeria); $i++)
-                                <img src="{{ urlImg() .  $galeria[$i]->imagem}}" alt="">
-                            @endfor
-                        @endif
+                        <img src="{{ asset('images/product1.png') }}" alt="">
+                        <img src="{{ asset('images/product1.png') }}" alt="">
+                        <img src="{{ asset('images/product1.png') }}" alt="">
                     </div>
                 </div>
                 <div class="row-formulario">
