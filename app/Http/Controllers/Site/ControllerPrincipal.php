@@ -21,7 +21,6 @@ class ControllerPrincipal extends Controller
         /**
          * Inativações
          */
-        $imagem = new ImageManagerStatic();
         ControllerBanner::inactivateDate();
         ControllerProduto::inactivateDate();
 
