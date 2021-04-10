@@ -28,8 +28,8 @@ class CreateEmpresaTable extends Migration
 
         DB::table('empresa')->insert([
             'nome' => 'Albercamp',
+            'whastapp' => '(62) 98257-9586',
             'email' => 'albercamp@albercamp.com.br',
-            'whatsapp' => '(62) 98257-9586',
             'endereco' => 'Rua 259',
             'cidade' => 'Goiânia',
             'instagram' => 'https://www.instagram.com/alberncamp/',
