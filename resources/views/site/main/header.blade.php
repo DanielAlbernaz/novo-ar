@@ -36,7 +36,7 @@
             </div>
                 <button class="btn-menu bg-gradient"><i class="fa fa-bars fa-lg"></i></button>
                 <nav class="menu">
-                    <a class="btn-close"><i class="fa fa-times"></i></a>
+                    <a class="btn-close"><i style="color: #000000" class="fa fa-times"></i></a>
                     <ul>
                         <li><a href="{{ route('institucional') }}">Quem somos</a></li>
                         <li><a  href="{{ route('produtos') }}">Produtos</a></li>

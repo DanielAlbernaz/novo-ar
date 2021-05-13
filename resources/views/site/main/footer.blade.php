@@ -4,70 +4,56 @@
 ?>
 </body>
 
-<!-- RODAPÉ -->
-<footer class="rodape-footer container-footer">
-    <div class="col-md-1 fh5co-widget">
-        <a href="/"><img class="img-rodape" src="{{ asset('images/logonovoar.png') }} "></a>
+<footer class="footer">
+	<!-- Main -->
+    <div class="container-footer">
+		<div class="row foot-cont">
+			<div class="col-md-4 col-sm-12 margin-top-col-1">
+				<img class="footer-logo" src="images/logonovoar.png" alt="">
+				<br><br>
 
-        <p>
-            A Solução Ideal Para Sua Empresa!
-            Trabalhamos com Climatizadores Industriais e Comerciais</p>
-    </div>
-
-    <div class="col-md-2">
-        <ul>
-            <li><a href="{{ route('institucional') }}">Quem somos</a></li>
-            <li><a href="{{ route('produtos') }}">Produtos</a></li>
-            <li><a href="">Contatos</a></li>
-            <li><a href="">Termos de uso</a></li>
-        </ul>
-    </div>
-
-    <div class="col-md-3">
-        <ul>
-            @if ($telefones)
-                @foreach ($telefones as $phone )
-                    <li>
-                        <i class="fa fa-phone"></i>
-                        <a href="tel:55{{ formatPhone($phone->telefone) }}">{{ $phone->telefone }} </a>
-                    </li>
-                @endforeach
-            @endif
-            @if ($empresa->whatsapp)
-                <li>
-                    <i class="fa fa-whatsapp"></i>
-                    <a target="_blank" href="https://web.whatsapp.com/send?phone=55{{ formatPhone($empresa->whatsapp) }}&amp;text=Olá, tenho interesse!">{{ $empresa->whatsapp }}</a>
-                </li>
-            @endif
-
-            @if ($empresa->email)
-                <li>
-                    <i class="fa fa-envelope"></i>
-                    <a href="mailto:novoarclimatizadores@gmail.com">{{ $empresa->email }}</a>
-                </li>
-            @endif
-
-        </ul>
-    </div>
-        <div class="col-md-4">
-            <ul>
-                <i class="fa fa-map"></i>
-                <a href="">
-                    {{ $empresa->endereco }}<br>
-                    {{ $empresa->cidade }}<br>
-                </a>
-            </ul>
-        </div>
-    </div>
-    <div class="col-md-5 text-center">
+				<ul class="footer-links">
+					<li><a href="#">Quem Somos</a></li>
+					<li><a href="#">Produtos</a></li>
+					<li><a href="#">Instalações</a></li>
+					<li><a href="#">Contato</a></li>
+				</ul>
 
 
-        <p>
-            <small class="block">© 2020  TODOS OS DIREITOS RESERVADOS - NOVO AR CLIMATIZADORES </small>
-            <small class="block">DESENVOLVIDO POR -  ALBERCAMP SOFTWARE </small>
-        </p>
+			</div>
 
-    </div>
+			<div class="col-md-4 col-sm-12 margin-top-col ">
+				<h4>Central de atendimento</h4>
+				<ul class="footer-links">
+					<li><a href="#">Atendimento por email</a></li>
+					<li><a href="#">Atendimento Online</a></li>
+					<li><a href="#">Atendimento Whatsapp</a></li>
+					<li><a href="#">Ligamos para você</a></li>
+				</ul>				
+			</div>		
+
+			<div class="col-md-4  col-sm-12 margin-top-col">
+				<h4>Endereço</h4>
+				<div class="text-widget">
+					<span>Rua Albina, N.º 40, Sala 705/776<br> 
+					Ed. Premier - Alto da Glória<br> 
+					Goiânia – GO - CEP: 74.255-470</span> <br>
+					<span> Telefone: </span> <span>(62) 3256-8659 / 98596-1586</span><br>
+					<span> Email: </span> <span> <a href="#"><span class="__cf_email__" data-cfemail="c0afa6a6a9a3a580a5b8a1adb0aca5eea3afad">atendimento@novoar.com.br</span></a> </span><br>
+				</div>
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2021 NOVO AR. Todos os direitos reservados.</div>
+			</div>
+		</div>
+
+	</div>
+
 </footer>
 
 
