@@ -34,6 +34,10 @@ Route::get('/produtos', 'App\Http\Controllers\Site\ControllerProdutos@index')->n
 Route::get('/institucional', 'App\Http\Controllers\Site\ControllerInstitucional@index')->name('institucional');
 
 
+Route::get('/termo', 'App\Http\Controllers\Site\ControllerTermo@index')->name('termo');
+Route::get('/politica', 'App\Http\Controllers\Site\ControllerPolitica@index')->name('politica');
+Route::get('/galeria', 'App\Http\Controllers\Site\ControllerGaleria@index')->name('galeria');
+
 Route::middleware(['auth'])->group(function() {
     Route::prefix('sistema')->group(function(){
 
