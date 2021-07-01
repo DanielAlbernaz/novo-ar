@@ -1,101 +1,94 @@
 @include('site.main.header')
 
-<!-- Carousel wrapper -->
-<div
-  id="carouselVideoExample"
-  class="carousel slide carousel-fade"
-  data-mdb-ride="carousel"
->
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselVideoExample"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
+<div class="wrap">
+  <!--Cabeçalho da página-->
+  <div class="page-header">
+      <h1>Galeria de Fotos - Instalações</h1>
+      <p>
+         Modelo simples de galeria de fotos usando apenas CSS e JS. Essa galeria trabalha
+          com o modelo mais básico possível. Recomendado para quem quer apenas exibir algumas fotos, sem nenhum outra função mais avançada, ou então, usar como base para criar outro modelo mais complexo.
+      </p>
   </div>
 
-  <!-- Inner -->
-  <div class="carousel-inner">
-    <!-- Single item -->
-    <div class="carousel-item active">
-      <video class="img-fluid" autoplay loop muted>
-        <source src="https://mdbootstrap.com/img/video/Tropical.mp4" type="video/mp4" />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>
-          Nulla vitae elit libero, a pharetra augue mollis interdum.
-        </p>
-      </div>
-    </div>
+  <!-- Principal Section with the gallery code. If you want use only gallery code,
+       you can copy all code bellow, with gallery-container.-->
+  <section class="container gallery-container">
 
-    <!-- Single item -->
-    <div class="carousel-item">
-      <video class="img-fluid" autoplay loop muted>
-        <source src="https://mdbootstrap.com/img/video/forest.mp4" type="video/mp4" />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
+      <!--Slide-->
+      <div class="mySlides fade"> <!-- 01 -->
+          <div class="numbertext">01 / 05</div>
+          <img class="imgslide" src="images/single-property-01.jpg" alt="Arara Azul"/>
+          <div class="text">Arara Azul</div>
       </div>
-    </div>
 
-    <!-- Single item -->
-    <div class="carousel-item">
-      <video class="img-fluid" autoplay loop muted>
-        <source
-          src="https://mdbootstrap.com/img/video/Agua-natural.mp4"
-          type="video/mp4"
-        />
-      </video>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-        </p>
+      <div class="mySlides fade"> <!-- 02 -->
+          <div class="numbertext">02 / 05</div>
+          <img class="imgslide" src="images/single-property-02.jpg" alt="Arara Canindé"/>
+          <div class="text">Arara Canindé</div>
       </div>
-    </div>
-  </div>
-  <!-- Inner -->
 
-  <!-- Controls -->
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-mdb-target="#carouselVideoExample"
-    data-mdb-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-mdb-target="#carouselVideoExample"
-    data-mdb-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+      <div class="mySlides fade"> <!-- 03 -->
+          <div class="numbertext">03 / 05</div>
+          <img class="imgslide" src="images/single-property-03.jpg" alt="Papagaio Verdadeiro"/>
+          <div class="text">Amazona é um género de papagaios da ordem Psittaciformes, característico da América, existindo desde o sul do México até o Caribe e a América do Sul. São conhecidos, popularmente, como papagaios, louros, ajerus, ajurus, jerus e jurus</div>
+      </div>
+
+      <div class="mySlides fade"> <!-- 04 -->
+          <div class="numbertext">04 / 05</div>
+          <img class="imgslide" src="images/single-property-04.jpg" alt="Jandaia"/>
+          <div class="text">Jandaia</div>
+      </div>
+
+      <div class="mySlides fade"> <!-- 05 -->
+          <div class="numbertext">05 / 05</div>
+          <img class="imgslide" src="images/single-property-05.jpg" alt="Jandaia"/>
+          <div class="text">Tiriba de testa vermelha</div>
+      </div>
+      <!--Final Slides-->
+
+      <!--Navigation-->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </section>
+  <!--End of galery-->
+
+  <script>
+
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      // Next/previous controls
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+        ga('send', 'event', 'galeria', 'next_prev', 'Titulo da página');
+      }
+
+      // Thumbnail image controls
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {
+          slideIndex = 1
+        }
+        if (n < 1) {
+          slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+      }
+
+  </script>
+  
+
+  <!-- end of page -->
+  
 </div>
-<!-- Carousel wrapper -->
+
 
 @include('site.main.footer')

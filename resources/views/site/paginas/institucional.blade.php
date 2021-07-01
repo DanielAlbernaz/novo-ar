@@ -59,16 +59,10 @@
 <div class="contai">
 	<div class="row">
 	   <!-- Mensagem -->
-		<div class="col-md-4">
-			<h4 class="headline margin-bottom-30">Sinta-se à vontade para falar conosco.</h4>			
-			<div class="sidebar-textbox">
-				<p style="text-align: justify; font-style: normal;">Utilize este espaço para falar conosco sobre suas dúvidas, suas recomendações, instruções de trabalho ou sobre qualquer outro assunto.<br />
-Críticas construtivas são muito bem vindas. Elas receberão toda a nossa atenção e fazemos questão de lhe dar um retorno sobre elas. Por isso precisamos que você se identifique e nos informe como prefere receber relatos sobre nossas providências.</p>				
-			</div>
-		</div>
+		
 		<!--/fim Mensagem -->
 		<!-- Formulário -->
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<section id="contact">
 				<h4 class="headline margin-bottom-35">Fale Conosco</h4>
 				<div id="contact-message"></div> 

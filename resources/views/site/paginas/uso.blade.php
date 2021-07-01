@@ -1,6 +1,6 @@
 @include('site.main.header')
 
-<div class="migalhaMBI imgMigalha" style="background-size: cover; background-image: url('img/home-roof-1440x375.jpg');">
+<div class="migalhaMBI imgMigalha" style="background-size: cover; background-image: url('images/home.jpg');">
 	<h1>TERMO DE USO</h1>
 
 </div>
@@ -66,11 +66,6 @@ De tempos em tempos, pode se tornar necessário que a MBI imóveis modifique os 
    
 
 <!-- Flip banner -->
-<a href="aluguel-sem-fiador.html" class="flip-banner parallax" data-background="images/flip-banner-bg.jpg" data-color="#019BB3" data-color-opacity="0.9" data-img-width="2500" data-img-height="1600">
-	<div class="flip-banner-content">
-		<h2 class="flip-visible">O jeito fácil de alugar imóveis, casas e apartamentos</h2>
-		<h2 class="flip-hidden">Aluguel, fácil, rápido, sem burocracia e sem fiador<i class="sl sl-icon-arrow-right"></i></h2>
-	</div>
-</a>
+
 
 @include('site.main.footer')

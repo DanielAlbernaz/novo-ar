@@ -1,6 +1,6 @@
 @include('site.main.header')
 
-<div class="migalhaMBI imgMigalha" style="background-size: cover; background-image: url('img/home-roof-1440x375.jpg');">
+<div class="migalhaMBI imgMigalha" style="background-size: cover; background-image: url('images/home.jpg');">
 	<h1>POLÍTICA DE PRIVACIDADE</h1>
 
 </div>
@@ -14,8 +14,8 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="about-content">
-                        <h2 class="title-bar">POLÍTICA DE PRIVACIDADE MBI</h2>
-                        <p style="text-align: justify;">
+                        <h2 class="title-bar">POLÍTICA DE PRIVACIDADE</h2>
+                        <p style="text-align: justify;color: #616161;">
                         Todas as informações pessoais, relativas a clientes ou visitantes, entregues a MBI Imóveis serão tratadas em concordância com a Lei Geral de Proteção de Dados Pessoais (Lei n&ordm; 13.709/2018).<br />
 <br />
 A informação pessoal recolhida pode incluir o seu nome, e-mail e número de telefone.<br />
