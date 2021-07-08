@@ -1,6 +1,6 @@
 @include('site.main.header')
 
-<div class="wrap">
+{{-- <div class="wrap">
   <!--Cabeçalho da página-->
   <div class="page-header">
       <h1>Galeria de Fotos - Instalações</h1>
@@ -84,10 +84,69 @@
       }
 
   </script>
-  
+
 
   <!-- end of page -->
-  
+
+</div> --}}
+<div class="page-header">
+    <h1>Galeria de Fotos - Instalações</h1>
+    <p>
+       Modelo simples de galeria de fotos usando apenas CSS e JS. Essa galeria trabalha
+        com o modelo mais básico possível. Recomendado para quem quer apenas exibir algumas fotos, sem nenhum outra função mais avançada, ou então, usar como base para criar outro modelo mais complexo.
+    </p>
+</div>
+<div class="gamma-container gamma-loading" id="gamma-container">
+
+    <ul class="gamma-gallery">
+
+        <li>
+            <div data-alt="img03"  data-max-width="1800" data-max-height="1350">
+                <div data-src="{{ asset('images/product1.png') }}" data-min-width="200"></div>
+
+            </div>
+        </li>
+
+        <li>
+            <div data-alt="img03"  data-max-width="1800" data-max-height="1350">
+                <div data-src="{{ asset('images/product2.png') }}" data-min-width="200"></div>
+
+            </div>
+        </li>
+        <li>
+            <div data-alt="img03"  data-max-width="1800" data-max-height="1350">
+                <div data-src="{{ asset('images/product3.png') }}" data-min-width="200"></div>
+
+            </div>
+        </li>
+        <li>
+            <div data-alt="img03"  data-max-width="1800" data-max-height="1350">
+                <div data-src="{{ asset('images/product4.png') }}" data-min-width="200"></div>
+
+            </div>
+        </li>
+        <li>
+            <div data-alt="img03"  data-max-width="1800" data-max-height="1350">
+                <div data-src="{{ asset('images/product5.png') }}" data-min-width="200"></div>
+
+            </div>
+        </li>
+        <li>
+            <div data-alt="img03"  data-max-width="1800" data-max-height="1350">
+                <div data-src="{{ asset('images/img_bg_5.jpg') }}" data-min-width="200"></div>
+
+            </div>
+        </li>
+        <li>
+            <div data-alt="img03"  data-max-width="1800" data-max-height="1350">
+                <div data-src="{{ asset('images/home.jpg') }}" data-min-width="200"></div>
+
+            </div>
+        </li>
+    </ul>
+    <div class="gamma-overlay"></div>
+
+
 </div>
 
 

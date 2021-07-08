@@ -4,15 +4,37 @@
         <h1 class="name-produto">{{ $produto->title }}</h1>
     </div>
 
+
+
     <div class="product">
         <div class="container-product">
             <div class="row-product">
                 <div class="imagem-product">
-                    <div class="prod-imagem" id="galleria-azur">
-                        <img src="{{ asset('images/product1.png') }}" alt="">
-                        <img src="{{ asset('images/product1.png') }}" alt="">
-                        <img src="{{ asset('images/product1.png') }}" alt="">
+                <div class="prod-imagem" id="galleria-azur">
+
+                    <div class="col-lg-8 col-md-7" style=" width: 100%; ">
+                        <div class="col-md-12">
+
+                             <!-- Slider -->
+                        <div class="property-slider default">
+                            @for ($i = 0; $i < count($galeria); $i++)
+                                <a    href="{{ urlImg() . $galeria[$i]->imagem }}" data-background-image="{{ urlImg() . $galeria[$i]->imagem }}" class="item mfp-gallery"></a>
+
+                            @endfor
+                        </div>
+
+                        <!-- Slider Thumbs -->
+                        <div  class="property-slider-nav">
+                            @for ($i = 0; $i < count($galeria); $i++)
+                                <div class="item" ><img style="width: 100%"   src="{{ urlImg() . $galeria[$i]->imagem }}"  height="100" class="fotoImgP"  alt=""></div>
+                            @endfor
+
+
+                        </div>
                     </div>
+
+                </div>
+
                 </div>
                 <div class="row-formulario">
                     <div class="contain-form">
@@ -69,7 +91,9 @@
                         {{-- <div class="titulo-descrit">
                             <h2> Descrição </h2>
                         </div> --}}
-                        <p>{!! $produto->text !!} </p>
+                        {!! $produto->text !!}
+
+
 
                     </div>
                 </div>
