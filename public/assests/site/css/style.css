@@ -510,6 +510,7 @@ div {
         float: left;
         display: grid !important;
     }
+    
 }
 
 .col-md-4 , .col-sm-12{
@@ -670,17 +671,56 @@ a {
 }
 
 .row-product{
+    display: inline-table;
+    width: 100%;
     height: 580px;
-    display: flex;
+}
+
+@media ( max-width: 720px) {
+    .imagem-product {
+        display: inline-table !important;
+    }
+    .row-formulario {
+        width: 60% !important;
+        height: 525px !important;
+        margin-left: 15% !important;
+    }
+    .ficha {
+        display: block !important;
+    }
+    .text-ficha {
+        width: 100% !important;
+    }
+    .descrition {
+        padding: 5% 4% !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+   
+}
+
+@media ( max-width: 1024px) {
+    .menu{
+        margin-right: 20% !important;
+    }
+}
+ 
+@media ( max-width: 880px) {
+    .menu{
+        margin-right: 0 !important;
+    }
 }
 
 .imagem-product{
-    width: 40%;
+    float: left;
+    display: flex;
+    width: 100%;
     height: 482px;
     margin-left: 8.33333%;
 }
 
 .prod-imagem{
+    width: 55%;
     height: 482px;
 }
 
@@ -691,10 +731,10 @@ a {
 }
 
 .row-formulario{
+    float: left;
     background: #fff;
     width: 30%;
     height: 482px;
-    margin-left: 146px;
 }
 
 .contain-form{
@@ -775,11 +815,11 @@ a {
 
 .row-descricao{
     width: 100%;
-    height: 800px;
+    height: auto;
     background: #f9f9f9;
     display: inline-table;
     float: left;
-    padding: 3% 8%;
+    padding: 5% 8%;
 }
 
 .ficha{
@@ -1414,7 +1454,7 @@ input, input[type=text], input[type=password], input[type=email], input[type=num
     }
         @media (min-width: 800px) {
           .page-header, .page-footer {
-            width: 800px;
+            
             padding: 0;
           }
         }
@@ -1504,6 +1544,7 @@ input, input[type=text], input[type=password], input[type=email], input[type=num
     .numbertext {
       top: 15px;
     }
+
   }
   
   /* Fading animation */

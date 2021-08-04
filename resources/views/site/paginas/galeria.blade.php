@@ -91,10 +91,7 @@
 </div> --}}
 <div class="page-header">
     <h1>Galeria de Fotos - Instalações</h1>
-    <p>
-       Modelo simples de galeria de fotos usando apenas CSS e JS. Essa galeria trabalha
-        com o modelo mais básico possível. Recomendado para quem quer apenas exibir algumas fotos, sem nenhum outra função mais avançada, ou então, usar como base para criar outro modelo mais complexo.
-    </p>
+    
 </div>
 <div class="gamma-container gamma-loading" id="gamma-container">
 
