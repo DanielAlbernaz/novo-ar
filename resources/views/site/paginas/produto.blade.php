@@ -10,32 +10,36 @@
         <div class="container-product">
             <div class="row-product">
                 <div class="imagem-product">
-                <div class="prod-imagem" id="galleria-azur">
+                    <div class="prod-imagem" id="galleria-azur">
 
-                    <div class="col-lg-8 col-md-7" style=" width: 100%; ">
-                        <div class="col-md-12">
+                        <div class="col-lg-8 col-md-7" style=" width: 100%; ">
+                            <div class="col-md-12">
 
-                             <!-- Slider -->
-                        <div class="property-slider default">
-                            @for ($i = 0; $i < count($galeria); $i++)
-                                <a    href="{{ urlImg() . $galeria[$i]->imagem }}" data-background-image="{{ urlImg() . $galeria[$i]->imagem }}" class="item mfp-gallery"></a>
+                                    <!-- Slider -->
+                                <div class="property-slider default">
+                                    @for ($i = 0; $i < count($galeria); $i++)
+                                        <a    href="{{ urlImg() . $galeria[$i]->imagem }}" data-background-image="{{ urlImg() . $galeria[$i]->imagem }}" class="item mfp-gallery"></a>
 
-                            @endfor
-                        </div>
+                                    @endfor
+                                </div>
 
-                        <!-- Slider Thumbs -->
-                        <div  class="property-slider-nav">
-                            @for ($i = 0; $i < count($galeria); $i++)
-                                <div class="item" ><img style="width: 100%"   src="{{ urlImg() . $galeria[$i]->imagem }}"  height="100" class="fotoImgP"  alt=""></div>
-                            @endfor
+                                <!-- Slider Thumbs -->
+                                <div  class="property-slider-nav" >
+                                    @for ($i = 0; $i < count($galeria); $i++)
+                                        <div class="item" ><img style="width: 100%"   src="{{ urlImg() . $galeria[$i]->imagem }}"  height="100" class="fotoImgP"  alt="">
+                                        </div>
+                                    @endfor
+                                </div>
 
+                            </div>
+                            </div>
 
                         </div>
                     </div>
 
                 </div>
 
-                </div>
+            </div>
                 <div class="row-formulario">
                     <div class="contain-form">
                         <h1>Solicitar Orçamento</h1>
@@ -49,7 +53,7 @@
                         </form>
                     </div>
                 </div>
-             </div>
+            </div>
              <div class="row-descricao" >
                 <div class="ficha">
                     <div class="text-ficha">
