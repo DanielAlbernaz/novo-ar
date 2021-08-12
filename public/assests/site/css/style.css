@@ -1462,6 +1462,10 @@ input, input[type=text], input[type=password], input[type=email], input[type=num
     align-items: center;
   }
 
+  page-header h1{
+      font-family: page-header !important;
+  }
+
     .page-header, .page-footer {
       width: 100%;
       margin: 20px;
@@ -1472,7 +1476,7 @@ input, input[type=text], input[type=password], input[type=email], input[type=num
         @media (min-width: 800px) {
           .page-header, .page-footer {
 
-            padding: 0;
+            padding: 118px 0 10px;
           }
         }
       .page-header p {

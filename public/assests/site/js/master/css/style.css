@@ -57,10 +57,19 @@
 
 .gamma-gallery li img {
 	max-width: 100%;
+	border-radius: 3%;
+	transition: all 0.5s;
+    cursor: pointer;
 	width: auto;
 	height: auto;
 	display: block;
 }
+
+.gamma-gallery li:hover{
+	-webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+}
+
 
 .gamma-description {
 	/* background: #fff;
