@@ -664,7 +664,7 @@ a {
 
 .product{
     width: 100%;
-    display: flex;
+    display: inline-flex;
     background: #f9f9f9;
     padding: 7% 0%;
 }
@@ -693,6 +693,9 @@ a {
         margin-left: 15% !important;
     }
     .ficha {
+        display: block !important;
+    }
+    .product{
         display: block !important;
     }
     .text-ficha {
@@ -1495,7 +1498,7 @@ input, input[type=text], input[type=password], input[type=email], input[type=num
      !!Below this line, Gallery's code starts!!*/
 
   /* Slideshow container */
-  .gallery-container {
+    llery-container {
     width: 90%;
     position: relative;
     margin: 0 5%;
