@@ -57,7 +57,7 @@
             </div>
 
             <div class="fusion-circulo">
-                <ul>
+                <ul class="circuloul">
                     <li>
                         <img src="images/90.png">
                     </li>

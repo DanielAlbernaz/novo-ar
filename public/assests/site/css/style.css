@@ -371,9 +371,13 @@ img{
     width: 140px;
     margin: 5px;
     display: inline-block;
-    float: left;
+    float: left !important;
     margin-left: 5px;
 
+}
+
+.circuloul{
+    float: left !important;
 }
 
 .fusion-img {
@@ -548,7 +552,6 @@ img.footer-logo {
 }
 ul, ol {
     margin-top: 0;
-    margin-bottom: 10px;
     padding-left: 15px;
 }
 
@@ -1394,8 +1397,8 @@ input, input[type=text], input[type=password], input[type=email], input[type=num
 
 @media screen and (min-width: 1017px){
     .fusion-img {
-        width: 40%;
-        float: right;
+        width: 40% !important;
+        float: right  !important;
         margin-top: -287px;
     }
 }
