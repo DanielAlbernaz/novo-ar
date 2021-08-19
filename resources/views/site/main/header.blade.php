@@ -50,25 +50,25 @@
         </label>
         <ul>
             <li>
-                <a class="active">Home</a>
+                <a class="active navfor">HOME</a>
             </li>
             <li>
-                <a href="#">Quem Somos</a>
+                <a href="#" class="navfor">QUEM SOMOS</a>
             </li>
             <li>
-                <a href="#">Produtos</a>
+                <a href="#" class="navfor">PRODUTOS</a>
             </li>
             <li>
-                <a href="#">Instalações</a>
+                <a href="#" class="navfor">INSTALAÇÕES</a>
             </li>
             <li>
-                <a href="#">Contato</a>
+                <a href="#" class="navfor">CONTATO</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="navfor"><i class="fa fa-facebook"></i></a>
             </li>
               <li>
-                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="navfor"><i class="fa fa-instagram"></i></a>
             </li>
         </ul>
 

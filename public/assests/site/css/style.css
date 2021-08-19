@@ -98,16 +98,15 @@ nav ul li{
     margin: 0 5px;
 }
 
-nav ul li a{
+.navfor{
     color: #130400;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-transform: uppercase;
     font-size: 12px;
     padding: 7px 13px;
     border-radius: 3px;
 }
 
-a.active,a:hover{
+.navfor:hover{
     background: #185d99;
     transition: .5s;
     color: white;
@@ -133,7 +132,7 @@ a.active,a:hover{
         width: 300px;
         line-height: 80px;
     }
-    nav ul li a{
+    .navfor{
         font-size: 10px !important;
     }
 }
@@ -160,7 +159,7 @@ a.active,a:hover{
         text-align: center;
         transition: all .5s;
     }
-    nav ul li a{
+    .navfor{
         color: white;
         font-size: 20px !important;
     }
@@ -168,7 +167,7 @@ a.active,a:hover{
         display: block;
         line-height: 60px;
     }
-    a:hover,a.active{
+    .navfor:hover{
         background: none;
         color: #185d99;
     }
