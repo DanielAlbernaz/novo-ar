@@ -5,6 +5,8 @@
     border: none;
     outline: none;
     box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
 
 
@@ -73,6 +75,105 @@ body {
     text-transform: none;
 }
 
+nav{
+    height: 80px;
+    width: 100%;
+}
+
+label.Logo img{
+    width: 350px;
+    line-height: 80px;
+    padding: 8px 100px;
+
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    color: #130400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 7px 13px;
+    border-radius: 3px;
+}
+
+a.active,a:hover{
+    background: #185d99;
+    transition: .5s;
+    color: white;
+}
+
+
+.checkbtn{
+    font-size: 30px;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+@media (max-width: 952px){
+    label.Logo img{
+        padding-left: 50px !important;
+        width: 300px;
+        line-height: 80px;
+    }
+    nav ul li a{
+        font-size: 10px !important;
+    }
+}
+
+@media (max-width: 858px){
+    label.Logo img{
+        width: 300px;
+        line-height: 80px;
+    }
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 100vh;
+        background: rgb(128, 128, 128, 1);
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li a{
+        color: white;
+        font-size: 20px !important;
+    }
+    nav ul li{
+        display: block;
+        line-height: 60px;
+    }
+    a:hover,a.active{
+        background: none;
+        color: #185d99;
+    }
+    #check:checked ~ ul{
+        left: 0;
+    }
+}
+
 a {
     text-decoration: none;
     cursor: pointer;
@@ -87,94 +188,6 @@ img{
     width: 100%;
 }
 
-
-
-/* CABEÇALHO */
-.cabecalho{
-    background-color: rgb(255, 255, 255);
-}
-
-.logo {
-    max-width: 100%;
-    height: 56px;
-    float: left;
-    background: url(../img/icon.png) center center/56px no-repeat;
-    font-size: 0;
-}
-
-
-
-.btn-menu {
-    background: #ffffff;
-    width: 56px;
-    height: 56px;
-    float: right;
-    text-align: center;
-    border-radius:56px;
-    cursor: pointer;
-    z-index: 999999;
-}
-
-.fa{
-    color: rgb(0, 0, 0);
-}
-
-.fa-lg {
-    color: black;
-}
-
-/* MENU */
-.menu{
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    background: #ffffff;
-    top: 0;
-    right: 0;
-    z-index: 999999;
-}
-
-.btn-close{
-    font-size: 1.5em;
-    color: rgb(0, 0, 0);
-    float: right;
-    cursor: pointer;
-    margin: 3% 4% 0 0;
-}
-
-.menu ul{
-    width: 100%;
-    float: right;
-    text-align: center;
-}
-
-.menu li{
-    padding: 5%;
-}
-
-.menu li i{
-    color: #000000;
-}
-
-.menu li a{
-    font-size: 2em;
-    color: #000000;
-    padding: 1.5% 0%;
-    font-family: "Varela Round", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.menu li a:hover{
-    color: #a1a1a1;
-}
-
-.menu li i:hover{
-    color: #a1a1a1;
-}
-
-.footer-links li a:hover{
-    transition: all 0.7s;
-}
 
 /* BANNER */
 .banner{

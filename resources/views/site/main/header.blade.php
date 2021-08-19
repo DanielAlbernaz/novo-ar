@@ -3,7 +3,7 @@
     <?php $empresa = exibirInfoEmpresa();?>
     <head>
     	<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<title>Novo Ar Climatizadores</title>
     	<meta name="description" content="Agência especializada em Marketing Digital, Criação de Sites e Aplicativos Mobile.">
     	<meta name="keywords" content="Agência digital, Marketing, Sites">
@@ -40,27 +40,35 @@
     <body>
 
     <!-- CABEÇALHO -->
-    <header class="cabecalho container-nav">
-            <div class="logo">
-                <a href="/" class="logo">
-                    <img src="{{ asset('images/logonovoar.png') }}">
-                </a>
-            </div>
-                <button class="btn-menu bg-gradient"><i class="fa fa-bars fa-lg"></i></button>
-                <nav class="menu">
-                    <a class="btn-close"><i style="color: #000000" class="fa fa-times"></i></a>
-                    <ul>
-                        <li><a href="{{ route('institucional') }}">Quem somos</a></li>
-                        <li><a  href="{{ route('produtos') }}">Produtos</a></li>
-                        <li><a href="{{ route('galeria') }}" >Instalações</a></li>
-                        <li class="Espacamentoicon"><a href="">Contato</a></li>
-                        @if ($empresa->facebook)
-                            <li><a href="{{ $empresa->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        @endif
-                        @if ($empresa->instagram)
-                            <li><a href="{{ $empresa->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        @endif
-                    </ul>
-                </nav>
-    </header>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fa-bars"></i>
+        </label>
+        <label class="Logo">
+            <img src="/images/logonovoar.png">
+        </label>
+        <ul>
+            <li>
+                <a class="active">Home</a>
+            </li>
+            <li>
+                <a href="#">Quem Somos</a>
+            </li>
+            <li>
+                <a href="#">Produtos</a>
+            </li>
+            <li>
+                <a href="#">Instalações</a>
+            </li>
+            <li>
+                <a href="#">Contato</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+              <li>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+        </ul>
 
