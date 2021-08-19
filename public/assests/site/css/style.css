@@ -146,6 +146,9 @@ a.active,a:hover{
     .checkbtn{
         display: block;
     }
+    #check{
+        display: none;
+    }
     ul{
         position: fixed;
         z-index: 999;
