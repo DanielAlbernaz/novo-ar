@@ -7,7 +7,7 @@
 <div class="ccw_plugin chatbot">
     <div class="animate_animated animate_bounce ">
             <a target="blank" href="https://web.whatsapp.com/send?phone=5562984080282&amp;text=Olá, tenho interesse!" class="animateanimated animate_bounce">
-                <img class="img-icon ccw-analytics" id="style-3" data-ccw="style-3" style="height: 65px;" src="images/whatsapp.png" alt="WhatsApp chat">
+                <img class="img-icon ccw-analytics" id="style-3" data-ccw="style-3" style="height: 65px;" src="{{ asset('images/whatsapp.png') }}" alt="WhatsApp chat">
             </a>
     </div>
 </div>
@@ -17,14 +17,16 @@
     <div class="container-footer">
 		<div class="row foot-cont">
 			<div class="col-md-4 col-sm-12 margin-top-col-1">
-				<img class="footer-logo" src="images/logonovoar.png" alt="">
+                <a href="/">
+				    <img class="footer-logo" src="images/logonovoar.png" alt="">
+                </a>
 				<br><br>
 
 				<ul class="footer-links">
 					<li><a href="{{ route('institucional') }}">Quem Somos</a></li>
-					<li><a href="{ route('produtos') }}">Produtos</a></li>
+					<li><a href="{{ route('produtos') }}">Produtos</a></li>
 					<li><a href="{{ route('galeria') }}">Instalações</a></li>
-					<li><a href="#">Contato</a></li>
+					<li><a href="/institucional/#contato">Contato</a></li>
 				</ul>
 
 
@@ -33,10 +35,10 @@
 			<div class="col-md-4 col-sm-12 margin-top-col ">
 				<h4>Central de atendimento</h4>
 				<ul class="footer-links">
-					<li><a href="#">Atendimento por email</a></li>
-					<li><a href="#">Atendimento Online</a></li>
-					<li><a href="#">Atendimento Whatsapp</a></li>
-					<li><a href="#">Ligamos para você</a></li>
+					<li><a href="/institucional/#contato">Atendimento por email</a></li>
+					<li><a href="https://web.whatsapp.com/send?phone=5562984080282&amp;text=Olá, tenho interesse!" target="_blank">Atendimento Online</a></li>
+					<li><a href="https://web.whatsapp.com/send?phone=5562984080282&amp;text=Olá, tenho interesse!" target="_blank">Atendimento Whatsapp</a></li>
+					<li><a href="/institucional/#contato">Ligamos para você</a></li>
 				</ul>
 			</div>
 
@@ -116,6 +118,8 @@
 		<script src="{{asset('assests/site/js/master/js/js-url.min.js')}}"></script>
 		<script src="{{asset('assests/site/js/master/js/jquerypp.custom.js')}}"></script>
 		<script src="{{asset('assests/site/js/master/js/gamma.js')}}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+		<script src="{{asset('assests/site/js/main.js')}}"></script>
 		<script type="text/javascript">
 
 			$(function() {
