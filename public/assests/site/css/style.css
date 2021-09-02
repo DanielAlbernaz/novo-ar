@@ -92,7 +92,7 @@ nav ul{
     margin-right: 20px;
 }
 
-nav ul li{
+nav ul .linav{
     display: inline-block;
     line-height: 80px;
     margin: 0 5px;
@@ -163,7 +163,7 @@ nav ul li{
         color: white;
         font-size: 20px !important;
     }
-    nav ul li{
+    nav ul .linav{
         display: block;
         line-height: 60px;
     }

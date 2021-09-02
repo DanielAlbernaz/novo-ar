@@ -46,30 +46,28 @@
             <i class="fa fa-bars"></i>
         </label>
         <label class="Logo">
-            <a href="/">
-                <img src="/images/logonovoar.png">
-            </a>
+            <img src="/images/logonovoar.png">
         </label>
         <ul>
-            <li>
-                <a href="/" class="active navfor">HOME</a>
+            <li class="linav">
+                <a class="active navfor">HOME</a>
             </li>
-            <li>
-                <a href="/institucional" class="navfor">QUEM SOMOS</a>
+            <li class="linav">
+                <a href="#" class="navfor">QUEM SOMOS</a>
             </li>
-            <li>
-                <a href="{{ route('produtos') }}" class="navfor">PRODUTOS</a>
+            <li class="linav">
+                <a href="#" class="navfor">PRODUTOS</a>
             </li>
-            <li>
-                <a href="{{ route('galeria') }}" class="navfor">INSTALAÇÕES</a>
+            <li class="linav">
+                <a href="#" class="navfor">INSTALAÇÕES</a>
             </li>
-            <li>
-                <a href="/institucional/#contato" class="navfor">CONTATO</a>
+            <li class="linav">
+                <a href="#" class="navfor">CONTATO</a>
             </li>
-            <li>
+            <li class="linav">
                 <a href="#" class="navfor"><i class="fa fa-facebook"></i></a>
             </li>
-              <li>
+            <li class="linav">
                 <a href="#" class="navfor"><i class="fa fa-instagram"></i></a>
             </li>
         </ul>
